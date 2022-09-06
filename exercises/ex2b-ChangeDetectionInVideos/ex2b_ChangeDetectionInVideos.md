@@ -48,8 +48,7 @@ Start by creating an exercise folder where you keep your data, Python scripts or
 
 # OpenCV program for image differencing
 
-In the [exercise material](https://github.com/RasmusRPaulsen/DTUImageAnalysis/blob/main/exercises/ex2b-ChangeDetectionInVideos/data/)
-, there is an OpenCV script that:
+In the [exercise material](https://github.com/RasmusRPaulsen/DTUImageAnalysis/blob/main/exercises/ex2b-ChangeDetectionInVideos/data/), there is a Python script using OpenCV that:
 
 1. Connects to a camera
 2. Acquire images\footnote{Note that we sometimes refers to an image as a \textit{frame}.}, converts them to gray-scale and after that to floating point images
@@ -74,13 +73,13 @@ The goal of this exercise, is to modify the program in the [exercise material](h
 
 The overall structure of the program should be:
 
-\begin{itemize}
-  \item Connect to camera
-  \item Acquire a background image, convert it to grayscale and then to floating point
-  \item Start a loop:
-  \begin{enumerate}
-    \item Acquire a new image, convert it to grayscale and then to floating point ($I_\text{new}$).
-    \item Computes an absolute difference image between the new image and the background image.
+
+
+- Connect to camera
+- Acquire a background image, convert it to grayscale and then to floating point
+- Start a loop:
+	1. Acquire a new image, convert it to grayscale and then to floating point ($I_\text{new}$).
+    2. Computes an absolute difference image between the new image and the background image.
     \item Creates a binary image by applying a threshold, T, to the difference image.
     \item Computes the total number of foreground, F, pixels in the foreground image.
     \item Decides if an alarm should be raised if F is larger than an alert value, A.
