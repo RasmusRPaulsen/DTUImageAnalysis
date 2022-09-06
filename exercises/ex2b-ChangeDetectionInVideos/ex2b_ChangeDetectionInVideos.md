@@ -60,7 +60,7 @@ In the [exercise material](https://github.com/RasmusRPaulsen/DTUImageAnalysis/bl
 5. Shows images in windows.
 6. Checks if the key `q` has been pressed and stops the program if it is pressed.
 
-It is possible to use a mobile phone as a remote camera by following the instructions in [Using a mobile phone](#appendix:-using-a-mobile phone-camera).
+It is possible to use a mobile phone as a remote camera by following the instructions in [Using a mobile phone](#using-a-mobile-phone-camera).
 
 
 \subsubsection*{Exercise \theexno}
@@ -118,7 +118,7 @@ Try to change $\alpha$, T and A. What effects do it have?
 The images are displayed using the OpenCV function \texttt{imshow}. The display window has several ways of zooming in the displayed image. One function is to zoom x30 that shows the pixel values as numbers. Do that and notice the change of the values.
 
 
-# Appendix: Using a mobile phone camera
+# Using a mobile phone camera
 
 It is possible to use a mobile phone as a remote camera in OpenCV.
 
