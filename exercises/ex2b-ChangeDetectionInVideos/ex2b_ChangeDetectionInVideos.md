@@ -82,28 +82,26 @@ The overall structure of the program should be:
     2. Computes an absolute difference image between the new image and the background image.
     3. Creates a binary image by applying a threshold, T, to the difference image.
     4. Computes the total number of foreground, F, pixels in the foreground image.
+	5. Compute the percentage of foreground pixels compared to the total number of pixels in the image (F).
     5. Decides if an alarm should be raised if F is larger than an alert value, A.
-    6. If an alarm is raised, show a text on the input image. For example \texttt{Change Detected!}.
+    6. If an alarm is raised, show a text on the input image. For example **Change Detected!**.
     7. Shows the input image, the backround image, the difference image, and the binary image. The binary image should be scaled by 255.
-    8. Updates the background image, $I_\text{background}$, using: $$I_\text{background} = \alpha * I_\text{background} + (1 - \alpha) * I_\text{new}$$.
-    9. Stop the loop if the key q is pressed.
+    8. Updates the background image, $I_\text{background}$, using: $$I_\text{background} = \alpha * I_\text{background} + (1 - \alpha) * I_\text{new}$$
+    9. Stop the loop if the key `q` is pressed.
 
-You can start by trying with $\alpha = 0.95$, T = 10, and A = 15000.
+You can start by trying with $\alpha = 0.95$, $T = 10$, and $A = 5\%$.
 
-\subsubsection*{Exercise \theexno}
-\addtocounter{exno}{1}
+### Exercise 3
 
 Implement and test the above program.
 
-\subsubsection*{Exercise \theexno}
-\addtocounter{exno}{1}
+### Exercise 4
 
-Try to change $\alpha$, T and A. What effects do it have?
+Try to change $\alpha$, $T$ and $A$. What effects do it have?
 
-\subsubsection*{Exercise \theexno}
-\addtocounter{exno}{1}
+### Exercise 5
 
-The images are displayed using the OpenCV function \texttt{imshow}. The display window has several ways of zooming in the displayed image. One function is to zoom x30 that shows the pixel values as numbers. Do that and notice the change of the values.
+The images are displayed using the OpenCV function `imshow`. The display window has several ways of zooming in the displayed image. One function is to zoom x30 that shows the pixel values as numbers. Do that and notice the change of the values.
 
 
 # Using a mobile phone camera
