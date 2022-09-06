@@ -25,31 +25,31 @@ After completing this exercise, the student should be able to do the following:
 
 In this exercise, we will be using the popular [*OpenCV*](https://opencv.org/) library to perform real-time image analysis.
 
-We will use the virtual environment from the previous exercise *(course02502)*. Start an *Anaconda prompt* and do:
+We will use the virtual environment from the previous exercise (`course02502`). Start an **Anaconda prompt** and do:
 
-\begin{verbatim}
+```
 activate course02502
 conda install -c conda-forge opencv
-\end{verbatim}
+```
 
-You might also need to install \texttt{Numpy}:
+You might also need to install **Numpy**:
 
-\begin{verbatim}
+```
 conda install -c anaconda numpy
-\end{verbatim}
+```
 
-\section*{Exercise data and material}
+# Exercise data and material
 
-The data and material needed for this exercise can be downloaded from
+The data and material needed for this exercise can be found here:
+(https://github.com/RasmusRPaulsen/DTUImageAnalysis/blob/main/exercises/ex2b-ChangeDetectionInVideos/data/)
 
-\url{http://courses.compute.dtu.dk/02502/}.
 
 Start by creating an exercise folder where you keep your data, Python scripts or Notebooks. Download the data and material and place them in this folder.
 
 
-\section*{OpenCV program for image differencing}
+# OpenCV program for image differencing
 
-In the exercise material, there is an OpenCV program:\\ \texttt{Ex2b-ChangeDetectionInVideosExercise.py}, that:
+In the exercise material, there is an OpenCV program, `Ex2b-ChangeDetectionInVideosExercise.py`, that:
 
 \begin{enumerate}
   \item Connects to a camera
