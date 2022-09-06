@@ -78,17 +78,15 @@ The overall structure of the program should be:
 - Connect to camera
 - Acquire a background image, convert it to grayscale and then to floating point
 - Start a loop:
-	1. Acquire a new image, convert it to grayscale and then to floating point ($I_\text{new}$).
+	1. Acquire a new image, convert it to grayscale and then to floating point: $I_\text{new}$ .
     2. Computes an absolute difference image between the new image and the background image.
-    \item Creates a binary image by applying a threshold, T, to the difference image.
-    \item Computes the total number of foreground, F, pixels in the foreground image.
-    \item Decides if an alarm should be raised if F is larger than an alert value, A.
-    \item If an alarm is raised, show a text on the input image. For example \texttt{Change Detected!}.
-    \item Shows the input image, the backround image, the difference image, and the binary image. The binary image should be scaled by 255.
-    \item Updates the background image ($I_\text{background}$) using: $$I_\text{background} = \alpha * I_\text{background} + (1 - \alpha) * I_\text{new}$$.
-    \item Stop the loop if the key q is pressed.
-  \end{enumerate}
-\end{itemize}
+    3. Creates a binary image by applying a threshold, T, to the difference image.
+    4. Computes the total number of foreground, F, pixels in the foreground image.
+    5. Decides if an alarm should be raised if F is larger than an alert value, A.
+    6. If an alarm is raised, show a text on the input image. For example \texttt{Change Detected!}.
+    7. Shows the input image, the backround image, the difference image, and the binary image. The binary image should be scaled by 255.
+    8. Updates the background image, $I_\text{background}$, using: $$I_\text{background} = \alpha * I_\text{background} + (1 - \alpha) * I_\text{new}$$.
+    9. Stop the loop if the key q is pressed.
 
 You can start by trying with $\alpha = 0.95$, T = 10, and A = 15000.
 
