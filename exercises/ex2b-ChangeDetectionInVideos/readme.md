@@ -1,4 +1,4 @@
-# Introduction
+# Exercise2b - Change detection in videos
 
 The goal of this exercise is to create a small program for real-time change detection using OpenCV.
 
@@ -51,13 +51,15 @@ Start by creating an exercise folder where you keep your data, Python scripts or
 In the [exercise material](https://github.com/RasmusRPaulsen/DTUImageAnalysis/blob/main/exercises/ex2b-ChangeDetectionInVideos/data/), there is a Python script using OpenCV that:
 
 1. Connects to a camera
-2. Acquire images\footnote{Note that we sometimes refers to an image as a \textit{frame}.}, converts them to gray-scale and after that to floating point images
+2. Acquire images, converts them to gray-scale and after that to floating point images
 3. Computes a difference image between a current image and the previous image.
 4. Computes the frames per second (fps) and shows it on an image.
 5. Shows images in windows.
 6. Checks if the key `q` has been pressed and stops the program if it is pressed.
 
 It is possible to use a mobile phone as a remote camera by following the instructions in [Using a mobile phone](#using-a-mobile-phone-camera).
+
+Note that we sometimes refers to an image as a *frame*.
 
 ### Exercise 1
 
