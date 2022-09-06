@@ -89,7 +89,7 @@ The overall structure of the program should be:
     8. Updates the background image, $I_\text{background}$, using: $$I_\text{background} = \alpha * I_\text{background} + (1 - \alpha) * I_\text{new}$$
     9. Stop the loop if the key `q` is pressed.
 
-You can start by trying with $\alpha = 0.95$, $T = 10$, and $A = 5%$.
+You can start by trying with $\alpha = 0.95$, $T = 10$, and $A = 5\percent$.
 
 ### Exercise 3
 
