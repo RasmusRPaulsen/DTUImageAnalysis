@@ -1,6 +1,6 @@
 # Data and material for exercise 2b - Change detection in videos
 
-## Exercise script change detection by image differencing
+## Exercise script for change detection by image differencing
 
 ```python
 import time

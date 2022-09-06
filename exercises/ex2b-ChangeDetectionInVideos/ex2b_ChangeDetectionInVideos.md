@@ -49,7 +49,8 @@ Start by creating an exercise folder where you keep your data, Python scripts or
 
 # OpenCV program for image differencing
 
-In the exercise material, there is an OpenCV program, `Ex2b-ChangeDetectionInVideosExercise.py`, that:
+In the [exercise material](https://github.com/RasmusRPaulsen/DTUImageAnalysis/blob/main/exercises/ex2b-ChangeDetectionInVideos/data/)
+, there is an OpenCV script that:
 
 
 1. Connects to a camera
@@ -59,7 +60,8 @@ In the exercise material, there is an OpenCV program, `Ex2b-ChangeDetectionInVid
 5. Shows images in windows.
 6. Checks if the key `q` has been pressed and stops the program if it is pressed.
 
-It is possible to use a mobile phone as a remote camera by following the instructions in Appendix~\ref{app:droidcam}.
+It is possible to use a mobile phone as a remote camera by following the instructions in [Using a mobile phone](#Appendix:-Using-a-mobile phone-camera).
+
 
 \subsubsection*{Exercise \theexno}
 \addtocounter{exno}{1}
@@ -115,9 +117,8 @@ Try to change $\alpha$, T and A. What effects do it have?
 
 The images are displayed using the OpenCV function \texttt{imshow}. The display window has several ways of zooming in the displayed image. One function is to zoom x30 that shows the pixel values as numbers. Do that and notice the change of the values.
 
-\appendix
-\section{Using a mobile phone camera}
-\label{app:droidcam}
+
+# Appendix: Using a mobile phone camera
 
 It is possible to use a mobile phone as a remote camera in OpenCV.
 
