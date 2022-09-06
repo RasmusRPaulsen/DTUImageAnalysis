@@ -7,13 +7,13 @@ The goal of this exercise is to create a small program for real-time change dete
 After completing this exercise, the student should be able to do the following:
 
 -  Use OpenCV to access a web-camera or the camera or a mobile phone.
--  Use the OpenCV function \texttt{cvtColor} to convert from color to gray scale,
--  Convert images from integer to floating point using the \texttt{astype} function.
--  Convert image from floating point to uint8 using the \texttt{astype} function.
+-  Use the OpenCV function `cvtColor` to convert from color to gray scale,
+-  Convert images from integer to floating point using the `astype` function.
+-  Convert image from floating point to uint8 using the `astype` function.
 -  Compute a floating point absolute difference image between a new and a previous image.
 -  Compute the frames-per-second of an image analysis system.
--  Show text on an image using the OpenCV function \texttt{putText}.
--  Display an image using the OpenCV function \texttt{imshow}.
+-  Show text on an image using the OpenCV function `putText`.
+-  Display an image using the OpenCV function `imshow`.
 -  Implement and test a change detection program.
 -  Update a background image using a linear combination of the previous background image and a new frame.
 -  Compute a binary image by thresholding an absolute difference image.
@@ -51,14 +51,13 @@ Start by creating an exercise folder where you keep your data, Python scripts or
 
 In the exercise material, there is an OpenCV program, `Ex2b-ChangeDetectionInVideosExercise.py`, that:
 
-\begin{enumerate}
-  \item Connects to a camera
-  \item Acquire images\footnote{Note that we sometimes refers to an image as a \textit{frame}.}, converts them to gray-scale and after that to floating point images
-  \item Computes a difference image between a current image and the previous image.
-  \item Computes the frames per second (fps) and shows it on an image.
-  \item Shows images in windows.
-  \item Checks if the key q has been pressed and stops the program if it is pressed.
-\end{enumerate}
+
+1. Connects to a camera
+2. Acquire images\footnote{Note that we sometimes refers to an image as a \textit{frame}.}, converts them to gray-scale and after that to floating point images
+3. Computes a difference image between a current image and the previous image.
+4. Computes the frames per second (fps) and shows it on an image.
+5. Shows images in windows.
+6. Checks if the key `q` has been pressed and stops the program if it is pressed.
 
 It is possible to use a mobile phone as a remote camera by following the instructions in Appendix~\ref{app:droidcam}.
 
