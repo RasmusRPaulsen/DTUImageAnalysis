@@ -60,7 +60,7 @@ In the [exercise material](https://github.com/RasmusRPaulsen/DTUImageAnalysis/bl
 5. Shows images in windows.
 6. Checks if the key `q` has been pressed and stops the program if it is pressed.
 
-It is possible to use a mobile phone as a remote camera by following the instructions in [Using a mobile phone](#Appendix:-Using-a-mobile phone-camera).
+It is possible to use a mobile phone as a remote camera by following the instructions in [Using a mobile phone](#appendix:-using-a-mobile phone-camera).
 
 
 \subsubsection*{Exercise \theexno}
