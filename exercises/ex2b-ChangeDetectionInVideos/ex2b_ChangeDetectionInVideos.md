@@ -89,7 +89,7 @@ The overall structure of the program should be:
     8. Updates the background image, $I_\text{background}$, using: $$I_\text{background} = \alpha * I_\text{background} + (1 - \alpha) * I_\text{new}$$
     9. Stop the loop if the key `q` is pressed.
 
-You can start by trying with $\alpha = 0.95$, $T = 10$, and $A = 5\%$.
+You can start by trying with $\alpha = 0.95$, $T = 10$, and $A = 5%$.
 
 ### Exercise 3
 
@@ -108,21 +108,21 @@ The images are displayed using the OpenCV function `imshow`. The display window 
 
 It is possible to use a mobile phone as a remote camera in OpenCV.
 
-You need to install a web cam app on your phone. One option is \texttt{DroidCam} that can be installed from Google Play or from Apple App Store.
+You need to install a web cam app on your phone. One option is `DroidCam` that can be installed from Google Play or from Apple App Store.
 
 The computer and your phone should be on the same wireless network. For example one of the DTU wireless networks.
 
-Now start the DroidCam application on your phone. It should now show an web-address, for example \url{http://192.168.1.120:4747/video}
+Now start the DroidCam application on your phone. It should now show an web-address, for example `http://192.168.1.120:4747/video`
 
 Use this address, in the program:
 
-\begin{verbatim}
+```python
 use_droid_cam = True
 if use_droid_cam:
     url = "http://192.168.1.120:4747/video"
 cap = cv2.VideoCapture(url)
-\end{verbatim}
+```
 
-You should now see the video from your mobile phone on your computer screen.
+You should now see the video from your mobile phone on your computer screen. Remember you phone should be unlocked when streaming video.
 
 
