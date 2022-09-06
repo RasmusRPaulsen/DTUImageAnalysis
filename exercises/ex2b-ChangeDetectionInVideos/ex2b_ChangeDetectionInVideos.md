@@ -6,19 +6,19 @@ The goal of this exercise is to create a small program for real-time change dete
 
 After completing this exercise, the student should be able to do the following:
 
--  Use OpenCV to access a web-camera or the camera or a mobile phone.
--  Use the OpenCV function `cvtColor` to convert from color to gray scale,
--  Convert images from integer to floating point using the `astype` function.
--  Convert image from floating point to uint8 using the `astype` function.
--  Compute a floating point absolute difference image between a new and a previous image.
--  Compute the frames-per-second of an image analysis system.
--  Show text on an image using the OpenCV function `putText`.
--  Display an image using the OpenCV function `imshow`.
--  Implement and test a change detection program.
--  Update a background image using a linear combination of the previous background image and a new frame.
--  Compute a binary image by thresholding an absolute difference image.
--  Compute the total number of changed pixels in a binary image.
--  Implement a simple decision algorithm that is based on counting the amount of changed pixels in an image.
+1.  Use OpenCV to access a web-camera or the camera or a mobile phone.
+2.  Use the OpenCV function `cvtColor` to convert from color to gray scale,
+3.  Convert images from integer to floating point using the `astype` function.
+4.  Convert image from floating point to uint8 using the `astype` function.
+5.  Compute a floating point absolute difference image between a new and a previous image.
+6.  Compute the frames-per-second of an image analysis system.
+7.  Show text on an image using the OpenCV function `putText`.
+8.  Display an image and zoom on pixel values using the OpenCV function `imshow`.
+9.  Implement and test a change detection program.
+10.  Update a background image using a linear combination of the previous background image and a new frame.
+11.  Compute a binary image by thresholding an absolute difference image.
+12.  Compute the total number of changed pixels in a binary image.
+13.  Implement a simple decision algorithm that is based on counting the amount of changed pixels in an image.
 
 
 # Installing Python packages
@@ -46,12 +46,10 @@ The data and material needed for this exercise can be found here:
 
 Start by creating an exercise folder where you keep your data, Python scripts or Notebooks. Download the data and material and place them in this folder.
 
-
 # OpenCV program for image differencing
 
 In the [exercise material](https://github.com/RasmusRPaulsen/DTUImageAnalysis/blob/main/exercises/ex2b-ChangeDetectionInVideos/data/)
 , there is an OpenCV script that:
-
 
 1. Connects to a camera
 2. Acquire images\footnote{Note that we sometimes refers to an image as a \textit{frame}.}, converts them to gray-scale and after that to floating point images
@@ -62,24 +60,17 @@ In the [exercise material](https://github.com/RasmusRPaulsen/DTUImageAnalysis/bl
 
 It is possible to use a mobile phone as a remote camera by following the instructions in [Using a mobile phone](#using-a-mobile-phone-camera).
 
+### Exercise 1
 
-\subsubsection*{Exercise \theexno}
-\addtocounter{exno}{1}
+Run the program from the [exercise material](https://github.com/RasmusRPaulsen/DTUImageAnalysis/blob/main/exercises/ex2b-ChangeDetectionInVideos/data/) and see if shows the expected results? Try to move your hands in front of the camera and try to move the camera and see the effects on the difference image.
 
-Run the program \texttt{Ex2b-ChangeDetectionInVideosExercise.py} and see if shows the expected results? Try to move your hands in front of the camera and try to move the camera and see the effects on the difference image.
+### Exercise 2
 
+Identify the important steps above in the program. What function is used to convert a color image to a gray-scale image?
 
-\subsubsection*{Exercise \theexno}
-\addtocounter{exno}{1}
+# Change detection by background subtraction
 
-Identify the steps above in the program. What function is used to convert a color image to a gray-scale image?
-
-
-\section*{Change detection by background subtraction}
-
-The goal of this exercise, is to modify the program in:\\
-\texttt{Ex2b-ChangeDetectionInVideosExercise.py}
-, so it will be able to raise an alarm if significant changes are detected in a video stream.
+The goal of this exercise, is to modify the program in the [exercise material](https://github.com/RasmusRPaulsen/DTUImageAnalysis/blob/main/exercises/ex2b-ChangeDetectionInVideos/data/), so it will be able to raise an alarm if significant changes are detected in a video stream.
 
 The overall structure of the program should be:
 
