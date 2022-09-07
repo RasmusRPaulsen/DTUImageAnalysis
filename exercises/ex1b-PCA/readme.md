@@ -26,14 +26,14 @@ After completing this exercise, the student should be able to do the following:
 
 ## Getting the Data
 
-Start by creating an exercise folder where you keep your Python data. Download the data from the data from this repository and place them in this folder.
+Start by creating an exercise folder where you keep your Python data. Download the data from the data from [this repository](data/) and place them in this folder.
 
 ## Loading the data
 
 We start by reading the data and in this example we only use the first 50 measurements from the same type of flower:
 
 ### Exercise 1  
-Start by reading the data create a data matrix x:
+Start by reading the data and create a data matrix `x`:
 ```python
 import numpy as np
 iris_data = np.loadtxt(in_dir + txt_name, comments="%")
@@ -75,13 +75,13 @@ do that for all the features.
 Now compute the covariance:  
 $$\sigma^2 = \frac{1}{N-1} \sum_i a_i b_i$$
 
-between the sepal length and the sepal width. Please note that we use N − 1 instead of just N in the computation of the covariance. The reason for this can be found in estimation theory. Also note that the covariance we compute is not equal to for example the Numpy cov function. It can, though, still tell us something about the data.
+between the sepal length and the sepal width. Please note that we use $N − 1$ instead of just $N$ in the computation of the covariance. The reason for this can be found in estimation theory. Also note that the covariance we compute is not equal to for example the Numpy `cov` function. It can, though, still tell us something about the data.
 
 Compute the covariance between the sepal length and the petal length and compare it to the covariance between the sepal length and width. What do you observe?
 
 ### Exercise 4
 
-As with image analysis, it is very useful to get a graphical understanding of the data and what structures are hidden in the them. For this, we will use the seaborn Python package that also used the pandas package. Take a look at Appendix A for installation instructions.
+As with image analysis, it is very useful to get a graphical understanding of the data and what structures are hidden in the them. For this, we will use the seaborn Python package that also used the pandas package. Take a look at Appendix A, at the end of the document, for installation instructions.
 
 Import *seaborn* and *pandas*:
 
@@ -101,7 +101,7 @@ sns.pairplot(d)
 plt.show()
 ```
 
-What measurements are related and which ones are not-related? Can you recog- nise the results you found, when you computed the variance and covariance?
+What measurements are related and which ones are not-related? Can you recognise the results you found, when you computed the variance and covariance?
 
 ## PCA Analysis
 
@@ -114,7 +114,7 @@ In the first approach, we do the analysis step-wise. Start by subtracting the me
 mn = np.mean(x, axis=0)
 data = x - mn
 ```
-Now compute the covariance matrix using: $$ \mathbf C_\mathbf X = \frac{1}{N-1} \mathbf X^\text T \mathbf X$$
+Now compute the covariance matrix using: $$ \mathbf C_\mathbf X = \frac{1}{N-1} \mathbf X^\text{T} \mathbf X$$
 Remember to use the data, where the mean has been subtracted. You can use the NumPy function matmul to multiply two matrices together. Also remember to transpose data in one of the arguments to the function.
 
 You can also use the NumPy function cov to compute the covariance matrix. Verify if the two approaches give the same result?
@@ -123,15 +123,14 @@ You can also use the NumPy function cov to compute the covariance matrix. Verify
 
 Now you can compute the principal components using eigenvector analysis:
 ```python
-values, vectors = np.linalg.eig(c_x) # Here c x is your covariance matrix.
+values, vectors = np.linalg.eig(c_x) # Here c_x is your covariance matrix.
 ```
 
-The values are the eigenvalues and the vectors are the eigenvectors (the prin- cipal components).
+The values are the eigenvalues and the vectors are the eigenvectors (the principal components).
 
 ### Exercise 7
 
-Lets examine some properties of the principal components.
-- First try to find out how much of the total variation the first component explains?
+Lets examine some properties of the principal components. First try to find out how much of the total variation the first component explains?
 
 You can also plot the amount of explained variation for each component:
 ```python
@@ -164,7 +163,7 @@ from sklearn import decomposition
 
 ### Exercise 9
 
-Read the data matrix as before, but do not subtract the mean. The procedure subtract the mean for you.
+Read the data matrix as before, but do not subtract the mean. The procedure subtracts the mean for you.
 
 The PCA can be computed using:
 
