@@ -73,7 +73,7 @@ cameras focal length is 5 mm. The CCD in the camera can be seen in
 the figure below. It is a 1/2" (inches) CCD chip and the
 image formed by the CCD is 640x480 pixels in a (x,y) coordinate system.
 
-![CCD chip](figures/CCDchip.png)
+![CCD chip](figures/CCDChip.png)
 
 It is easiest to start by drawing the scene. The scene should
 contain the optical axis, the optical center, the lens, the focal
