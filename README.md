@@ -8,6 +8,7 @@ This repository contains exercises and data for the course.
 
 ## Exercises (for Fall 2022)
 
+- [Ex1b - PCA](exercises/ex1b-PCA)
 - [Ex2 - Cameras and Lenses](exercises/ex2-CamerasAndLenses)
 - [Ex2b - Change Detection in Videos](exercises/ex2b-ChangeDetectionInVideos)
 
