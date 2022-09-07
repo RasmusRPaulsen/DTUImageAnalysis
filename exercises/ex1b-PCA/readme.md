@@ -114,7 +114,7 @@ In the first approach, we do the analysis step-wise. Start by subtracting the me
 mn = np.mean(x, axis=0)
 data = x - mn
 ```
-Now compute the covariance matrix using: $$ \mathbf C_\mathbf X = \frac{1}{N-1} \mathbf X^\text{T} \mathbf X$$
+Now compute the covariance matrix using: $$\mathbf{C}_\mathbf{X} = \frac{1}{N-1} \mathbf{X}^\text{T} \mathbf{X}$$ .
 Remember to use the data, where the mean has been subtracted. You can use the NumPy function matmul to multiply two matrices together. Also remember to transpose data in one of the arguments to the function.
 
 You can also use the NumPy function cov to compute the covariance matrix. Verify if the two approaches give the same result?
