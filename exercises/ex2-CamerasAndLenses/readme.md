@@ -45,9 +45,7 @@ def camera_b_distance(f, g):
 ```
 
 It should be based on Gauss' lens equation:
-$$
-\frac{1}{g} + \frac{1}{b} = \frac{1}{f}
-$$
+$$\frac{1}{g} + \frac{1}{b} = \frac{1}{f}$$
 
 You should decide if your function should calculate distances in mm or
 in meters, but remember to be consistent!
@@ -64,39 +62,28 @@ In the following exercise, you should remember to explain when
 something is in mm and when it is in meters. To convert between
 radians and degrees you can use:
 
-\begin{verbatim}
+```
 angle_degrees = 180.0 / math.pi * angle_radians
-\end{verbatim}
+```
 
+### Exercise 3
 
-\subsubsection*{Exercise \theexno}
-\addtocounter{exno}{1}
-%
-  Thomas is 1.8 meters tall and standing 5 meters from a camera. The
-  cameras focal length is 5 mm. The CCD in the camera can be seen in
-  Figure~\ref{fig:CCDchip}. It is a 1/2" (inches) CCD chip and the
-  image formed by the CCD is 640x480 pixels in a (x,y) coordinate system.
+Thomas is 1.8 meters tall and standing 5 meters from a camera. The
+cameras focal length is 5 mm. The CCD in the camera can be seen in
+the figure below. It is a 1/2" (inches) CCD chip and the
+image formed by the CCD is 640x480 pixels in a (x,y) coordinate system.
 
-\begin{figure}[hbtp]
-  \centering
-  \includegraphics[width=0.3\textwidth]{CCDChip}
-  \caption{The dimensions of a 1/2" CCD chip. The chip has 640x480 pixels.}
-  \label{fig:CCDchip}
-\end{figure}
+![CCD chip](figures/CCDchip.png)
 
-  It is easiest to start by drawing the scene. The scene should
-  contain the optical axis, the optical center, the lens, the focal
-  point, the CCD chip, and Thomas. Do it on paper or even better in a
-  drawing program.
+It is easiest to start by drawing the scene. The scene should
+contain the optical axis, the optical center, the lens, the focal
+point, the CCD chip, and Thomas. Do it on paper or even better in a
+drawing program.
 
-  \begin{enumerate}
-  \item A focused image of Thomas is formed inside the camera. At which
-    distance from the lens?
-  \item How tall (in mm) will Thomas be on the CCD-chip?
-  \item What is the size of a single pixel on the CCD chip? (in mm)?
-  \item How tall (in pixels) will Thomas be on the CCD-chip?
-  \item What is the horizontal field-of-view (in degrees)?
-  \item What is the vertical field-of-view (in degrees)?
-  \end{enumerate}
-
+1. A focused image of Thomas is formed inside the camera. At which distance from the lens?
+2. How tall (in mm) will Thomas be on the CCD-chip?
+3. What is the size of a single pixel on the CCD chip? (in mm)?
+4. How tall (in pixels) will Thomas be on the CCD-chip?
+5. What is the horizontal field-of-view (in degrees)?
+6. What is the vertical field-of-view (in degrees)?
 
