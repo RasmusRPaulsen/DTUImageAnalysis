@@ -6,3 +6,10 @@ This repository contains exercises and data for the course.
 
 (http://courses.compute.dtu.dk/02502/)
 
+## Exercises (for Fall 2022)
+
+- [Ex2b - Change Detection in Videos](exercises/ex2b-ChangeDetectionInVideos)
+
+### Author
+
+Rasmus R. Paulsen. DTU Compute (people.compute.dtu.dk/rapa)
