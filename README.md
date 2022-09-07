@@ -12,4 +12,4 @@ This repository contains exercises and data for the course.
 
 ### Author
 
-Rasmus R. Paulsen. DTU Compute (people.compute.dtu.dk/rapa)
+Rasmus R. Paulsen. DTU Compute (https://people.compute.dtu.dk/rapa/)

@@ -105,6 +105,11 @@ Try to change $\alpha$, $T$ and $A$. What effects do it have?
 
 The images are displayed using the OpenCV function `imshow`. The display window has several ways of zooming in the displayed image. One function is to zoom x30 that shows the pixel values as numbers. Do that and notice the change of the values.
 
+### Exercise 6
+
+Try to use `putText` to write some important information on the image. For example the number of changed pixel, the average, minumum and maximum value in the difference image. These values can then be used to find even better values for $\alpha$, $T$ and $A$.
+
+Also try to find out how to put a colored text on a color image. Here you need to know that OpenCV stores color as BGR instead of RGB.
 
 # Using a mobile phone camera
 
