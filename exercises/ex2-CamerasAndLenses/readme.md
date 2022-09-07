@@ -23,20 +23,17 @@ $a = 10$ and $b=3$ using the function `math.atan2()`. Remember to import `math` 
 
 ![Angle in triangel](figures/ArcTangens.png)
 
+### Exercise 2
 
-\subsubsection*{Exercise \theexno}
-\addtocounter{exno}{1}
+Create a Python function called `camera_b_distance`.
 
-%
-  Create a Python function called \verb|camera_b_distance|:
+The function should accept two arguments, a focal length f and an
+object distance g. It should return the distance from the lens to
+where the rays are focused (b) (where the CCD should be placed)
 
-  The function should accept two arguments, a focal length f and an
-  object distance g. It should return the distance from the lens to
-  where the rays are focused (b) (where the CCD should be placed)
+The function should start like this:
 
-  The function should start like this:
-
-\begin{verbatim}
+```python
 def camera_b_distance(f, g):
     """
     camera_b_distance returns the distance (b) where the CCD should be placed
@@ -45,14 +42,12 @@ def camera_b_distance(f, g):
     :param g: Object distance
     :return: b, the distance where the CCD should be placed
     """
-\end{verbatim}
-%
+```
+
 It should be based on Gauss' lens equation:
-%
-\begin{equation}
-  \label{eq:GaussLens}
-  \frac{1}{g} + \frac{1}{b} = \frac{1}{f}
-\end{equation}
+$$
+\frac{1}{g} + \frac{1}{b} = \frac{1}{f}
+$$
 
 You should decide if your function should calculate distances in mm or
 in meters, but remember to be consistent!
@@ -63,7 +58,7 @@ meters.
 
 What happens to the place of the CCD when the object distance is increased?
 
-\subsection*{Camera exercise}
+## Camera exercise
 
 In the following exercise, you should remember to explain when
 something is in mm and when it is in meters. To convert between
