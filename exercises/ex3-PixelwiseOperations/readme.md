@@ -80,7 +80,7 @@ Here $f(x,y)$ is the input pixel value and  $g(x,y)$ is the output pixel value, 
 
 ### Exercise 5
 
-Implement and test a Python function called `histogram_stretch`. It can, for example, follow this example:
+Implement a Python function called `histogram_stretch`. It can, for example, follow this example:
 
 ```python
 def histogram_stretch(img_in):
@@ -96,12 +96,36 @@ def histogram_stretch(img_in):
     min_desired = 0.0
     max_desired = 1.0
 	
-	# Do something here
+    # Do something here
 
+	# img_as_ubyte will multiply all pixel values with 255.0 before converting to unsigned byte
     return img_as_ubyte(img_out)
 ```
 
+# Non-linear pixel value mapping
 
+The goal is to implement and test a function that performs a $\gamma$-mapping of pixel values:
+
+$$g(x,y) = f(x,y)^\gamma \enspace .$$
+
+You can use the *Numpy* function `power` to compute the actual mapping function. 
+
+### Exercise 6
+
+Implement a function, `gamma_map(img, gamma)`, that:
+
+1. Converts the input image to float
+2. Do the gamma mapping on the pixel values
+3. Returns the resulting image as an unsigned byte image.
+
+### Exercise 7
+
+Test your `gamma_map` function on the vertebra image or another image of your choice. Try different values of $\gamma$, for example 0.5 and 2.0. Show the resuling image together with the input image. Can you see the differences in the images?
+
+
+### Exercise 6
+
+Test your `histogram_stretch` on the `vertebra.png` image. Show the image before and after the histogram stretching. What changes do you notice in the image? Are the important structures more visible?
 
 
 # OpenCV program for image differencing
