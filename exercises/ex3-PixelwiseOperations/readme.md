@@ -76,8 +76,30 @@ You should implement a function, that automatically stretches the histogram of a
 
 $$g(x,y) =\frac{v_\text{max,d}-v_\text{min,d}}{v_\text{max}-v_\text{min}}(f(x,y) - v_\text{min} )+v_\text{min,d} \enspace .$$
 
-Where $v_\text{max,d}$ and $v_\text{min,d}$ are the desired minimum and maximum values (0 and 255) and  $v_\text{max}$ and $v_\text{min}$ are the current minumum and maximum values.
+Here $f(x,y)$ is the input pixel value and  $g(x,y)$ is the output pixel value, $v_\text{max,d}$ and $v_\text{min,d}$ are the desired minimum and maximum values (0 and 255) and  $v_\text{max}$ and $v_\text{min}$ are the current minumum and maximum values.
 
+### Exercise 5
+
+Implement and test a Python function called `histogram_stretch`. It can, for example, follow this example:
+
+```python
+def histogram_stretch(img_in):
+    """
+    Stretches the histogram of an image 
+    :param img_in: Input image
+    :return: Image, where the histogram is stretched so the min values is 0 and the maximum value 255
+    """
+    # img_as_float will divide all pixel values with 255.0
+    img_float = img_as_float(img_in)
+    min_val = img_float.min()
+    max_val = img_float.max()
+    min_desired = 0.0
+    max_desired = 1.0
+	
+	# Do something here
+
+	return img_as_ubyte(img_out)
+```
 
 
 
