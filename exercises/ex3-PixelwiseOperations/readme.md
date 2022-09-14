@@ -98,7 +98,7 @@ def histogram_stretch(img_in):
 	
 	# Do something here
 
-	return img_as_ubyte(img_out)
+    return img_as_ubyte(img_out)
 ```
 
 
