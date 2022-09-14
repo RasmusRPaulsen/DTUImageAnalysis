@@ -98,7 +98,7 @@ def histogram_stretch(img_in):
 	
     # Do something here
 
-	# img_as_ubyte will multiply all pixel values with 255.0 before converting to unsigned byte
+    # img_as_ubyte will multiply all pixel values with 255.0 before converting to unsigned byte
     return img_as_ubyte(img_out)
 ```
 
