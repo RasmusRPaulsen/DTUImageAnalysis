@@ -1,4 +1,4 @@
-# Exercise3 - Pixelwise operations (WORK IN PROGRESS)
+# Exercise3 - Pixelwise operations
 
 In this exercise you will learn to perform pixelwise operations using Python.
 
@@ -146,7 +146,7 @@ def threshold_image(img_in, thres):
     """
 ```
 
-Remember to use `img_as_ubyte` to when returning the resulting image. 
+Remember to use `img_as_ubyte` when returning the resulting image. 
 
 ### Exercise 10
 
@@ -164,7 +164,7 @@ Remember to import the method:
 from skimage.filters import threshold_otsu
 ```
 
-How does the threshold and the result compares to your manually found threshold?
+How does the threshold and the result compare to your manually found threshold?
 
 ### Exercicse 12
 
@@ -175,7 +175,7 @@ and try to find a threshold that creates a *silhouette* image (an image where th
 
 ## Color thresholding in the RGB color space
 
-In the following we will make a simple system for road-sign detection. Start by reading the image **DTUSigns2.jpg** found in the [exercise data](https://github.com/RasmusRPaulsen/DTUImageAnalysis/blob/main/exercises/ex3-PixelwiseOperations/data/). We want to make a system that do a *segmentation* of the image - meaning that a new binary image is created, where the foreground pixels correspond to the sign we want to detect.
+In the following, we will make a simple system for road-sign detection. Start by reading the image **DTUSigns2.jpg** found in the [exercise data](https://github.com/RasmusRPaulsen/DTUImageAnalysis/blob/main/exercises/ex3-PixelwiseOperations/data/). We want to make a system that do a *segmentation* of the image - meaning that a new binary image is created, where the foreground pixels correspond to the sign we want to detect.
 
 We do that by tresholding the colour-channels individually. This code segments out the blue sign:
 
@@ -189,7 +189,7 @@ We do that by tresholding the colour-channels individually. This code segments o
 
 ### Exercise 13
 
-Create a function `detect_dtu_signs` that takes as input a color image and returns an image where the blue sign is identified by foreground pixels.
+Create a function `detect_dtu_signs` that takes as input a color image and returns an image, where the blue sign is identified by foreground pixels.
 
 
 ### Exercise 14
