@@ -128,13 +128,110 @@ Implement a function, `gamma_map(img, gamma)`, that:
 
 Test your `gamma_map` function on the vertebra image or another image of your choice. Try different values of $\gamma$, for example 0.5 and 2.0. Show the resuling image together with the input image. Can you see the differences in the images?
 
+# Image segmentation by thresholding
+
+Now we will try to implement some functions that can seperate an image into *segments*. In this exercise, we aim at seperating the *background* from the *foreground* by setting a threshold in a gray scale image or several thresholds in color images.
+
+### Exercise 9
+
+Implement a function, `threshold_image` : 
+
+```python
+def threshold_image(img_in, thres):
+    """
+    Apply a threshold in an image and return the resulting image
+    :param img_in: Input image
+    :param thres: The treshold value in the range [0, 255]
+    :return: Resulting image (unsigned byte) where background is 0 and foreground is 255
+    """
+```
+
+Remember to use `img_as_ubyte` to when returning the resulting image. 
+
+### Exercise 10
+
+Test your `threshold_image` function on the vertebra image with different thresholds. It is probably not possible to find a threshold that seperates the bones from the background, but can you find a threshold that seperates the human from the background?
+
+## Automatic thresholds using Otsu's method
+
+An optimal threshold can be estimated using [*Otsu's method*](https://en.wikipedia.org/wiki/Otsu%27s_method). This method finds the threshold, that minimizes the combined variance of the foreground and background.
+
+### Exercise 11
+Read the documentation of [Otsu's method](https://scikit-image.org/docs/dev/api/skimage.filters.html#skimage.filters.threshold_otsu) and use it to compute and apply a threshold to the vertebra image.
+
+Remember to import the method:
+```
+from skimage.filters import threshold_otsu
+```
+
+How does the threshold and the result compares to your manually found threshold?
+
+### Exercicse 12
+
+Use your camera to take some pictures of yourself or a friend. Try to
+take a picture on a dark background. Convert the image to grayscale
+and try to find a threshold that creates a *silhouette* image (an image where the head is all white and the background black). Alternatively, you can use the supplied photo **dark_background.png** found in the [exercise data](https://github.com/RasmusRPaulsen/DTUImageAnalysis/blob/main/exercises/ex3-PixelwiseOperations/data/).
+
+
+## Color thresholding in the RGB color space
+
+In the following we will make a simple system for road-sign detection. Start by reading the image **DTUSigns2.jpg** found in the [exercise data](https://github.com/RasmusRPaulsen/DTUImageAnalysis/blob/main/exercises/ex3-PixelwiseOperations/data/). We want to make a system that do a *segmentation* of the image - meaning that a new binary image is created, where the foreground pixels correspond to the sign we want to detect.
+
+We do that by tresholding the colour-channels individually. This code segments out the blue sign:
+
+```python
+    r_comp = im_org[:, :, 0]
+    g_comp = im_org[:, :, 1]
+    b_comp = im_org[:, :, 2]
+    segm_blue = (r_comp < 10) & (g_comp > 85) & (g_comp < 105) & \
+                (b_comp > 180) & (b_comp < 200)
+```
+
+### Exercise 13
+
+Create a function `detect_dtu_signs` that takes as input a color image and returns an image where the blue sign is identified by foreground pixels.
+
+
+### Exercise 14
+
+Extend your `detect_dtu_signs` function so it can also detect red signs. You can add an argument to the function, that tells which color it should look for. 
+You should use one of the explorative image tools to find out what the typical RGB values are in the red signs.
+
+## Color thresholding in the HSV color space
+
+Sometimes it gives better segmentation results when the tresholding is done in HSI (also known as HSV - hue, saturation, value) space. Start by reading the  **DTUSigns2.jpg** image, convert it to HSV and show the hue and value:
+
+```python
+    hsv_img = color.rgb2hsv(im_org)
+    hue_img = hsv_img[:, :, 0]
+    value_img = hsv_img[:, :, 2]
+    fig, (ax0, ax1, ax2) = plt.subplots(ncols=3, figsize=(8, 2))
+    ax0.imshow(im_org)
+    ax0.set_title("RGB image")
+    ax0.axis('off')
+    ax1.imshow(hue_img, cmap='hsv')
+    ax1.set_title("Hue channel")
+    ax1.axis('off')
+    ax2.imshow(value_img)
+    ax2.set_title("Value channel")
+    ax2.axis('off')
+
+    fig.tight_layout()
+    io.show()
+```
+
+
+### Exercise 15
+
+Now make a sign segmentation function using tresholding in HSV space and locate both the blue and the red sign.
+
 
 # Real time pixelwise operations on videos
 
 In the [exercise material](https://github.com/RasmusRPaulsen/DTUImageAnalysis/blob/main/exercises/ex3-PixelwiseOperations/data/), there is a Python script using OpenCV that:
 
 1. Connects to a camera
-2. Acquire images, converts them to gray-scale and after that to floating point images
+2. Acquire images, converts them to gray-scale
 3. Do a simple processing on the gray-scale (inversion) or the colour image (inversion of the red channel)
 4. Computes the frames per second (fps) and shows it on an image.
 5. Shows input and resulting images in windows.
@@ -142,15 +239,15 @@ In the [exercise material](https://github.com/RasmusRPaulsen/DTUImageAnalysis/bl
 
 It is possible to use a mobile phone as a remote camera by following the instructions in exercise 2b.
 
-### Exercise 9
+### Exercise 16
 
 Run the program from the [exercise material](https://github.com/RasmusRPaulsen/DTUImageAnalysis/blob/main/exercises/ex3-PixelwiseOperations/data/) and see if it shows the expected results? 
 
-### Exercise 10
+### Exercise 17
 
 Change the gray-scale processing in the [exercise material](https://github.com/RasmusRPaulsen/DTUImageAnalysis/blob/main/exercises/ex3-PixelwiseOperations/data/) script to be for example thresholding, gamma mapping or something else. Do you get the visual result that you expected?
 
 
-### Exercise 11: Real time detection of DTU signs
+### Exercise 18: Real time detection of DTU signs
 
 Change the rgb-scale processing in the [exercise material](https://github.com/RasmusRPaulsen/DTUImageAnalysis/blob/main/exercises/ex3-PixelwiseOperations/data/) script so it does a color threshold in either RGB or HSV space. The goal is to make a program that can *see* DTU street signs. The output should be a binary image, where the pixels of the sign is foreground. Later in the course, we will learn how to remove the noise pixels.
