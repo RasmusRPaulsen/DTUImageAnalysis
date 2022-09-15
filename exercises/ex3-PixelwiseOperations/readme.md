@@ -199,7 +199,7 @@ You should use one of the explorative image tools to find out what the typical R
 
 ## Color thresholding in the HSV color space
 
-Sometimes it gives better segmentation results when the tresholding is done in HSI (also known as HSV - hue, saturation, value) space. Start by reading the  **DTUSigns2.jpg** image, convert it to HSV and show the hue and value:
+Sometimes it gives better segmentation results when the tresholding is done in HSI (also known as HSV - hue, saturation, value) space. Start by reading the  **DTUSigns2.jpg** image, convert it to HSV and show the hue and value (from [here](https://scikit-image.org/docs/stable/auto_examples/color_exposure/plot_rgb_to_hsv.html)):
 
 ```python
     hsv_img = color.rgb2hsv(im_org)
