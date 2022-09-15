@@ -134,48 +134,22 @@ In the [exercise material](https://github.com/RasmusRPaulsen/DTUImageAnalysis/bl
 
 1. Connects to a camera
 2. Acquire images, converts them to gray-scale and after that to floating point images
-3. Do a simple processing on the gray-scale (inversion) or the colour image (inversion)
+3. Do a simple processing on the gray-scale (inversion) or the colour image (inversion of the red channel)
 4. Computes the frames per second (fps) and shows it on an image.
 5. Shows input and resulting images in windows.
 6. Checks if the key `q` has been pressed and stops the program if it is pressed.
 
 It is possible to use a mobile phone as a remote camera by following the instructions in exercise 2b.
 
-### Exercise XXX
+### Exercise 9
 
-Run the program from the [exercise material](https://github.com/RasmusRPaulsen/DTUImageAnalysis/blob/main/exercises/ex3-PixelwiseOperations/data/) and see if shows the expected results? 
+Run the program from the [exercise material](https://github.com/RasmusRPaulsen/DTUImageAnalysis/blob/main/exercises/ex3-PixelwiseOperations/data/) and see if it shows the expected results? 
 
-### Exercise XXX
+### Exercise 10
 
-Identify the important steps above in the program. What function is used to convert a color image to a gray-scale image?
-
-# Real time detection of DTU signs
+Change the gray-scale processing in the [exercise material](https://github.com/RasmusRPaulsen/DTUImageAnalysis/blob/main/exercises/ex3-PixelwiseOperations/data/) script to be for example thresholding, gamma mapping or something else. Do you get the visual result that you expected?
 
 
-The goal of this exercise, is to modify the program in the [exercise material](https://github.com/RasmusRPaulsen/DTUImageAnalysis/blob/main/exercises/ex3-PixelwiseOperations/data/), so it will be able to show where there are DTU signs in the video stream.
+### Exercise 11: Real time detection of DTU signs
 
-The overall structure of the program should be:
-
-- Connect to camera
-- Start a loop:
-	1. Acquire a new image, convert it to grayscale and then to floating point: $I_\text{new}$ .
-    2. Computes an absolute difference image between the new image and the background image.
-    3. Creates a binary image by applying a threshold, T, to the difference image.
-    4. Computes the total number of foreground, F, pixels in the foreground image.
-	5. Compute the percentage of foreground pixels compared to the total number of pixels in the image (F).
-    5. Decides if an alarm should be raised if F is larger than an alert value, A.
-    6. If an alarm is raised, show a text on the input image. For example **Change Detected!**.
-    7. Shows the input image, the backround image, the difference image, and the binary image. The binary image should be scaled by 255.
-    8. Updates the background image, $I_\text{background}$, using: $$I_\text{background} = \alpha * I_\text{background} + (1 - \alpha) * I_\text{new}$$
-    9. Stop the loop if the key `q` is pressed.
-
-You can start by trying with $\alpha = 0.95$, $T = 10$, and $A = 0.05$.
-
-### Exercise 3
-
-Implement and test the above program.
-
-### Exercise 4
-
-Try to change $\alpha$, $T$ and $A$. What effects do it have?
-
+Change the gray-scale processing in the [exercise material](https://github.com/RasmusRPaulsen/DTUImageAnalysis/blob/main/exercises/ex3-PixelwiseOperations/data/) script so it does a color threshold in either RGB or HSV space. The goal is to make a program that can *see* DTU street signs. The output should be a binary image, where the pixels of the sign is foreground. Later in the course, we will learn how to remove the noise pixels.
