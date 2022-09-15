@@ -102,6 +102,11 @@ def histogram_stretch(img_in):
     return img_as_ubyte(img_out)
 ```
 
+### Exercise 6
+
+Test your `histogram_stretch` on the `vertebra.png` image. Show the image before and after the histogram stretching. What changes do you notice in the image? Are the important structures more visible?
+
+
 # Non-linear pixel value mapping
 
 The goal is to implement and test a function that performs a $\gamma$-mapping of pixel values:
@@ -110,7 +115,7 @@ $$g(x,y) = f(x,y)^\gamma \enspace .$$
 
 You can use the *Numpy* function `power` to compute the actual mapping function. 
 
-### Exercise 6
+### Exercise 7
 
 Implement a function, `gamma_map(img, gamma)`, that:
 
@@ -118,49 +123,40 @@ Implement a function, `gamma_map(img, gamma)`, that:
 2. Do the gamma mapping on the pixel values
 3. Returns the resulting image as an unsigned byte image.
 
-### Exercise 7
+### Exercise 8
 
 Test your `gamma_map` function on the vertebra image or another image of your choice. Try different values of $\gamma$, for example 0.5 and 2.0. Show the resuling image together with the input image. Can you see the differences in the images?
 
 
-### Exercise 6
+# Real time pixelwise operations on videos
 
-Test your `histogram_stretch` on the `vertebra.png` image. Show the image before and after the histogram stretching. What changes do you notice in the image? Are the important structures more visible?
-
-
-# OpenCV program for image differencing
-
-In the [exercise material](https://github.com/RasmusRPaulsen/DTUImageAnalysis/blob/main/exercises/ex2b-ChangeDetectionInVideos/data/), there is a Python script using OpenCV that:
+In the [exercise material](https://github.com/RasmusRPaulsen/DTUImageAnalysis/blob/main/exercises/ex3-PixelwiseOperations/data/), there is a Python script using OpenCV that:
 
 1. Connects to a camera
 2. Acquire images, converts them to gray-scale and after that to floating point images
-3. Computes a difference image between a current image and the previous image.
+3. Do a simple processing on the gray-scale (inversion) or the colour image (inversion)
 4. Computes the frames per second (fps) and shows it on an image.
-5. Shows images in windows.
+5. Shows input and resulting images in windows.
 6. Checks if the key `q` has been pressed and stops the program if it is pressed.
 
-It is possible to use a mobile phone as a remote camera by following the instructions in [Using a mobile phone](#using-a-mobile-phone-camera).
+It is possible to use a mobile phone as a remote camera by following the instructions in exercise 2b.
 
-Note that we sometimes refers to an image as a *frame*.
+### Exercise XXX
 
-### Exercise 1
+Run the program from the [exercise material](https://github.com/RasmusRPaulsen/DTUImageAnalysis/blob/main/exercises/ex3-PixelwiseOperations/data/) and see if shows the expected results? 
 
-Run the program from the [exercise material](https://github.com/RasmusRPaulsen/DTUImageAnalysis/blob/main/exercises/ex2b-ChangeDetectionInVideos/data/) and see if shows the expected results? Try to move your hands in front of the camera and try to move the camera and see the effects on the difference image.
-
-### Exercise 2
+### Exercise XXX
 
 Identify the important steps above in the program. What function is used to convert a color image to a gray-scale image?
 
-# Change detection by background subtraction
+# Real time detection of DTU signs
 
-The goal of this exercise, is to modify the program in the [exercise material](https://github.com/RasmusRPaulsen/DTUImageAnalysis/blob/main/exercises/ex2b-ChangeDetectionInVideos/data/), so it will be able to raise an alarm if significant changes are detected in a video stream.
+
+The goal of this exercise, is to modify the program in the [exercise material](https://github.com/RasmusRPaulsen/DTUImageAnalysis/blob/main/exercises/ex3-PixelwiseOperations/data/), so it will be able to show where there are DTU signs in the video stream.
 
 The overall structure of the program should be:
 
-
-
 - Connect to camera
-- Acquire a background image, convert it to grayscale and then to floating point
 - Start a loop:
 	1. Acquire a new image, convert it to grayscale and then to floating point: $I_\text{new}$ .
     2. Computes an absolute difference image between the new image and the background image.
@@ -182,36 +178,4 @@ Implement and test the above program.
 ### Exercise 4
 
 Try to change $\alpha$, $T$ and $A$. What effects do it have?
-
-### Exercise 5
-
-The images are displayed using the OpenCV function `imshow`. The display window has several ways of zooming in the displayed image. One function is to zoom x30 that shows the pixel values as numbers. Do that and notice the change of the values.
-
-### Exercise 6
-
-Try to use `putText` to write some important information on the image. For example the number of changed pixel, the average, minumum and maximum value in the difference image. These values can then be used to find even better values for $\alpha$, $T$ and $A$.
-
-Also try to find out how to put a colored text on a color image. Here you need to know that OpenCV stores color as BGR instead of RGB.
-
-# Using a mobile phone camera
-
-It is possible to use a mobile phone as a remote camera in OpenCV.
-
-You need to install a web cam app on your phone. One option is `DroidCam` that can be installed from Google Play or from Apple App Store.
-
-The computer and your phone should be on the same wireless network. For example one of the DTU wireless networks.
-
-Now start the DroidCam application on your phone. It should now show an web-address, for example `http://192.168.1.120:4747/video`
-
-Use this address, in the program:
-
-```python
-use_droid_cam = True
-if use_droid_cam:
-    url = "http://192.168.1.120:4747/video"
-cap = cv2.VideoCapture(url)
-```
-
-You should now see the video from your mobile phone on your computer screen. Remember you phone should be unlocked when streaming video.
-
 
