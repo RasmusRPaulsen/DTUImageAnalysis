@@ -7,16 +7,17 @@ In this exercise you will learn to perform pixelwise operations using Python.
 
 After completing this exercise, the student should be able to do the following:
 
-1. Implement and test a function that can do linear histogram stretching of a grey level image.
-2. Convert image pixels between doubles and 8-bit unsigned integers (UINT8)
-3. Implement and test a function that can perform gamma mapping of a grey level image.
-4. Implement and test a function that can threshold a grey scale image.
-5. Use Otsu's automatic method to compute an optimal threshold that seperates foreground and background
-6. Perform RGB thresholding in a color image.
-7. Convert a RGB image to HSV using the function `rgsb2hsv` from the `skimage.color` package.
-8. Visualise individual H, S, V components of a color image.
-9. Implement and test thresholding in HSV space.
-
+1. Convert from unsigned byte to float images using the scikit-image function `img_as_ubyte´
+2. Convert from float to unsigned byte images using the scikit-image function `img_as_float´
+3. Implement and test a function that can do linear histogram stretching of a grey level image.
+4. Implement and test a function that can perform gamma mapping of a grey level image.
+5. Implement and test a function that can threshold a grey scale image.
+6. Use Otsu's automatic method to compute an optimal threshold that seperates foreground and background
+7. Perform RGB thresholding in a color image.
+8. Convert a RGB image to HSV using the function `rgsb2hsv` from the `skimage.color` package.
+9. Visualise individual H, S, V components of a color image.
+10. Implement and test thresholding in HSV space.
+11. Implement and test a program that can do perform pixelwise operations on a video stream
 
 # Installing Python packages
 
@@ -152,4 +153,4 @@ Change the gray-scale processing in the [exercise material](https://github.com/R
 
 ### Exercise 11: Real time detection of DTU signs
 
-Change the gray-scale processing in the [exercise material](https://github.com/RasmusRPaulsen/DTUImageAnalysis/blob/main/exercises/ex3-PixelwiseOperations/data/) script so it does a color threshold in either RGB or HSV space. The goal is to make a program that can *see* DTU street signs. The output should be a binary image, where the pixels of the sign is foreground. Later in the course, we will learn how to remove the noise pixels.
+Change the rgb-scale processing in the [exercise material](https://github.com/RasmusRPaulsen/DTUImageAnalysis/blob/main/exercises/ex3-PixelwiseOperations/data/) script so it does a color threshold in either RGB or HSV space. The goal is to make a program that can *see* DTU street signs. The output should be a binary image, where the pixels of the sign is foreground. Later in the course, we will learn how to remove the noise pixels.
