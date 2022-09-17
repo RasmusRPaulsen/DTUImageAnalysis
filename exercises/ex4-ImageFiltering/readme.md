@@ -59,7 +59,13 @@ Print the value in position (3, 3) in `res_img`. Explain the value?
 
 ## Border handling 
 
-We can choose border of the image is handled when doing the correlation. By default, correlation uses *reflection*. We can set it to have a constant value (for example 10) outside the image by:
+
+When the value of an output pixel at the boundary of the image is
+computed, a portion of the filter is usually outside the edge of the
+input image. One way to handle this, is to assume that the value of the
+  *off-the-edge pixels* of the image are 0. This is called zero
+padding. Since 0 is the value of a black pixel, the output image will
+have a dark edge. Another approach is to *reflect* the actual pixel values of the image to the *off-the-edge-pixel*. This is the default behaviour of `correlate`. We can also set the *off-the-edge-pixel* to have a constant value (for example 10) by:
 
 ```python
 res_img = correlate(input_img, weights, mode="constant", cval=10)
