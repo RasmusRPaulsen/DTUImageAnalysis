@@ -129,6 +129,29 @@ Try to load and show the **SaltPepper.png** image. This image has noise consist 
 Try to use your mean and median filter with different filter sizes on the **SaltPepper.png**. What do you observe? Can they remove the noise and what happens to the image?
 
 
+## Gaussian filter
+
+Scikit-image contains many [different filters](https://scikit-image.org/docs/stable/api/skimage.filters.html).
+
+### Exercise 6
+Let us try the Gaussian filter on the **Gaussian.png** image. Start by importing the filter:
+
+```python
+from skimage.filters import gaussian
+```
+
+and do the filtering:
+
+```python
+sigma = 1
+gauss_img = gaussian(im_org, sigma)
+```
+
+Try to change the `sigma` value and observe the result.
+
+### Exercise 7
+
+Use one of your images to try the above filters. Especially, try with large filter kernels with the median and the Gaussian filter.
 
 
 
