@@ -77,7 +77,7 @@ Compare the output images when using `reflection` and `constant` for the border.
 
 ## Mean filtering
 
-Now we will try some filters on an artificial image with different types of noise. 
+Now we will try some filters on an artificial image with different types of noise starting with the mean filter.
 
 ### Exercise 3
 
@@ -95,6 +95,40 @@ weights = weights / np.sum(weights)
 Use `correlate` with the **Gaussian.png** image and the mean filter. Show the resulting image together with the input image. What do you observe?
 
 Try to change the size of the filter to 10, 20, 40 etc.. What do you see?
+
+What happens to the noise and what happens to the places in image where there are transitions from light to dark areas?
+
+## Median filtering
+
+The median filter belongs to the group of *rank filters* where the pixel values in a given area are sorted by value and then one of the values are picked. Here the median value of the sorted values.
+
+Start by importing the filter:
+
+```python
+from skimage.filters import median
+```
+
+We can create a *footprint* which marks the size of the median filter and do the filtering like this:
+```python
+size = 5
+footprint = np.ones([size, size])
+med_img = median(im_org, footprint)
+```
+
+### Exercise 4
+
+Filter the **Gaussian.png** image with the median filter with different size (5, 10, 20...). What do you observe? What happens with the noise and with the lighth-dark transitions?
+
+
+## Comparing mean and median filtering
+
+Try to load and show the **SaltPepper.png** image. This image has noise consist of very dark or very light pixels.
+
+### Exercise 5
+
+Try to use your mean and median filter with different filter sizes on the **SaltPepper.png**. What do you observe? Can they remove the noise and what happens to the image?
+
+
 
 
 
