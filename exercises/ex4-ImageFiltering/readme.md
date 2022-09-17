@@ -160,6 +160,6 @@ Use one of your images to try the above filters. Especially, try with large filt
 
 
 ## References
-[sci-kit image filters](https://scikit-image.org/docs/stable/api/skimage.filters.html)
-[rank filters](https://scikit-image.org/docs/stable/auto_examples/applications/plot_rank_filters.html)
-[scipy correlate](https://docs.scipy.org/doc/scipy/reference/generated/scipy.ndimage.correlate.html)
+- [sci-kit image filters](https://scikit-image.org/docs/stable/api/skimage.filters.html)
+- [rank filters](https://scikit-image.org/docs/stable/auto_examples/applications/plot_rank_filters.html)
+- [scipy correlate](https://docs.scipy.org/doc/scipy/reference/generated/scipy.ndimage.correlate.html)
