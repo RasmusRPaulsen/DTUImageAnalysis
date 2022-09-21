@@ -162,7 +162,11 @@ What is the visual difference between in the output? Try to observe places where
 
 In image analysis, an *edge* is where there is a large transition from light pixels to dark pixels. It means that there is a *high pixel value gradient* at an edge. Since objects in an image are often of a different color than the background, the outline of the object can sometimes be found where there are edges in the image. It is therefore interesting to apply filters that can estimate the gradients in the image and using them to detect edges.
 
-The **Prewitt filter** is a simple gradient estimation filter. It estimates the gradient in the image either in the vertical or horizontal direction.
+The **Prewitt filter** is a simple gradient estimation filter. The Python version of the Prewitt filter can estimate the horizontal gradient using the `prewitt_h` filter, the vertical gradient with the `prewitt_v` filter and the *magnitude of the edges* using the `prewitt` filter. The magnitude is computed as
+
+$$V(x, y) = \sqrt{(P_v^2 + P_h^2)} \enspace , $$
+
+where $P_v$ and $P_h$ are the outputs of the vertical and horizontal Prewitt filters.
 
 Start by importing the filter:
 
