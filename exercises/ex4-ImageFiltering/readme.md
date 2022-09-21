@@ -128,10 +128,13 @@ Try to load and show the **SaltPepper.png** image. This image has noise consist 
 
 Try to use your mean and median filter with different filter sizes on the **SaltPepper.png**. What do you observe? Can they remove the noise and what happens to the image?
 
-
 ## Gaussian filter
 
 Scikit-image contains many [different filters](https://scikit-image.org/docs/stable/api/skimage.filters.html).
+
+The Gaussian filter is widely used in image processing. It is a
+smoothing filter that removes high frequencies from the image.
+
 
 ### Exercise 6
 Let us try the Gaussian filter on the **Gaussian.png** image. Start by importing the filter:
@@ -151,12 +154,79 @@ Try to change the `sigma` value and observe the result.
 
 ### Exercise 7
 
-Use one of your images to try the above filters. Especially, try with large filter kernels with the median and the Gaussian filter.
+Use one of your images (or use the **car.png** image) to try the above filters. Especially, try with large filter kernels (larger than 10) with the median and the Gaussian filter. Remember to transform your image into gray-scale before filtering.
+
+What is the visual difference between in the output? Try to observe places where there is clear light-dark transition.
+
+## Edge filters
+
+In image analysis, an *edge* is where there is a large transition from light pixels to dark pixels. It means that there is a *high pixel value gradient* at an edge. Since objects in an image are often of a different color than the background, the outline of the object can sometimes be found where there are edges in the image. It is therefore interesting to apply filters that can estimate the gradients in the image and using them to detect edges.
+
+The **Prewitt filter** is a simple gradient estimation filter. It estimates the gradient in the image either in the vertical or horizontal direction.
+
+Start by importing the filter:
+
+```python
+from skimage.filters import prewitt_h
+from skimage.filters import prewitt_v
+from skimage.filters import prewitt
+```
+
+### Exercise 8
+
+Try to filter the **donald_1.png** photo with the `prewitt_h` and `prewitt_v` filters and show the output without converting the output to unsigned byte. Notice that the output range is [0, 1]. Try to explain what features of the image that gets high and low values when using the two filters?
 
 
+### Exercise 9
 
-# Explorative data analysis
+Use the `prewitt` filter on **donald_1.png**. What do you see?
 
+
+## Edge detection in medical images
+
+The **ElbowCTSlice.png** image is one slice of a CT scan of an elbow from a person that climbed, wanted to show off, fell, landed on his arm and fractured a bone. 
+
+
+### Exercise 10
+
+The goal of this exercise is to detect the edges that seperates the bone from the soft 
+tissue and the edges that separates the elbow from the background. Your detection algorithm should follow this outline:
+
+- Read the CT image
+- Filter the image using either a Gaussian filter or a median filter
+- Compute the gradients in the filtered image using a Prewitt filter
+- Use Otsu's thresholding method to compute a threshold, T,  in the gradient image
+- Apply the threshold, T, to the gradient image to create a binary image.
+
+The final binary should contain the edges we are looking for. It will probably contain noise as well. We will explore methods to remove this noise later in the course.
+
+You should experiment and find out:
+
+- Does the median or Gaussian filter give the best result?
+- Should you use both the median and the Gaussian filter?
+- What filter size gives the best result?
+- What sigma in the Gaussian filter gives the best result?
+
+**Tip:** To get a better understanding of your output, uou can use the scaled visualization and colormapping that we explored in an earlier exercise:
+```python
+min_val = edge_img.min()
+max_val = edge_img.max()
+io.imshow(edge_img, vmin=min_val, vmax=max_val, cmap="terrain")
+``` 
+
+## Video filtering
+
+Now try to make a small program, that acquires video from your webcam/telephone, filters it and shows the filtered output. In the [exercise material](https://github.com/RasmusRPaulsen/DTUImageAnalysis/blob/main/exercises/ex4-ImageFiltering/data/) there is a program that can be modified. 
+
+### Exercise 11
+
+Modify the `process_gray_image` function in the program so it performs a Prewitt filter on the input image.
+
+Also try to make it perform the automatic edge-detection (Prewitt + Otsu) from exercise 10.
+
+### Exercise 12
+
+Try to use a median filter with a size of 10 on the video stream. What happens with the frames-per-second? Why?
 
 
 ## References
