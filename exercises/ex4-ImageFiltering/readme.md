@@ -1,4 +1,4 @@
-# Exercise 4 - Image Filtering (WORK IN PROGRESS)
+# Exercise 4 - Image Filtering
 
 The purpose of this exercise is to illustrate different image filtering techniques.
 
