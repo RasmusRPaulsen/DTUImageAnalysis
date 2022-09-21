@@ -7,7 +7,19 @@ The purpose of this exercise is to illustrate different image filtering techniqu
 
 After completing this exercise, the student should be able to do the following:
 
-1. Filtering images
+1. Compute the correlation between an image and a filter using the `scipy.ndimage.correlate` function.
+2. Use different border handling strategies when using filtering an image, including `constant` and `reflection`.
+3. Implement and apply a mean filter to an image. 
+4. Implement and apply a median filter to an image (`skimage.filters.median`).
+5. Implement and apply a Gaussian filter to an image (`skimage.filters.gaussian`)
+5. Describe the effects of applying the mean, the Gaussian and the median filter to images containing Gaussian and outlier noise.
+6. Describe the concept on an image edge.
+7. Describe the concept of image gradients.
+8. Use the Prewitt filter to extract horizontal and vertical edges and their combined magnitude.
+9. Estimate a threshold in an edge image to create a binary image reflecting the signficant edges in an image.
+10. Implement, test, adapt and evaluate a function that can automatically detect important edges in an image.
+11. Implement and test a program that apply filters to a video stream.
+12. Test the impact of a video processing frame rate when applying different filters to the video stream.
 
 # Installing Python packages
 
