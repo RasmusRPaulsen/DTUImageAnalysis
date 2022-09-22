@@ -245,6 +245,5 @@ Try to use a median filter with a size of 10 on the video stream. What happens w
 
 
 ## References
-- [sci-kit image filters](https://scikit-image.org/docs/stable/api/skimage.filters.html)
-- [rank filters](https://scikit-image.org/docs/stable/auto_examples/applications/plot_rank_filters.html)
-- [scipy correlate](https://docs.scipy.org/doc/scipy/reference/generated/scipy.ndimage.correlate.html)
+- [sci-kit image morphology](https://scikit-image.org/docs/stable/api/skimage.morphology.html)
+- [sci-kit morphology examples](https://scikit-image.org/docs/stable/auto_examples/applications/plot_morphology.html)
