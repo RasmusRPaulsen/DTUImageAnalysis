@@ -107,8 +107,8 @@ Experiement with different sizes of the footprint and observe the results.
 The morphological operation **opening** removes small objects without changing the size of the remaining objects. Try it on the binary lego image:
 
 ```python
-closed = closing(bin_img, footprint)
-plot_comparison(bin_img, closed, 'closing')
+opened = opening(bin_img, footprint)
+plot_comparison(bin_img, opened, 'opening')
 ```
 
 Experiement with different sizes of the footprint and observe the results.
