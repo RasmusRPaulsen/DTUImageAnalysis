@@ -6,19 +6,8 @@ The purpose of this exercise is to implement, test and validate different approa
 
 After completing this exercise, the student should be able to do the following:
 
-1. Compute the correlation between an image and a filter using the `scipy.ndimage.correlate` function.
-2. Use different border handling strategies when using filtering an image, including `constant` and `reflection`.
-3. Implement and apply a mean filter to an image. 
-4. Implement and apply a median filter to an image (`skimage.filters.median`).
-5. Implement and apply a Gaussian filter to an image (`skimage.filters.gaussian`)
-5. Describe the effects of applying the mean, the Gaussian and the median filter to images containing Gaussian and outlier noise.
-6. Describe the concept on an image edge.
-7. Describe the concept of image gradients.
-8. Use the Prewitt filter to extract horizontal and vertical edges and their combined magnitude (`skimage.filters.prewitt_h`, `skimage.filters.prewitt_v`, `skimage.filters.prewitt`).
-9. Estimate a threshold in an edge image to create a binary image reflecting the signficant edges in an image.
-10. Implement, test, adapt and evaluate a function that can automatically detect important edges in an image.
-11. Implement and test a program that apply filters to a video stream.
-12. Test the impact of a video processing frame rate when applying different filters to the video stream.
+1. apply morphological operations
+
 
 # Installing Python packages
 
@@ -29,219 +18,136 @@ We will use the virtual environment from the previous exercise (`course02502`).
 # Exercise data and material
 
 The data and material needed for this exercise can be found here:
-(https://github.com/RasmusRPaulsen/DTUImageAnalysis/blob/main/exercises/ex4-ImageFiltering/data/)
+(https://github.com/RasmusRPaulsen/DTUImageAnalysis/blob/main/exercises/ex4b-ImageMorphology/data/)
 
-# Filtering using Python
+# Image Morphology in Python 
 
-scikit-image and SciPy contain a large number of image filtering functions. In this exercise, we will explore some of the fundamental functions and touch upon more advanced filters as well.
+scikit-image contain a variety of [morphological operations](https://scikit-image.org/docs/stable/api/skimage.morphology.html). In this exercise we will explore the use of some of these operations on binary image.
 
-## Filtering using correlation
-
-We will start by exploring the basic correlation operator from SciPy. Start by importing:
+Start by importing some function:
 
 ```python
-from scipy.ndimage import correlate
+from skimage.morphology import erosion, dilation, opening, closing
+from skimage.morphology import disk 
 ```
 
-Now create a small and simple image:
+and define a convenience function to show two images side by side:
 
 ```python
-input_img = np.arange(25).reshape(5, 5)
-print(input_img)
+# From https://scikit-image.org/docs/stable/auto_examples/applications/plot_morphology.html
+def plot_comparison(original, filtered, filter_name):
+    fig, (ax1, ax2) = plt.subplots(ncols=2, figsize=(8, 4), sharex=True,
+                                   sharey=True)
+    ax1.imshow(original, cmap=plt.cm.gray)
+    ax1.set_title('original')
+    ax1.axis('off')
+    ax2.imshow(filtered, cmap=plt.cm.gray)
+    ax2.set_title(filter_name)
+    ax2.axis('off')
+    io.show()
 ```
 
-and a simple filter:
-```python
-weights = [[0, 1, 0],
-		   [1, 2, 1],
-		   [0, 1, 0]]
 
-```
+## Image morphology on a single object
 
-Now we can correlate the image with the weights:
-
-```python
-res_img = correlate(input_img, weights)
-```
+An image, **lego_5.png** of a lego brick can be used to test some of the basic functions. 
 
 ### Exercise 1
 
-Print the value in position (3, 3) in `res_img`. Explain the value?
+We will start by computing a binary image from the lego image:
 
-## Border handling 
+- Read the image into **im_org**.
+- Convert the image to gray scale. 
+- Find a threshold using *Otsu's method*.
+- Apply the treshold and generate a binary image **bin_img**.
+- Visualize the image using `plot_comparison(im_org, bin_img, 'Binary image')`
 
-
-When the value of an output pixel at the boundary of the image is
-computed, a portion of the filter is usually outside the edge of the
-input image. One way to handle this, is to assume that the value of the
-  *off-the-edge pixels* of the image are 0. This is called zero
-padding. Since 0 is the value of a black pixel, the output image will
-have a dark edge. Another approach is to *reflect* the actual pixel values of the image to the *off-the-edge-pixel*. This is the default behaviour of `correlate`. We can also set the *off-the-edge-pixel* to have a constant value (for example 10) by:
-
-```python
-res_img = correlate(input_img, weights, mode="constant", cval=10)
-```
+As ncan be seen, the lego brick is not *segmented* perfectly. There are holes in the segmentation. Let us see if what we can do.
 
 ### Exercise 2
 
-Compare the output images when using `reflection` and `constant` for the border. Where and why do you see the differences.
+We will start by creating a *structuring element*. In scikit-image they are called *footprint*. A disk shaped footprint can be created by:
 
-## Mean filtering
+```python
+footprint = disk(2)
+# Check the size and shape of the structuring element
+print(footprint)
+```
 
-Now we will try some filters on an artificial image with different types of noise starting with the mean filter.
+The morphological operation **erosion** can remove small objects, seperate objects and make objects smaller. Try it on the binary lego image:
+
+```python
+eroded = erosion(bin_img, footprint)
+plot_comparison(bin_img, eroded, 'erosion')
+```
+
+Experiement with different sizes of the footprint and observe the results.
+
 
 ### Exercise 3
 
-Read and show the image **Gaussian.png** from the [exercise material](https://github.com/RasmusRPaulsen/DTUImageAnalysis/blob/main/exercises/ex4-ImageFiltering/data/).
-
-Create a mean filter with normalized weights:
-```python
-size = 5
-# Two dimensional filter filled with 1
-weights = np.ones([size, size])
-# Normalize weights
-weights = weights / np.sum(weights)
-```
-
-Use `correlate` with the **Gaussian.png** image and the mean filter. Show the resulting image together with the input image. What do you observe?
-
-Try to change the size of the filter to 10, 20, 40 etc.. What do you see?
-
-What happens to the noise and what happens to the places in image where there are transitions from light to dark areas?
-
-## Median filtering
-
-The median filter belongs to the group of *rank filters* where the pixel values in a given area are sorted by value and then one of the values are picked. Here the median value of the sorted values.
-
-Start by importing the filter:
+The morphological operation **dilation** makes objects larger, closes holes and connects objects. Try it on the binary lego image:
 
 ```python
-from skimage.filters import median
+dilated = dilation(bin_img, footprint)
+plot_comparison(bin_img, dilated, 'dilation')
 ```
 
-We can create a *footprint* which marks the size of the median filter and do the filtering like this:
-```python
-size = 5
-footprint = np.ones([size, size])
-med_img = median(im_org, footprint)
-```
+Experiement with different sizes of the footprint and observe the results.
+
 
 ### Exercise 4
 
-Filter the **Gaussian.png** image with the median filter with different size (5, 10, 20...). What do you observe? What happens with the noise and with the lighth-dark transitions?
+The morphological operation **opening** removes small objects without changing the size of the remaining objects. Try it on the binary lego image:
 
+```python
+closed = closing(bin_img, footprint)
+plot_comparison(bin_img, closed, 'closing')
+```
 
-## Comparing mean and median filtering
-
-Try to load and show the **SaltPepper.png** image. This image has noise consist of very dark or very light pixels.
+Experiement with different sizes of the footprint and observe the results.
 
 ### Exercise 5
 
-Try to use your mean and median filter with different filter sizes on the **SaltPepper.png**. What do you observe? Can they remove the noise and what happens to the image?
+The morphological operation **closing** closes holes in objects without changing the size of the remaining objects. Try it on the binary lego image:
 
-## Gaussian filter
+```python
+closed = closing(bin_img, footprint)
+plot_comparison(bin_img, closed, 'closing')
+```
 
-Scikit-image contains many [different filters](https://scikit-image.org/docs/stable/api/skimage.filters.html).
+Experiement with different sizes of the footprint and observe the results.
 
-The Gaussian filter is widely used in image processing. It is a
-smoothing filter that removes high frequencies from the image.
+## Object outline
 
+It can be useful to compute the outline of an object both to measure the perimeter but also to see if it contains holes or other types of noise. Start by defining an outline function:
+
+```python
+def compute_outline(bin_img):
+    """
+    Computes the outline of a binary image
+    """
+    footprint = disk(1)
+    dilated = dilation(bin_img, footprint)
+    outline = np.logical_xor(dilated, bin_img)
+    return outline
+```
 
 ### Exercise 6
-Let us try the Gaussian filter on the **Gaussian.png** image. Start by importing the filter:
 
-```python
-from skimage.filters import gaussian
-```
-
-and do the filtering:
-
-```python
-sigma = 1
-gauss_img = gaussian(im_org, sigma)
-```
-
-Try to change the `sigma` value and observe the result.
+Compute the outline of the binary image of the lego brick. What do you observe?
 
 ### Exercise 7
 
-Use one of your images (or use the **car.png** image) to try the above filters. Especially, try with large filter kernels (larger than 10) with the median and the Gaussian filter. Remember to transform your image into gray-scale before filtering.
+Try the following:
 
-What is the visual difference between in the output? Try to observe places where there is clear light-dark transition.
+- Do an *opening* with a disk of size 1 on the binary lego image.
+- Do a *closing* with a disk of size 15 on the result of the opening.
+- Compute the outline and visualize it.
 
-## Edge filters
-
-In image analysis, an *edge* is where there is a large transition from light pixels to dark pixels. It means that there is a *high pixel value gradient* at an edge. Since objects in an image are often of a different color than the background, the outline of the object can sometimes be found where there are edges in the image. It is therefore interesting to apply filters that can estimate the gradients in the image and using them to detect edges.
-
-The **Prewitt filter** is a simple gradient estimation filter. The Python version of the Prewitt filter can estimate the horizontal gradient using the `prewitt_h` filter, the vertical gradient with the `prewitt_v` filter and the *magnitude of the edges* using the `prewitt` filter. The magnitude is computed as
-
-$$V(x, y) = \sqrt{(P_v^2 + P_h^2)} \enspace , $$
-
-where $P_v$ and $P_h$ are the outputs of the vertical and horizontal Prewitt filters.
-
-Start by importing the filter:
-
-```python
-from skimage.filters import prewitt_h
-from skimage.filters import prewitt_v
-from skimage.filters import prewitt
-```
-
-### Exercise 8
-
-Try to filter the **donald_1.png** photo with the `prewitt_h` and `prewitt_v` filters and show the output without converting the output to unsigned byte. Notice that the output range is [0, 1]. Try to explain what features of the image that gets high and low values when using the two filters?
+What do you observe and why does the result look like that?
 
 
-### Exercise 9
-
-Use the `prewitt` filter on **donald_1.png**. What do you see?
-
-
-## Edge detection in medical images
-
-The **ElbowCTSlice.png** image is one slice of a CT scan of an elbow from a person that climbed, wanted to show off, fell, landed on his arm and fractured a bone. 
-
-
-### Exercise 10
-
-The goal of this exercise is to detect the edges that seperates the bone from the soft 
-tissue and the edges that separates the elbow from the background. Your detection algorithm should follow this outline:
-
-- Read the CT image
-- Filter the image using either a Gaussian filter or a median filter
-- Compute the gradients in the filtered image using a Prewitt filter
-- Use Otsu's thresholding method to compute a threshold, T,  in the gradient image
-- Apply the threshold, T, to the gradient image to create a binary image.
-
-The final binary should contain the edges we are looking for. It will probably contain noise as well. We will explore methods to remove this noise later in the course.
-
-You should experiment and find out:
-
-- Does the median or Gaussian filter give the best result?
-- Should you use both the median and the Gaussian filter?
-- What filter size gives the best result?
-- What sigma in the Gaussian filter gives the best result?
-
-**Tip:** To get a better understanding of your output, uou can use the scaled visualization and colormapping that we explored in an earlier exercise:
-```python
-min_val = edge_img.min()
-max_val = edge_img.max()
-io.imshow(edge_img, vmin=min_val, vmax=max_val, cmap="terrain")
-``` 
-
-## Video filtering
-
-Now try to make a small program, that acquires video from your webcam/telephone, filters it and shows the filtered output. In the [exercise material](https://github.com/RasmusRPaulsen/DTUImageAnalysis/blob/main/exercises/ex4-ImageFiltering/data/) there is a program that can be modified. 
-
-### Exercise 11
-
-Modify the `process_gray_image` function in the program so it performs a Prewitt filter on the input image.
-
-Also try to make it perform the automatic edge-detection (Prewitt + Otsu) from exercise 10.
-
-### Exercise 12
-
-Try to use a median filter with a size of 10 on the video stream. What happens with the frames-per-second? Why?
 
 
 ## References
