@@ -11,6 +11,7 @@ This repository contains exercises and data for the DTU course [02502 Image Anal
 - [2b - Change Detection in Videos](exercises/ex2b-ChangeDetectionInVideos)
 - [3 - Pixelwise operations](exercises/ex3-PixelwiseOperations)
 - [4 - Image Filtering](exercises/ex4-ImageFiltering)
+- [4b - Image Morphology](exercises/ex4b-ImageMorphology)
 
 ### Author
 
