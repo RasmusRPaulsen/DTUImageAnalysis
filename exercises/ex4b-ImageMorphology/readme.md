@@ -194,7 +194,7 @@ What do you observe?
 
 ### Exercise 12
 
-Let us start by trying to remove the noise holes inside the lego bricks. Do that with an *opening* and find a good footprint size. Compute the outline and see what you observe?
+Let us start by trying to remove the noise holes inside the lego bricks. Do that with an *closing* and find a good footprint size. Compute the outline and see what you observe?
 
 ### Exercise 13
 
