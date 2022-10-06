@@ -106,7 +106,7 @@ with different values of `cval` and notice the outcomes.
 
 By default, the rotated output image has the same size as the input image and therefore some parts of the rotated image are cropped away. It is possible to automatically adjust the output size, so the rotated image fits into the resized image.
 
-### Exercise 4
+### Exercise 5
 
 Test the use of automatic resizing:
 
@@ -121,7 +121,7 @@ also combine resizing with different background filling modes.
 
 An alternative way of doing geometric image transformations is to first construct the transformation and then apply it to the image. We will start by the **Euclidean** image transformation that consists of a rotation and a translation. It is also called a *rigid body transformation*.
 
-### Exercise 5
+### Exercise 6
 
 Start by defining the transformation:
 
@@ -136,7 +136,7 @@ print(tform.params)
 it can be seen in the print statement that the transformation consists of a *3 x 3 matrix*. The matrix is used to transform points using **homogenous coordinates**. Notice that the angle is defined in radians in this function.
 
 
-### Exercise 6
+### Exercise 7
 
 The computed transform can be applied to an image using the `warp` function:
 ``` python
@@ -152,9 +152,9 @@ Try it.
 
 The `SimilarityTransform` computes a transformation consisting of a translation, rotation and a scaling. 
 
-### Exercise 7
+### Exercise 8
 
-Define a `SimilarityTransform` with an angle of $$15^o$$, a translation of (40, 30) and a scaling of 0.6 and test it on the image.
+Define a `SimilarityTransform` with an angle of $15^o$, a translation of (40, 30) and a scaling of 0.6 and test it on the image.
 
 
 
