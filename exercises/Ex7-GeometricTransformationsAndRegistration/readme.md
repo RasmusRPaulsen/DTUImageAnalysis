@@ -3,23 +3,46 @@
 In this exercise, we will explore geometric transformations of images and landmark based registration.
 
 
-# Learning Objectives
+## Learning Objectives
 
 After completing this exercise, the student should be able to do the following:
 
 1. Use image warping
 
 
-# Installing Python packages
+## Installing Python packages
 
 In this exercise, we will be using both [scikit-image](https://scikit-image.org/) and [OpenCV](https://opencv.org/). You should have these libraries installed, else instructions can be found in the previous exercises.
 
 We will use the virtual environment from the previous exercise (`course02502`). 
 
-# Exercise data and material
+## Exercise data and material
 
 The data and material needed for this exercise can be found here:
 (https://github.com/RasmusRPaulsen/DTUImageAnalysis/tree/main/exercises/Ex7-GeometricTransformationsAndRegistration/data)
+
+## Geometric transformations on images
+
+The first topic is how to apply geometric transformations on images. 
+
+Let us start by defining a utility function, that can show two images side-by-side:
+
+```python
+def show_comparison(original, transformed, transformed_name):
+    fig, (ax1, ax2) = plt.subplots(ncols=2, figsize=(8, 4), sharex=True,
+                                   sharey=True)
+    ax1.imshow(original)
+    ax1.set_title('Original')
+    ax1.axis('off')
+    ax2.imshow(transformed)
+    ax2.set_title(transformed_name)
+    ax2.axis('off')
+    io.show()
+```
+
+### Image rotation
+
+
 
 # Landmark based registration
 
