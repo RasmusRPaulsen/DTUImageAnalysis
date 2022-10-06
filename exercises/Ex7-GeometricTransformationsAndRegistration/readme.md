@@ -40,8 +40,35 @@ def show_comparison(original, transformed, transformed_name):
     io.show()
 ```
 
-### Image rotation
+also import some useful functions:
 
+``` python
+import math
+from skimage.transform import rotate
+from skimage.transform import EuclideanTransform
+from skimage.transform import SimilarityTransform
+from skimage.transform import warp
+from skimage.transform import swirl
+```
+
+## Image rotation
+
+One of the most useful and simple geometric transformation is rotation, where an image is rotated around a point. 
+
+We start by some experiments on the image called **NusaPenida.png**. It can be found in the [exercise material](https://github.com/RasmusRPaulsen/DTUImageAnalysis/tree/main/exercises/Ex7-GeometricTransformationsAndRegistration/data)
+
+### Exercise 1
+
+Read the **NusaPenida.png** image and call it **im_org**. It can be rotated by:
+
+``` python
+# angle in degrees - counter clockwise
+rotation_angle = 10
+rotated_img = rotate(im_org, rotation_angle)
+show_comparison(im_org, rotated_img, "Rotated image")
+```
+
+Notice, that in this function, the angle should be given in degrees.
 
 
 # Landmark based registration
