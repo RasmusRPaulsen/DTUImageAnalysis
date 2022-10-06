@@ -157,6 +157,33 @@ The `SimilarityTransform` computes a transformation consisting of a translation,
 Define a `SimilarityTransform` with an angle of $15^o$, a translation of (40, 30) and a scaling of 0.6 and test it on the image.
 
 
+## The swirl image transformation
+
+The **swirl** image transform is a non-linear transform that can create interesting visual results on images.
+
+### Exercise 9
+
+Try the swirl transformation:
+
+``` python
+str = 10
+rad = 300
+swirl_img = swirl(im_org, strength=str, radius=rad)
+```
+
+it is also possible to change the center of the swirl:
+
+``` python
+str = 10
+rad = 300
+c = [500, 400]
+swirl_img = swirl(im_org, strength=str, radius=rad, center=c)
+```
+
+try with different centers and notice the results.
+
+
+
 
 # Landmark based registration
 
