@@ -70,6 +70,42 @@ show_comparison(im_org, rotated_img, "Rotated image")
 
 Notice, that in this function, the angle should be given in degrees.
 
+By default, the image is rotated around the center of the image. This can be changed by manually specifying the point that the image should be rotated around (here (0, 0)):
+
+``` python
+rot_center = [0, 0]
+rotated_img = rotate(im_org, rotation_angle, center=rot_center)
+```
+
+### Exercise 2
+
+Experiment with different center points and notice the results.
+
+As seen, there are areas of the rotated image that is filled with a background value. It can be controlled how this background filling shall behave.
+
+Here the background filling mode is set to **reflect**
+
+``` python
+rotated_img = rotate(im_org, rotation_angle, mode="reflect")
+```
+
+### Exercise 3
+
+Try the rotation with background filling mode **reflect** and **wrap** and notice the results and differences.
+
+It is also possible to define a constant fill value. Currently, sci-kit image only support a single value (not RGB). 
+
+### Exercise 4
+Try to use:
+
+``` python
+rotated_img = rotate(im_org, rotation_angle, resize=True, mode="constant", cval=1)
+```
+
+with different values of `cval` and notice the outcomes.
+
+
+
 
 # Landmark based registration
 
