@@ -19,7 +19,7 @@ We will use the virtual environment from the previous exercise (`course02502`).
 # Exercise data and material
 
 The data and material needed for this exercise can be found here:
-(https://github.com/RasmusRPaulsen/DTUImageAnalysis/blob/main/exercises/Ex7-GeometricTransformationsAndRegistration/data/)
+(https://github.com/RasmusRPaulsen/DTUImageAnalysis/tree/main/exercises/Ex7-GeometricTransformationsAndRegistration/data)
 
 # Landmark based registration
 
