@@ -190,7 +190,7 @@ from skimage.filters import prewitt
 
 ### Exercise 8
 
-Try to filter the **donald_1.png** photo with the `prewitt_h` and `prewitt_v` filters and show the output without converting the output to unsigned byte. Notice that the output range is [0, 1]. Try to explain what features of the image that gets high and low values when using the two filters?
+Try to filter the **donald_1.png** photo with the `prewitt_h` and `prewitt_v` filters and show the output without converting the output to unsigned byte. Notice that the output range is [-1, 1]. Try to explain what features of the image that gets high and low values when using the two filters?
 
 
 ### Exercise 9
@@ -249,3 +249,9 @@ Try to use a median filter with a size of 10 on the video stream. What happens w
 - [sci-kit image filters](https://scikit-image.org/docs/stable/api/skimage.filters.html)
 - [rank filters](https://scikit-image.org/docs/stable/auto_examples/applications/plot_rank_filters.html)
 - [scipy correlate](https://docs.scipy.org/doc/scipy/reference/generated/scipy.ndimage.correlate.html)
+
+## Differences between `matplotlib.pyplot.imshow()` and `skimage.io.imshow()`
+
+You should also be aware of the differences in the default behaviour between scikit-image and matplotlib when displaying an image. The default behaviour of matplotlib.pyplot.imshow() is to use the dynamic range of the image values to plot the image. It is, if the image intensities range from [26, 173], the black colour is assigned to 26 and the white to 173. Meanwhile, skimage.io.imshow() displays the dynamic range according to the image type, [0, 255] for integer images and [0., 1.] for float images.
+
+Feel free to use either package, as far as you know what you are doing.
