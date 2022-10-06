@@ -117,6 +117,47 @@ rotated_img = rotate(im_org, rotation_angle, resize=True)
 also combine resizing with different background filling modes.
 
 
+## Euclidean image transformation
+
+An alternative way of doing geometric image transformations is to first construct the transformation and then apply it to the image. We will start by the **Euclidean** image transformation that consists of a rotation and a translation. It is also called a *rigid body transformation*.
+
+### Exercise 5
+
+Start by defining the transformation:
+
+``` python
+# angle in radians - counter clockwise
+rotation_angle = 10.0 * math.pi / 180.
+trans = [10, 20]
+tform = EuclideanTransform(rotation=rotation_angle, translation=trans)
+print(tform.params)
+```
+
+it can be seen in the print statement that the transformation consists of a *3 x 3 matrix*. The matrix is used to transform points using **homogenous coordinates**. Notice that the angle is defined in radians in this function.
+
+
+### Exercise 6
+
+The computed transform can be applied to an image using the `warp` function:
+``` python
+    transformed_img = warp(im_org, tform)
+```
+
+Try it.
+
+
+**Note:** The `warp` function actually does an *inverse* transformation of the image, since it uses the transform to find the pixels values in the input image that should be placed in the output image.
+
+## Similarity transform of image
+
+The `SimilarityTransform` computes a transformation consisting of a translation, rotation and a scaling. 
+
+### Exercise 7
+
+Define a `SimilarityTransform` with an angle of $$15^o$$, a translation of (40, 30) and a scaling of 0.6 and test it on the image.
+
+
+
 # Landmark based registration
 
 
