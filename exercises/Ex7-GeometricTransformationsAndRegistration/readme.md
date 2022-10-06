@@ -93,7 +93,7 @@ rotated_img = rotate(im_org, rotation_angle, mode="reflect")
 
 Try the rotation with background filling mode **reflect** and **wrap** and notice the results and differences.
 
-It is also possible to define a constant fill value. Currently, sci-kit image only support a single value (not RGB). 
+It is also possible to define a constant fill value. Currently, sci-kit image only supports a single value (not RGB). 
 
 ### Exercise 4
 Try to use:
@@ -104,7 +104,17 @@ rotated_img = rotate(im_org, rotation_angle, resize=True, mode="constant", cval=
 
 with different values of `cval` and notice the outcomes.
 
+By default, the rotated output image has the same size as the input image and therefore some parts of the rotated image are cropped away. It is possible to automatically adjust the output size, so the rotated image fits into the resized image.
 
+### Exercise 4
+
+Test the use of automatic resizing:
+
+``` python
+rotated_img = rotate(im_org, rotation_angle, resize=True)
+```
+
+also combine resizing with different background filling modes.
 
 
 # Landmark based registration
