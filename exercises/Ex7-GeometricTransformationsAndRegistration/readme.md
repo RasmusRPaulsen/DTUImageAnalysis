@@ -184,7 +184,6 @@ try with different centers and notice the results.
 
 
 
-
 # Landmark based registration
 
 
@@ -196,9 +195,9 @@ In imshow you can see the pixel coordinates of the cursor:
 
 
 
-## Video filtering
+## Video transformations
 
-Now try to make a small program, that acquires video from your webcam/telephone, transforms it and shows the filtered output. In the [exercise material](https://github.com/RasmusRPaulsen/DTUImageAnalysis/tree/main/exercises/Ex7-GeometricTransformationsAndRegistration/data)
+Now try to make a small program, that acquires video from your webcam/telephone, transforms it and shows the output. In the [exercise material](https://github.com/RasmusRPaulsen/DTUImageAnalysis/tree/main/exercises/Ex7-GeometricTransformationsAndRegistration/data)
  there is a program that can be modified. 
 
 By default, the program acquires a colour image and rotates it. There is a counter that is increased every frame and that counter can be used to modify the transformation (for example the rotation angle). The program also measures how many milliseconds the image processing takes. 
