@@ -240,10 +240,12 @@ Use this to find the coordinates of the sought landmarks and put them into a `ds
 Plot the landmarks to verify they are correct:
 
 ``` python
-plt.plot(src[:, 0], src[:, 1], '-r', markersize=12, label="Source")
-plt.plot(dst[:, 0], dst[:, 1], '-g', markersize=12, label="Target")
-plt.legend()
-plt.title("Landmarks before alignment")
+fig, ax = plt.subplots()
+ax.plot(src[:, 0], src[:, 1], '-r', markersize=12, label="Source")
+ax.plot(dst[:, 0], dst[:, 1], '-g', markersize=12, label="Destination")
+ax.invert_yaxis()
+ax.legend()
+ax.set_title("Landmarks before alignment")
 plt.show()
 ```
 
@@ -265,6 +267,33 @@ error_y = np.dot(e_y, e_y)
 f = error_x + error_y
 print(f"Landmark alignment error F: {f}")
 ```
+
+The optimal Euclidean transformation that brings the source landmarks over in the destination landmarks can be found by:
+
+``` python
+tform = EuclideanTransform()
+tform.estimate(src, dst)
+```
+
+The found transform can be applied to the source points by:
+
+``` python
+src_transform = matrix_transform(src, tform.params)
+```
+
+### Exercise 15
+
+Visualize the transformed source landmarks together with the destination landmarks. Also compute the objective function $F$ using the transformed points. What do you observe?
+
+### Exercise 16
+
+We can now apply the transformation to the source image:
+
+``` python
+warped = warp(src_img, tform.inverse)
+```
+
+Show the warped image and also try to blend the warped image destination image like in exercise 11. What do you observe?
 
 
 ## Video transformations
@@ -290,6 +319,7 @@ Try this and also try to change the other transform parameters using the counter
 
 
 ## References
+- [sci-kit image transformations](https://scikit-image.org/docs/stable/api/skimage.transform.html)
 - [sci-kit image rotation](https://scikit-image.org/docs/stable/api/skimage.transform.html#skimage.transform.rotate)
 - [transformation example](https://scikit-image.org/docs/stable/auto_examples/transform/plot_geometric.html#sphx-glr-auto-examples-transform-plot-geometric-py)
 - [swirl transform](https://scikit-image.org/docs/stable/auto_examples/transform/plot_swirl.html#sphx-glr-auto-examples-transform-plot-swirl-py
