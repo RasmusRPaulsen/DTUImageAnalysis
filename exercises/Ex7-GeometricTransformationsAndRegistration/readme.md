@@ -323,7 +323,7 @@ Run the example program and notice how the output image rotates.
 Modify the program so it performs the **swirl** transform on the image. The parameters of the swirl transform can be changed using the counter. For example:
 
 ``` python
-str = math.sin(counter / 10) * 10 + 10
+str = math.sin(counter / 10) * 10
 ```
 
 Try this and also try to change the other transform parameters using the counter.
