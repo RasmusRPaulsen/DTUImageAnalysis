@@ -43,6 +43,7 @@ def show_comparison(original, transformed, transformed_name):
 also import some useful functions:
 
 ``` python
+import matplotlib.pyplot as plt
 import math
 from skimage.transform import rotate
 from skimage.transform import EuclideanTransform
@@ -148,7 +149,7 @@ Try it.
 
 **Note:** The `warp` function actually does an *inverse* transformation of the image, since it uses the transform to find the pixels values in the input image that should be placed in the output image.
 
-## Invers transformation
+## Inverse transformation
 
 It is possible to get the inverse of a computed transform by using `tform.inverse`. An image can then be transformed using the invers transform by:
 
@@ -199,18 +200,17 @@ try with different centers and notice the results.
 
 The goal of landmark based registration is to align two images using a set of landmarks placed in both images. The landmarks need to have *correspondence* meaning that the landmarks should be placed on the same anatomical spot in the two images.
 
-There are two photos of hands: **Hand1.jpg** and **Hand2.jpg** and the goal is to transform **Hand1** so it fits on top of **Hand2**. In this exercise we call Hand1 one for the *source* (src) and Hand2 for the *target* (trg).
+There are two photos of hands: **Hand1.jpg** and **Hand2.jpg** and the goal is to transform **Hand1** so it fits on top of **Hand2**. In this exercise we call Hand1 one for the *source* (src) and Hand2 for the *destination* (dst).
 
 ### Exercise 11
 
-Start by reading the two images into *src_img* and *trg_img*. Visualize their overlap by:
+Start by reading the two images into *src_img* and *dst_img*. Visualize their overlap by:
 
 ``` python
 blend = 0.5 * img_as_float(src_img) + 0.5 * img_as_float(dst_img)
 io.imshow(blend)
 io.show()
 ```
-
 
 ## Manual landmark annotation
 
@@ -229,13 +229,42 @@ plt.show()
 
 ### Exercise 13
 
-You should now place the same landmarks on the target image. 
+You should now place the same landmarks on the destination image. 
 
 In imshow you can see the pixel coordinates of the cursor:
 
 ![imshow image coordinates](figs/imshow_coordinates.png)
 
-Use this to find the coordinates of the sought landmarks and put them into a `trg` variable.
+Use this to find the coordinates of the sought landmarks and put them into a `dst` variable.
+
+Plot the landmarks to verify they are correct:
+
+``` python
+plt.plot(src[:, 0], src[:, 1], '-r', markersize=12, label="Source")
+plt.plot(dst[:, 0], dst[:, 1], '-g', markersize=12, label="Target")
+plt.legend()
+plt.title("Landmarks before alignment")
+plt.show()
+```
+
+To calculate how well two sets of landmarks are aligned, we can compute the *objective function*:
+
+$$ F = \sum_{i=1}^N \|a_i - b_i\|^2 \enspace ,$$
+
+here $a_i$ are the landmarks in the destination image and $b_i$ are the landmarks in the source image.
+
+### Exercise 14
+
+Compute $F$ from your landmarks. It can for example be done like:
+
+``` python
+e_x = src[:, 0] - dst[:, 0]
+error_x = np.dot(e_x, e_x)
+e_y = src[:, 1] - dst[:, 1]
+error_y = np.dot(e_y, e_y)
+f = error_x + error_y
+print(f"Landmark alignment error F: {f}")
+```
 
 
 ## Video transformations
