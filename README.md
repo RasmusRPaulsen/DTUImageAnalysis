@@ -12,6 +12,7 @@ This repository contains exercises and data for the DTU course [02502 Image Anal
 - [3 - Pixelwise operations](exercises/ex3-PixelwiseOperations)
 - [4 - Image Filtering](exercises/ex4-ImageFiltering)
 - [4b - Image Morphology](exercises/ex4b-ImageMorphology)
+- [7 - Geometric transformations and landmark based registration](exercises/ex7-GeometricTransformationsAndRegistration)
 
 ### Author
 
