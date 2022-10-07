@@ -11,7 +11,7 @@ After completing this exercise, the student should be able to do the following:
 2. Construct an Euclidean (translation plus rotation) transform using `skimage.transform.EuclideanTransform`.
 3. Apply a given transform to an image using  `skimage.transform.warp`.
 4. Compute and apply the inverse of a transform.
-5. Construct an Euclidean (translation plus rotation) transform using `skimage.transform.SimilarityTransform`.
+5. Construct a similarity (translation, rotation plus scale) transform using `skimage.transform.SimilarityTransform`.
 6. Use the `skimage.transform.swirl`to transform images.
 7. Compute and visualize the blend of two images.
 8. Manually place landmarks on an image.
