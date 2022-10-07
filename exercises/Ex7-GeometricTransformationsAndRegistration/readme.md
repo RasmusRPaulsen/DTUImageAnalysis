@@ -7,8 +7,19 @@ In this exercise, we will explore geometric transformations of images and landma
 
 After completing this exercise, the student should be able to do the following:
 
-1. Use image warping
-
+1. Use `skimage.transform.rotate` to rotate an image using different rotation centers, different background filling strategies (constant, reflection, warping) and automatic scaling of the output image.
+2. Construct an Euclidean (translation plus rotation) transform using `skimage.transform.EuclideanTransform`.
+3. Apply a given transform to an image using  `skimage.transform.warp`.
+4. Compute and apply the inverse of a transform.
+5. Construct an Euclidean (translation plus rotation) transform using `skimage.transform.SimilarityTransform`.
+6. Use the `skimage.transform.swirl`to transform images.
+7. Compute and visualize the blend of two images.
+8. Manually place landmarks on an image.
+9. Visualize sets of landmarks on images.
+10. Compute the objective function $F$ between two sets of landmarks.
+11. Use the `estimate` function to estimate the optimal transformation between two sets of landmarks.
+12. Use the `skimage.transform.matrix_transform` to transform a set of landmarks.
+13. Implement and test a program that can transform and visualize images from a video stream.
 
 ## Installing Python packages
 
@@ -287,7 +298,7 @@ Visualize the transformed source landmarks together with the destination landmar
 
 ### Exercise 16
 
-We can now apply the transformation to the source image:
+We can now apply the transformation to the source image. Notice that we use the inverse transform due to the inverse mapping in the image resampling:
 
 ``` python
 warped = warp(src_img, tform.inverse)
@@ -303,11 +314,11 @@ Now try to make a small program, that acquires video from your webcam/telephone,
 
 By default, the program acquires a colour image and rotates it. There is a counter that is increased every frame and that counter can be used to modify the transformation (for example the rotation angle). The program also measures how many milliseconds the image processing takes. 
 
-### Exercise 11
+### Exercise 16
 
 Run the example program and notice how the output image rotates.
 
-### Exercise 12
+### Exercise 17
 
 Modify the program so it performs the **swirl** transform on the image. The parameters of the swirl transform can be changed using the counter. For example:
 

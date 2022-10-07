@@ -1,8 +1,3 @@
-# Data and material for exercise 7 - Geometric transformations and landmark based registration
-
-## Exercise script for transformation on video
-
-```python
 import time
 import cv2
 from skimage.transform import swirl
@@ -86,5 +81,3 @@ def capture_from_camera_and_show_images():
 
 if __name__ == '__main__':
     capture_from_camera_and_show_images()
-```
-
