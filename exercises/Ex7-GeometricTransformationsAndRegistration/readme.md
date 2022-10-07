@@ -140,7 +140,7 @@ it can be seen in the print statement that the transformation consists of a *3 x
 
 The computed transform can be applied to an image using the `warp` function:
 ``` python
-    transformed_img = warp(im_org, tform)
+transformed_img = warp(im_org, tform)
 ```
 
 Try it.
@@ -148,11 +148,24 @@ Try it.
 
 **Note:** The `warp` function actually does an *inverse* transformation of the image, since it uses the transform to find the pixels values in the input image that should be placed in the output image.
 
+## Invers transformation
+
+It is possible to get the inverse of a computed transform by using `tform.inverse`. An image can then be transformed using the invers transform by:
+
+``` python
+transformed_img = warp(im_org, tform.inverse)
+```
+
+### Exercise 8
+
+Construct a Euclidean transformation with only rotation. Test the transformation and the invers transformation and notice the effect.
+
+
 ## Similarity transform of image
 
 The `SimilarityTransform` computes a transformation consisting of a translation, rotation and a scaling. 
 
-### Exercise 8
+### Exercise 9
 
 Define a `SimilarityTransform` with an angle of $15^o$, a translation of (40, 30) and a scaling of 0.6 and test it on the image.
 
@@ -161,7 +174,7 @@ Define a `SimilarityTransform` with an angle of $15^o$, a translation of (40, 30
 
 The **swirl** image transform is a non-linear transform that can create interesting visual results on images.
 
-### Exercise 9
+### Exercise 10
 
 Try the swirl transformation:
 
@@ -182,17 +195,47 @@ swirl_img = swirl(im_org, strength=str, radius=rad, center=c)
 
 try with different centers and notice the results.
 
-
-
 # Landmark based registration
+
+The goal of landmark based registration is to align two images using a set of landmarks placed in both images. The landmarks need to have *correspondence* meaning that the landmarks should be placed on the same anatomical spot in the two images.
+
+There are two photos of hands: **Hand1.jpg** and **Hand2.jpg** and the goal is to transform **Hand1** so it fits on top of **Hand2**. In this exercise we call Hand1 one for the *source* (src) and Hand2 for the *target* (trg).
+
+### Exercise 11
+
+Start by reading the two images into *src_img* and *trg_img*. Visualize their overlap by:
+
+``` python
+blend = 0.5 * img_as_float(src_img) + 0.5 * img_as_float(dst_img)
+io.imshow(blend)
+io.show()
+```
 
 
 ## Manual landmark annotation
+
+We will manually placed landmarks on the two images to align the them.
+
+### Exercise 12
+We have manually placed a set of landmarks on the source image. They can be visualized by:
+
+``` python
+src = np.array([[588, 274], [328, 179], [134, 398], [260, 525], [613, 448]])
+
+plt.imshow(src_img)
+plt.plot(src[:, 0], src[:, 1], '.r', markersize=12)
+plt.show()
+```
+
+### Exercise 13
+
+You should now place the same landmarks on the target image. 
 
 In imshow you can see the pixel coordinates of the cursor:
 
 ![imshow image coordinates](figs/imshow_coordinates.png)
 
+Use this to find the coordinates of the sought landmarks and put them into a `trg` variable.
 
 
 ## Video transformations
