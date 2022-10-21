@@ -17,34 +17,195 @@ We will use the virtual environment from the previous exercise (`course02502`).
 # Exercise data and material
 
 The data and material needed for this exercise can be found here:
-(https://github.com/RasmusRPaulsen/DTUImageAnalysis/blob/main/exercises/ex4b-ImageMorphology/data/)
+(https://github.com/RasmusRPaulsen/DTUImageAnalysis/tree/main/exercises/ex5-BLOBAnalysis/data)
 
-# Image Morphology in Python 
-
-scikit-image contain a variety of [morphological operations](https://scikit-image.org/docs/stable/api/skimage.morphology.html). In this exercise we will explore the use of some of these operations on binary image.
+# BLOB Analysis in Python 
 
 Start by importing some function:
 
 ```python
-from skimage.morphology import erosion, dilation, opening, closing
-from skimage.morphology import disk 
+from skimage import io, color, morphology
+from skimage.util import img_as_float, img_as_ubyte
+import matplotlib.pyplot as plt
+import numpy as np
+import math
+from skimage.filters import threshold_otsu
+from skimage import segmentation
+from skimage import measure
+from skimage.color import label2rgb
 ```
 
 and define a convenience function to show two images side by side:
 
 ```python
-# From https://scikit-image.org/docs/stable/auto_examples/applications/plot_morphology.html
-def plot_comparison(original, filtered, filter_name):
+def show_comparison(original, modified, modified_name):
     fig, (ax1, ax2) = plt.subplots(ncols=2, figsize=(8, 4), sharex=True,
                                    sharey=True)
-    ax1.imshow(original, cmap=plt.cm.gray)
-    ax1.set_title('original')
+    ax1.imshow(original)
+    ax1.set_title('Original')
     ax1.axis('off')
-    ax2.imshow(filtered, cmap=plt.cm.gray)
-    ax2.set_title(filter_name)
+    ax2.imshow(modified)
+    ax2.set_title(modified_name)
     ax2.axis('off')
     io.show()
 ```
+
+
+## Cell counting
+
+The images used for the exercise is acquired by the Danish company [Chemometec](https://chemometec.com/) using their image-based cytometers. A cytometer is a machine used in many laboratories to do automated cell counting and analysis. An example image can be seen in below where U2OS cells  (human bone cells) have been imaged using ultraviolet (UV) microscopy and a fluorescent staining method named DAPI. Using DAPI staining only the cell nuclei are visible which makes the method very suitable for cell counting.
+
+![UV](figs/U2OS-AP.png)
+![DAPI](figs/U2US-DAPI.png)
+
+The raw images from the Cytometer are 1920x1440 pixels and each pixel is 16 bit (values from 0 to 65535). The resolution is 1.11$\mu m$ / pixel.
+
+To make it easier to develop the cell counting program we start by working with smaller areas of the raw images. The images are also converted to 8 bit grayscale images:
+
+```python
+I = io.imread('data/CellData/Sample E2 - U2OS DAPI channel.tiff')
+J = I[700:1200,900:1400] # Slice to extract part of the image
+G = img_as_ubyte(J)  # Convert to 8-bit grayscale
+io.imshow(G, vmin=0, vmax=150)
+plt.title('DAPI Stained U2OS cell nuclei')
+io.show()
+```
+
+As can be seen we use \emph{slicing to extract a part of the image}. You can use \verb|vmin| and \verb|vmax|to visualise specific gray scale ranges (0 to 150 in the example above). Adjust these limits to find out where the cell nuclei are most visible.
+
+Initially, we would like to apply a threshold to create a binary image where nuclei are foreground. To select a good threshold, inspect the histogram:
+
+```python
+plt.clf() # magic plot command
+plt.cla() # magic plot command
+plt.close() # magic plot command
+
+# avoid bin with value 0 due to the very large number of background pixels
+plt.hist(G.ravel(), bins=256, range =(1, 100))
+io.show()
+```
+
+The \emph{magic plot commands} has been used to avoid weird plotting behaviour. Use them when you encounter problems!
+
+Now select an appropriate threshold and apply it to the image:
+
+```python
+threshold =
+BW = G > threshold
+io.imshow(BW)
+io.show()
+```
+
+It can be seen that there is some noise (non-nuclei) present and that some nuclei are connected. Nuclei that are overlapping very much should be discarded in the analysis. However, if they are only touching each other a little we can try to separate them. More on this later.
+
+To make the following analysis easier the objects that touches the border should be removed.
+
+```python
+C = segmentation.clear_border(BW)
+```
+
+To be able to analyse the individual objects, the objects should be
+labelled.
+
+```python
+L = measure.label(C)
+io.imshow(L)
+io.show()
+```
+
+In this image, each object has a separate color - does it look reasonable?
+
+The task is now to find some {\em object features} that identifies the cell nuclei and let us remove noise and connected nuclei. We use the function \verb|regionprops| to compute a set of features for each object:
+
+```python
+RP = measure.regionprops(L)
+```
+
+For example can the area of the first object be found as \verb|print(RP[0].area)|.
+
+A quick way to gather all areas:
+```python
+areas = np.array([prop.area for prop in RP])
+```
+
+We can see if the area of the objects is enough to remove invalid object. Plot a histogram of all the areas and see if it can be used to identify well separated nuclei from overlapping nuclei and noise. Use \verb|plt.hist()|.
+
+Select a minimum and maximum allowed area and use the following to visualise the result:
+
+```python
+min_area =
+max_area =
+
+L2 = L
+for region in RP:
+    if region.area > max_area or region.area < min_area:
+        for cords in region.coords:
+            L2[cords[0], cords[1]] = 0 # blank the label
+I_area = L2 > 0
+io.imshow(I_area)
+io.show()
+```
+
+Can you find an interval that works well for these nuclei?
+
+
+We should also examine if the shape of the cells can identify them. A good measure of how circular an object is can be computed as:
+\begin{equation}
+f_\text{circ} = \frac{4 \pi A}{P^2},
+\end{equation}
+
+where $A$ is the object area and $P$ is the perimeter. A circle has a circularity close to 1, and very-non-circular object have circularity close to 0.
+
+We start by getting all the object perimeters:
+
+```python
+perimeters = np.array([prop.perimeter for prop in RP])
+```
+
+\begin{ex}
+Compute the circularity for all objects and plot a histogram.
+\end{ex}
+
+Select some appropriate ranges of accepted circularity. Use these ranges to select only the cells with acceptable areas and circularity and show them in an image.
+
+\begin{ex}
+Extend your method to return the number (the count) of well-formed nuclei in the image.
+\end{ex}
+
+Try to test the method on a larger set of training
+  images. In the table below the suggested training images and regions are seen. Use slicing to select the correct regions from the raw image. You can also try it on regions that you select yourself.
+
+\begin{tabular}{|l|r|r|}
+  \hline
+  File & Cell Type & Selection (x,y,width,heigh)\\
+  \hline
+  % after \\: \hline or \cline{col1-col2} \cline{col3-col4} ...
+  Sample E2 - U2OS DAPI channel.tiff & U2OS & 700, 900, 500, 500 \\
+  Sample E2 - U2OS DAPI channel.tiff & U2OS & 0, 0, 500, 500 \\
+  Sample E2 - U2OS DAPI channel.tiff & U2OS & 600, 200, 500, 500 \\
+  Sample E2 - U2OS DAPI channel.tiff & U2OS & 1300, 0, 500, 500 \\
+  Sample E2 - U2OS DAPI channel.tiff & U2OS & 900, 500, 500, 500 \\
+  Sample G1 - COS7 cells DAPI channel & COS7 & 0, 0, 500, 500 \\
+  Sample G1 - COS7 cells DAPI channel & COS7 & 500, 0, 500, 500 \\
+  Sample G1 - COS7 cells DAPI channel & COS7 & 0, 500, 500, 500 \\
+  Sample G1 - COS7 cells DAPI channel & COS7 & 500, 500, 500, 500 \\
+  Sample G1 - COS7 cells DAPI channel & COS7 & 1000, 0, 500, 500 \\
+  Sample G1 - COS7 cells DAPI channel & COS7 & 1000, 500, 500, 500 \\
+  \hline
+\end{tabular}
+
+COS7 cells are {\em African Green Monkey Fibroblast-like Kidney Cells} (www.cos-7.com) used for a variety of research purposes.
+
+
+\subsection*{Handling overlap}
+
+In certain cases cell nuclei are touching and are therefore being treated as one object. It can sometimes be solved using for example the morphological operation opening before the object labelling. The operation erosion can also be used but it changes the object area.
+
+\begin{ex}
+Experiment with morphological operations to see if you can separate touching cells before counting them.
+\end{ex}
+
+
 
 
 ## Image morphology on a single object
