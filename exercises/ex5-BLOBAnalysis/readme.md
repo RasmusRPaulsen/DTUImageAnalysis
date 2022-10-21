@@ -14,7 +14,7 @@ After completing this exercise, the student should be able to do the following:
 4. Apply suitable morphological operations to remove small BLOBs, close holes and generally make a binary image suitable for BLOB analysis.
 5. Use `measure.label` to create labels from a binary image.
 6. Visualize labels using `label2rgb`.
-7. Compute BLOB features using `measure.regionprops including BLOB area and perimeter.
+7. Compute BLOB features using `measure.regionprops` including BLOB area and perimeter.
 8. Remove BLOBs that have certain features.
 9. Extract BLOB features and plot feature spaces as for example area versus perimeter and area versus circularity.
 10. Choose a set of BLOB features that separates objects from noise.
