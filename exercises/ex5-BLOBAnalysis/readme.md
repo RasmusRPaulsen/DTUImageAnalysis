@@ -50,8 +50,63 @@ def show_comparison(original, modified, modified_name):
     io.show()
 ```
 
+## LEGO Classification
+
+We will start by trying some BLOB analysis approaches on a photo of some Lego bricks: **lego_4_small.png**.
+
+### Exercise 1: Binary image from original image
+
+Read the image, convert it to grayscale and use *Otsus* method to compute and apply a threshold. 
+
+Show the binary image together with the original image.
+
+### Exercise 2: Remove border BLOBs
+
+Use `segmentation.clear_border` to remove border pixels from the binary image.
+
+### Exercise 3: Cleaning using morphological operations
+
+In order to remove remove noise and close holes, you should do a morphological closing followed by a morphological opening with a disk shaped structuring element with radius 5. See [Exercise 4b](https://github.com/RasmusRPaulsen/DTUImageAnalysis/tree/main/exercises/ex4b-ImageMorphology) if you are in doubt.
+
+### Exercise 4: Find labels
+
+The actual connected component analysis / BLOB analysis is performed using `measure.label` :
+
+```python
+label_img = measure.label(img_open)
+n_labels = label_img.max()
+print(f"Number of labels: {n_labels}")
+```
+
+### Exercise 5: Visualize found labels
+
+We can use the function `label2rbg` to create a visualization of the found BLOBS. Show this together with the original image.
+
+### Exericse 6: Compute BLOB features
+
+It is possible to compute a wide variety of BLOB features using the `measure.regionprops` function:
+
+```python
+region_props = measure.regionprops(label_img)
+areas = np.array([prop.area for prop in region_props])
+plt.hist(areas, bins=50)
+plt.show()
+```
+
+### Exercise 7: Exploring BLOB features
+
+There is an example program called `Ex5-BlobAnalysisInteractive.py` in the [exercise material folder](https://github.com/RasmusRPaulsen/DTUImageAnalysis/tree/main/exercises/ex5-BLOBAnalysis/data).
+
+With that program, you can explore different BLOB features interactively. It requires installation of `plotly`:
+
+```
+conda install -c plotly plotly=5.10.0
+```
+
 
 ## Cell counting
+
+The goal of this part of the exercise, is to create a small program that can automatically count the number of cell nuclei in an image.
 
 The images used for the exercise is acquired by the Danish company [Chemometec](https://chemometec.com/) using their image-based cytometers. A cytometer is a machine used in many laboratories to do automated cell counting and analysis. An example image can be seen in below where U2OS cells  (human bone cells) have been imaged using ultraviolet (UV) microscopy and a fluorescent staining method named DAPI. Using DAPI staining only the cell nuclei are visible which makes the method very suitable for cell counting.
 
@@ -84,7 +139,7 @@ plt.hist(img_gray.ravel(), bins=256, range=(1, 100))
 io.show()
 ```
 
-### Exercise X: Threshold selection
+### Exercise 8: Threshold selection
 Select an appropriate threshold, that seperates nuclei from the background. You can set it manually or use *Otsus* method.
 
 Show the binary image together with the original image and evaluate if you got the information you wanted in the binary image.
@@ -94,7 +149,7 @@ It can be seen that there is some noise (non-nuclei) present and that some nucle
 
 To make the following analysis easier the objects that touches the border should be removed.
 
-### Exercise X: Remove border BLOBS
+### Exercise 9: Remove border BLOBS
 
 Use `segmentation.clear_border` to remove border pixels from the binary image.
 
@@ -127,7 +182,7 @@ areas = np.array([prop.area for prop in region_props])
 We can try if the area of the objects is enough to remove invalid object. Plot a histogram of all the areas and see if it can be used to identify well separated nuclei from overlapping nuclei and noise. You should probably play around with the number of bins in your histogram plotting function.
 
 
-### Exercise X: BLOB classification by area
+### Exercise 10: BLOB classification by area
 
 Select a minimum and maximum allowed area and use the following to visualise the result:
 
@@ -165,30 +220,31 @@ We start by getting all the object perimeters:
 perimeters = np.array([prop.perimeter for prop in region_props])
 ```
 
-### Exercise X: BLOB Circularity
+### Exercise 11: BLOB Circularity
 
 Compute the circularity for all objects and plot a histogram.
 
 Select some appropriate ranges of accepted circularity. Use these ranges to select only the cells with acceptable areas and circularity and show them in an image.
 
-### Exercise X: BLOB circularity and area
+### Exercise 12: BLOB circularity and area
 
 Extend your method to return the number (the count) of well-formed nuclei in the image.
 
 
-### Exercise X large scale testing
+### Exercise 13: large scale testing
 Try to test the method on a larger set of training images. Use slicing to select the different regions from the raw image. 
 
 
-### Exercise X: COS7 cells
+### Exercise 14: COS7 cell classification
 
 Try your method on the **Sample G1 - COS7 cells DAPI channel.tiff** image.  COS7 cells are [African Green Monkey Fibroblast-like Kidney Cells](www.cos-7.com) used for a variety of research purposes.
 
-### Exercise X: Handling overlap
+### Exercise 15: Handling overlap
 
 In certain cases cell nuclei are touching and are therefore being treated as one object. It can sometimes be solved using for example the morphological operation **opening** before the object labelling. The operation **erosion** can also be used but it changes the object area.
 
 
-
 ## References
+- [sci-kit image label](https://scikit-image.org/docs/stable/api/skimage.measure.html#skimage.measure.label)
 - [sci-kit image region properties](https://scikit-image.org/docs/stable/api/skimage.measure.html#skimage.measure.regionprops)
+- [Measure region properties](https://scikit-image.org/docs/dev/auto_examples/segmentation/plot_regionprops.html)
