@@ -1,12 +1,25 @@
-# Exercise 5 - BLOB Analysis (connected component analysis and object classification) (WORK IN PROGRESS)
+# Exercise 5 - BLOB Analysis (connected component analysis and object classification) 
 
 The purpose of this exercise is to implement, test and validate connected component analysis methods. Also known as BLOB (binary large object) analysis.
+
+The methods will be used to create a small program that can count cell nuclei.
 
 # Learning Objectives
 
 After completing this exercise, the student should be able to do the following:
 
-1. Do BLOB analysis
+1. Preprocess a colour image so it is suitable for BLOB analysis using color to gray transformations and threshold selection.
+2. Use slicing to extract regions of an image for further analysis.
+3. Use `segmentation.clear_border` to remove border BLOBs.
+4. Apply suitable morphological operations to remove small BLOBs, close holes and generally make a binary image suitable for BLOB analysis.
+5. Use `measure.label` to create labels from a binary image.
+6. Visualize labels using `label2rgb`.
+7. Compute BLOB features using `measure.regionprops including BLOB area and perimeter.
+8. Remove BLOBs that have certain features.
+9. Extract BLOB features and plot feature spaces as for example area versus perimeter and area versus circularity.
+10. Choose a set of BLOB features that separates objects from noise.
+11. Implement and test a small program for cell nuclei classification and counting.
+
 
 # Installing Python packages
 
@@ -165,6 +178,8 @@ show_comparison(img_org, image_label_overlay, 'Found BLOBS')
 
 In this image, each object has a separate color - does it look reasonable?
 
+### Exercise 10: BLOB features
+
 The task is now to find some **object features** that identify the cell nuclei and let us remove noise and connected nuclei. We use the function `regionprops` to compute a set of features for each object:
 
 ```python
@@ -182,7 +197,7 @@ areas = np.array([prop.area for prop in region_props])
 We can try if the area of the objects is enough to remove invalid object. Plot a histogram of all the areas and see if it can be used to identify well separated nuclei from overlapping nuclei and noise. You should probably play around with the number of bins in your histogram plotting function.
 
 
-### Exercise 10: BLOB classification by area
+### Exercise 11: BLOB classification by area
 
 Select a minimum and maximum allowed area and use the following to visualise the result:
 
@@ -205,6 +220,18 @@ show_comparison(img_small, i_area, 'Found nuclei based on area')
 
 Can you find an area interval that works well for these nuclei?
 
+### Exercise 13: Feature space
+
+Extract all the perimeters of the BLOBS:
+
+```python
+perimeters = np.array([prop.perimeter for prop in region_props])
+```
+
+Try to plot the areas versus the perimeters. 
+
+
+### Exercise 14: BLOB Circularity
 
 We should also examine if the shape of the cells can identify them. A good measure of how circular an object is can be computed as:
 
@@ -214,32 +241,26 @@ $$
 
 where $A$ is the object area and $P$ is the perimeter. A circle has a circularity close to 1, and very-non-circular object have circularity close to 0.
 
-We start by getting all the object perimeters:
-
-```python
-perimeters = np.array([prop.perimeter for prop in region_props])
-```
-
-### Exercise 11: BLOB Circularity
-
 Compute the circularity for all objects and plot a histogram.
 
 Select some appropriate ranges of accepted circularity. Use these ranges to select only the cells with acceptable areas and circularity and show them in an image.
 
-### Exercise 12: BLOB circularity and area
+### Exercise 13: BLOB circularity and area
+
+Try to plot the areas versus the circularity. What do you observe?
 
 Extend your method to return the number (the count) of well-formed nuclei in the image.
 
 
-### Exercise 13: large scale testing
+### Exercise 14: large scale testing
 Try to test the method on a larger set of training images. Use slicing to select the different regions from the raw image. 
 
 
-### Exercise 14: COS7 cell classification
+### Exercise 15: COS7 cell classification
 
 Try your method on the **Sample G1 - COS7 cells DAPI channel.tiff** image.  COS7 cells are [African Green Monkey Fibroblast-like Kidney Cells](www.cos-7.com) used for a variety of research purposes.
 
-### Exercise 15: Handling overlap
+### Exercise 16: Handling overlap
 
 In certain cases cell nuclei are touching and are therefore being treated as one object. It can sometimes be solved using for example the morphological operation **opening** before the object labelling. The operation **erosion** can also be used but it changes the object area.
 
@@ -248,3 +269,4 @@ In certain cases cell nuclei are touching and are therefore being treated as one
 - [sci-kit image label](https://scikit-image.org/docs/stable/api/skimage.measure.html#skimage.measure.label)
 - [sci-kit image region properties](https://scikit-image.org/docs/stable/api/skimage.measure.html#skimage.measure.regionprops)
 - [Measure region properties](https://scikit-image.org/docs/dev/auto_examples/segmentation/plot_regionprops.html)
+
