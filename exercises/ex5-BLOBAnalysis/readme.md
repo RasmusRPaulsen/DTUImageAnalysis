@@ -220,7 +220,7 @@ show_comparison(img_small, i_area, 'Found nuclei based on area')
 
 Can you find an area interval that works well for these nuclei?
 
-### Exercise 13: Feature space
+### Exercise 12: Feature space
 
 Extract all the perimeters of the BLOBS:
 
@@ -231,7 +231,7 @@ perimeters = np.array([prop.perimeter for prop in region_props])
 Try to plot the areas versus the perimeters. 
 
 
-### Exercise 14: BLOB Circularity
+### Exercise 13: BLOB Circularity
 
 We should also examine if the shape of the cells can identify them. A good measure of how circular an object is can be computed as:
 
@@ -245,22 +245,22 @@ Compute the circularity for all objects and plot a histogram.
 
 Select some appropriate ranges of accepted circularity. Use these ranges to select only the cells with acceptable areas and circularity and show them in an image.
 
-### Exercise 13: BLOB circularity and area
+### Exercise 14: BLOB circularity and area
 
 Try to plot the areas versus the circularity. What do you observe?
 
 Extend your method to return the number (the count) of well-formed nuclei in the image.
 
 
-### Exercise 14: large scale testing
+### Exercise 15: large scale testing
 Try to test the method on a larger set of training images. Use slicing to select the different regions from the raw image. 
 
 
-### Exercise 15: COS7 cell classification
+### Exercise 16: COS7 cell classification
 
 Try your method on the **Sample G1 - COS7 cells DAPI channel.tiff** image.  COS7 cells are [African Green Monkey Fibroblast-like Kidney Cells](www.cos-7.com) used for a variety of research purposes.
 
-### Exercise 16: Handling overlap
+### Exercise 17: Handling overlap
 
 In certain cases cell nuclei are touching and are therefore being treated as one object. It can sometimes be solved using for example the morphological operation **opening** before the object labelling. The operation **erosion** can also be used but it changes the object area.
 
