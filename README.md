@@ -15,7 +15,7 @@ This repository contains exercises and data for the DTU course [02502 Image Anal
 - [4 - Image Filtering](exercises/ex4-ImageFiltering)
 - [4b - Image Morphology](exercises/ex4b-ImageMorphology)
 - [5 - BLOB Analysis / Connected component analysis and object classification](exercises/ex5-BLOBAnalysis/)
-- [7 - Geometric transformations and landmark based registration](exercises/ex7-GeometricTransformationsAndRegistration)
+- [7 - Geometric transformations and landmark based registration](exercises/Ex7-GeometricTransformationsAndRegistration)
 
 ### Author
 
