@@ -22,7 +22,7 @@ The data and material needed for this exercise can be found here: [exercise data
 
 ## Abdominal computed tomography
 
-[Abdominal scan with labels](figs/AbdominalScanLabels.png)
+![Abdominal scan with labels](figs/AbdominalScanLabels.png)
 
 ### Hounsfield units
 
