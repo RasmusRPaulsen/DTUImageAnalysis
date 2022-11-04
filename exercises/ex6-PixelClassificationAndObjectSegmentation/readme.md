@@ -104,6 +104,25 @@ plt.show()
 
 Here `mu_spleen` and `std_spleen` are the average and standard deviation of the spleen values.
 
+**Exercise 4**: *Plot histograms and their fitted Gaussians of several of the tissues types. Do they all look like they are Gaussian distributed?*
+
+The fitted Gaussians are good for inspecting class separation and how much the class overlap. Plotting several fitted Gaussians can for example be done like this:
+
+```python
+# Hounsfield unit limits of the plot
+min_hu = -200
+max_hu = 1000
+hu_range = np.arange(min_hu, max_hu, 1.0)
+pdf_spleen = norm.pdf(hu_range, mu_spleen, std_spleen)
+pdf_bone = norm.pdf(hu_range, mu_bone, std_bone)
+plt.plot(hu_range, pdf_spleen, 'r--', label="spleen")
+plt.plot(hu_range, pdf_bone, 'g', label="bone")
+plt.title("Fitted Gaussians")
+plt.legend()
+plt.show()
+```
+
+**Exercise 5**: *Plot the fitted Gaussians of bone, fat, kidneys, liver and spleen. What classes are easy to seperate and which classes are hard to seperate?*
 
 
 ## Pixel Classification
