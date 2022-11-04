@@ -254,14 +254,20 @@ to create a filtered binary image, where only valid BLOBs are remaining.
 
 **Exercise 14**: *Extend the method above to include several BLOB features. For example area and perimeter. Find the combination of features and feature value limits that will result in only the spleen remaining.*
 
-**Exercise 15**: *Create a function `spleen_finder(img)` that takes as input a CT image and returns a binary image, where the pixels with value 1 represent the spleen and the pixels with value 0 everything else.
+**Exercise 15**: *Create a function `spleen_finder(img)` that takes as input a CT image and returns a binary image, where the pixels with value 1 represent the spleen and the pixels with value 0 everything else.*
 
 **Exercise 16**: *Test your function on the images called **Validation1.dcm**,  **Validation2.dcm** and **Validation3.dcm**. Do you succeed in finding the spleen in all the validation images?*
   
 
-
-
 ## DICE Score
+
+We would like evaluate how good we are at finding the spleen by comparing our found spleen with ground truth annotations of the spleen. The **DICE score** (also called the DICE coefficient or the DICE distance) is a standard method of comparing one segmentation with another segmentation.
+
+If segmentation one is called `X` and the second segmentation called `Y`. The DICE score is computed as:
+
+$$
+\text{DICE} = \frac{2 |X| \cap |Y|}{|X| + |X|}
+$$
 
 
 
