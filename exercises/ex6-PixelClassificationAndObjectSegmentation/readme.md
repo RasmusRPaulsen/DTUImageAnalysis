@@ -273,6 +273,20 @@ where $|X \cap Y|$ is the area (in pixels) of the overlap of the two segmentatio
 
 ![DICE Score](figs/DICEScore.png) 
 
+The DICE score is one if there is a perfect overlap between the two segmentations and zero if there is no overlap at all. A DICE score above 0.95 means that the two segmentations are very similar.
+
+Using SciPy we can compute the DICE score as:
+
+```python
+ground_truth_img = io.imread(in_dir + 'Validation1_spleen.png')
+dice_score = 1 - distance.dice(i_area.ravel(), gt_bin.ravel())
+print(f"DICE score {dice_score}")
+```
+
+**Exercise 17**: *Compute the DICE score for your found spleen segmentations compared to the ground truth segmentations for the three validation images. How high DICE scores do you achieve?*
+
+
+
 
 ## References
 
