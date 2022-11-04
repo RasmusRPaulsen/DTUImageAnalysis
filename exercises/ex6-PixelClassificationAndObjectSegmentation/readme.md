@@ -266,9 +266,12 @@ We would like evaluate how good we are at finding the spleen by comparing our fo
 If segmentation one is called `X` and the second segmentation called `Y`. The DICE score is computed as:
 
 $$
-\text{DICE} = \frac{2 |X| \cap |Y|}{|X| + |X|}
+\text{DICE} = \frac{2 |X \cap Y|}{|X| + |Y|}
 $$
 
+where $|X \cap Y|$ is the area (in pixels) of the overlap of the two segmentations and is $|X| + |Y|$ the area of the union of the two segmentation. This can be visualized as:
+
+![DICE Score](figs/DICEScore.png) 
 
 
 ## References
