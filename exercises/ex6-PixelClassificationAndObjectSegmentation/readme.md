@@ -22,7 +22,7 @@ After completing this exercise, the student should be able to do the following:
 
 ## Installing Python packages
 
-In this exercise, we will be using both [scikit-image](https://scikit-image.org/) and [OpenCV](https://opencv.org/). You should have these libraries installed, else instructions can be found in the previous exercises.
+In this exercise, we will be using both [scikit-image](https://scikit-image.org/) and [SciPy](https://scipy.org/). You should have these libraries installed, else instructions can be found in the previous exercises.
 
 We will use the virtual environment from the previous exercise (`course02502`). 
 
@@ -220,14 +220,13 @@ opened = binary_opening(closed, footprint)
 
 Now we can use [BLOB](https://github.com/RasmusRPaulsen/DTUImageAnalysis/tree/main/exercises/ex5-BLOBAnalysis) analysis to do a feature based classification of the spleen.
 
-**Exercise 12**: *Use the methods from BLOB analysis to compute BLOB features for every seperated BLOB in the image. You can for example start by:*
+**Exercise 12**: *Use the methods from [BLOB](https://github.com/RasmusRPaulsen/DTUImageAnalysis/tree/main/exercises/ex5-BLOBAnalysis) analysis to compute BLOB features for every seperated BLOB in the image. You can for example start by:*
  
 ```python
 label_img = measure.label(opened)
 ```
 
 **Exercise 13**: *Inspect the labeled image and validate the success of separating the spleen from the other objects. If it is connected (have the same color) to another organ, you should experiment with the kernel sizes in the morphological operations.*
-
 
 To be able to keep only the spleen we need to find out which BLOB features, that is special for the spleen. By using `measure.regionprops` many different BLOB features can be computed, including area and perimeter.
 
