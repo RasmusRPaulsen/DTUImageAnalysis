@@ -62,17 +62,31 @@ print(img.shape)
 print(img.dtype)
 ```
 
-
 You should visualise the slice, so the organs of interest have a suitable brigthness and contrast. One way is to manipulate the minimum and maximum values proviede to `imshow`.
 
-**Exercise 1**: *The spleen typically has HU units in the range of 0 to 150. Try to make a good visualization of the CT scan and spleen using:
+**Exercise 1**: *The spleen typically has HU units in the range of 0 to 150. Try to make a good visualization of the CT scan and spleen using (replace the question marks with values):*
 
 ```python
 io.imshow(img, vmin=?, vmax=?, cmap='gray')
 io.show()
 ```
 
-*
+An expert has provided annotations of **bone, fat, kidneys, liver and spleen**. They are stored as *mask* files which is an image with the same size as the input image, where the annotated pixels are 1 and the rest are 0. They are found as **BoneROI.png, FatROI.png, KidneyROI.png, LiverROI and SpleenROI.png**.
+
+You can use the original image and a mask to get the values of the pixels inside the mask:
+
+```python
+spleen_roi = io.imread(in_dir + 'SpleenROI.png')
+# convert to boolean image
+spleen_mask = spleen_roi > 0
+spleen_values = img[spleen_mask]
+```
+
+**Exercise 2**: *Compute the average and standard deviation of the Hounsfield units found in the spleen in the training image. Do they correspond to the values found in the above figure?*
+
+**Exercise 3**: *Plot a histogram of the pixel values of the spleen. Does it look like they Gaussian distributed?*
+
+
 
 ## Pixel Classification
 
