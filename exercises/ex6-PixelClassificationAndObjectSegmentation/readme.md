@@ -124,8 +124,40 @@ plt.show()
 
 **Exercise 5**: *Plot the fitted Gaussians of bone, fat, kidneys, liver and spleen. What classes are easy to seperate and which classes are hard to seperate?*
 
+**Exercise 6**: *Define the classes that we aim at classifying. Perhaps some classes should be combined into one class?*
 
-## Pixel Classification
+
+## Minimum distance pixel classification
+
+In the minimum distance classifier the pixel value class ranges are defined using the average values of the training values. If you have two classes, the threshold between them is defined as the mid-point between the two class value averages.
+
+In the following, we will define four classes: **background, fat, soft tissue and bone**, where soft-tissue is a combination of the values of the spleen, liver and kidneys. 
+We manually set the threshold for background to -200. So all pixels below -200 are set to background.
+
+**Exercise 7**: *Compute the class ranges defining fat, soft tissue and bone.*
+
+You can now use:
+
+```python
+t_background = -200
+fat_img = (img > t_background) & (img <= t_fat_soft)
+```
+
+to create an image where all the pixel that are classified as fat, will be 1 and the rest 0. Here `t_fat_soft` is the threshold between the fat and the soft tissue class.
+ 
+
+**Exercise 8**: *Create class images: fat_img, soft_img, bone_img representing the fat, soft tissue and bone found in the image.*
+
+To visualize the classification results you can use:
+
+```python
+label_img = fat_img + 2 * soft_img + 3 * bone_img
+image_label_overlay = label2rgb(label_img)
+show_comparison(img, image_label_overlay, 'Classification result')
+```
+
+**Exercise 9**: *Visualize your classification result and compare it to the anatomical image in the start of the exercise. Does your results look plausible?*
+
 
 
 ## DICE Score
