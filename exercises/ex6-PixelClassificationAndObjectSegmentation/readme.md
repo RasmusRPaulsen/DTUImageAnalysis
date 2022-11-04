@@ -26,7 +26,7 @@ After completing this exercise, the student should be able to do the following:
 17. Use `norm.pdf` to compute the class ranges by testing the probabilities with a set of pixel values.
 18. Apply a *parametric classifier* to an image and visualize the results.
 19.  Use morphological opening and closing to repair holes in objects and separate objects in a binary image.
-20. Use BLOB analysis to label object in a binary image.
+20. Use BLOB analysis to label objects in a binary image.
 21. Use BLOB feature based classification to identify an object in an image. For example the spleen in a computed tomography scan.
 22. Describe the concept of the **DICE score**.
 23. Compute the DICE score between two segmentations.
