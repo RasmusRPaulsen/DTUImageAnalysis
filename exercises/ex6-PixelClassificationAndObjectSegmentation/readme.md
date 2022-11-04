@@ -218,8 +218,46 @@ opened = binary_opening(closed, footprint)
 **Exercise 12**: *Use the above morphological operations to seperate the spleen from other organs and close holes. Change the values where there are question marks to change the size of the used structuring elements.*
 
 
+Now we can use [BLOB](https://github.com/RasmusRPaulsen/DTUImageAnalysis/tree/main/exercises/ex5-BLOBAnalysis) analysis to do a feature based classification of the spleen.
+
+**Exercise 12**: *Use the methods from BLOB analysis to compute BLOB features for every seperated BLOB in the image. You can for example start by:*
+ 
+```python
+label_img = measure.label(opened)
+```
+
+**Exercise 13**: *Inspect the labeled image and validate the success of separating the spleen from the other objects. If it is connected (have the same color) to another organ, you should experiment with the kernel sizes in the morphological operations.*
 
 
+To be able to keep only the spleen we need to find out which BLOB features, that is special for the spleen. By using `measure.regionprops` many different BLOB features can be computed, including area and perimeter.
+
+You can for example use:
+
+```python
+min_area = ?
+max_area = ?
+
+# Create a copy of the label_img
+label_img_filter = label_img.copy()
+for region in region_props:
+	# Find the areas that do not fit our criteria
+	if region.area > max_area or region.area < min_area:
+		# set the pixels in the invalid areas to background
+		for cords in region.coords:
+			label_img_filter[cords[0], cords[1]] = 0
+# Create binary image from the filtered label image
+i_area = label_img_filter > 0
+show_comparison(img, i_area, 'Found spleen based on area')
+```
+
+to create a filtered binary image, where only valid BLOBs are remaining. 
+
+**Exercise 14**: *Extend the method above to include several BLOB features. For example area and perimeter. Find the combination of features and feature value limits that will result in only the spleen remaining.*
+
+**Exercise 15**: *Create a function `spleen_finder(img)` that takes as input a CT image and returns a binary image, where the pixels with value 1 represent the spleen and the pixels with value 0 everything else.
+
+**Exercise 16**: *Test your function on the images called **Validation1.dcm**,  **Validation2.dcm** and **Validation3.dcm**. Do you succeed in finding the spleen in all the validation images?*
+  
 
 
 
