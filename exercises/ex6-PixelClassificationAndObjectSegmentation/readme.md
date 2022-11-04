@@ -129,7 +129,7 @@ plt.show()
 
 ## Minimum distance pixel classification
 
-In the minimum distance classifier the pixel value class ranges are defined using the average values of the training values. If you have two classes, the threshold between them is defined as the mid-point between the two class value averages.
+In the **minimum distance classifier** the pixel value class ranges are defined using the average values of the training values. If you have two classes, the threshold between them is defined as the mid-point between the two class value averages.
 
 In the following, we will define four classes: **background, fat, soft tissue and bone**, where soft-tissue is a combination of the values of the spleen, liver and kidneys. 
 We manually set the threshold for background to -200. So all pixels below -200 are set to background.
@@ -146,7 +146,7 @@ fat_img = (img > t_background) & (img <= t_fat_soft)
 to create an image where all the pixel that are classified as fat, will be 1 and the rest 0. Here `t_fat_soft` is the threshold between the fat and the soft tissue class.
  
 
-**Exercise 8**: *Create class images: fat_img, soft_img, bone_img representing the fat, soft tissue and bone found in the image.*
+**Exercise 8**: *Create class images: fat_img, soft_img and bone_img representing the fat, soft tissue and bone found in the image.*
 
 To visualize the classification results you can use:
 
@@ -157,6 +157,19 @@ show_comparison(img, image_label_overlay, 'Classification result')
 ```
 
 **Exercise 9**: *Visualize your classification result and compare it to the anatomical image in the start of the exercise. Does your results look plausible?*
+
+## Parametric pixel classification
+
+In the **parametric classifier**, the standard deviation of the training pixel values is also used when determinin the class ranges. In the following, we are also trying to classify **background, fat, soft tissue and bone**.
+
+We start by finding the class ranges by manually inspecting the fitted Gaussians from each class.
+
+As in the last exercise, we can still se the background-fat threshold to be -200.
+
+**Exercise 9**: *Plot the fitted Gaussians of the training values and manually find the intersection between the curves.*
+
+**Exercise 10**: *Use the same technique as in exercise 7, 8 and 9 to visualize your classification results. Did it change compared to the minimum distance classifier?*
+
 
 
 
