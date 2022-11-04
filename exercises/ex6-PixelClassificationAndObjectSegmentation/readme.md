@@ -184,6 +184,43 @@ here the `test_value` is a pixel value that you want to assign a class. One way 
 **Exercise 11**: *Use `norm.pdf` to find the optimal class ranges between fat, soft tissue and bone.*
 
 
+## Object segmentation - The spleen finder
+
+The goal of this part of the exercise, is to create a program that can automatically segment the spleen in CT images.
+
+We start by using the **Training.dcm** image and the expert provided annotations.
+
+**Exercise 11**: *Inspect the values of the spleen as in exercise 3 and select a lower and upper threshold to create a spleen class range.*
+
+You can now use:
+
+```python
+spleen_estimate = (img > t_1) & (img < t_2)
+spleen_label_colour = color.label2rgb(spleen_estimate)
+io.imshow(spleen_label_colour)
+plt.title("First spleen estimate")
+io.show()
+```
+
+to show your first spleen estimate. As can be seen, there a many non-spleen areas in the result. The spleen is also connected to another anatomy. 
+
+Luckily, we can use [morphological operations](https://github.com/RasmusRPaulsen/DTUImageAnalysis/tree/main/exercises/ex4b-ImageMorphology) to fix these issues:
+
+
+```python
+footprint = disk(?)
+closed = binary_closing(spleen_estimate, footprint)
+
+footprint = disk(?)
+opened = binary_opening(closed, footprint)
+```
+
+**Exercise 12**: *Use the above morphological operations to seperate the spleen from other organs and close holes. Change the values where there are question marks to change the size of the used structuring elements.*
+
+
+
+
+
 
 
 ## DICE Score
