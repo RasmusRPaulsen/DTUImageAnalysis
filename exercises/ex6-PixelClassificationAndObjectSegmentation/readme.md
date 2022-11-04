@@ -50,7 +50,7 @@ The pixels in the images are stored as 16-bit integers, meaning their values can
 
 ![Abdominal scan with labels](figs/HounsfieldUnits.png)
 
-## Explorative analysis of CT scan
+## Explorative analysis of one CT scan
 
 Let us start by examining one of the CT scan slices from the training set. You can read the first slice like this:
 
@@ -65,14 +65,14 @@ print(img.dtype)
 
 You should visualise the slice, so the organs of interest have a suitable brigthness and contrast. One way is to manipulate the minimum and maximum values proviede to `imshow`.
 
-**Exercise 1**: *The spleen typically has HU units in the range of 0 to 150. Try to make a good visualization of the CT scan and spleen using:*
+**Exercise 1**: *The spleen typically has HU units in the range of 0 to 150. Try to make a good visualization of the CT scan and spleen using:
 
 ```python
 io.imshow(img, vmin=?, vmax=?, cmap='gray')
 io.show()
 ```
 
-
+*
 
 ## Pixel Classification
 
