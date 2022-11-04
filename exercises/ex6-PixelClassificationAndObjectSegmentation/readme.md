@@ -279,13 +279,18 @@ Using SciPy we can compute the DICE score as:
 
 ```python
 ground_truth_img = io.imread(in_dir + 'Validation1_spleen.png')
+gt_bin = ground_truth_img > 0
 dice_score = 1 - distance.dice(i_area.ravel(), gt_bin.ravel())
 print(f"DICE score {dice_score}")
 ```
 
 **Exercise 17**: *Compute the DICE score for your found spleen segmentations compared to the ground truth segmentations for the three validation images. How high DICE scores do you achieve?*
 
+## Testing on an independent test set
 
+*Overfitting* occurs when an algorithm has been developed on a training set and has become so specific to that set of data, that it works badly on other similar data. To avoid this, it is necessary to test an algorithm on an independent test set. We have provided three test images **Test1.dcm**, **Test2.dcm** and **Test3.dcm** with ground truth spleen annotations.
+
+**Exercise 18**: *Use your spleen finder program to find the spleen on the three test images and compute the DICE score. What is the result of your independent test?*
 
 
 ## References
