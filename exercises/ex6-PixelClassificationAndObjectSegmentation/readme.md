@@ -84,7 +84,25 @@ spleen_values = img[spleen_mask]
 
 **Exercise 2**: *Compute the average and standard deviation of the Hounsfield units found in the spleen in the training image. Do they correspond to the values found in the above figure?*
 
-**Exercise 3**: *Plot a histogram of the pixel values of the spleen. Does it look like they Gaussian distributed?*
+**Exercise 3**: *Plot a histogram of the pixel values of the spleen. Does it look like they are Gaussian distributed?*
+
+
+The function [`norm.pdf`](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.norm.html) from `SciPy`  represents a Gaussian probability density function (PDF). It can for example be used to plot a Gaussian
+distribution with a given mean and standard deviation.
+
+This can be used to create a fitted Gaussian distribution of the spleen values:
+
+```python
+n, bins, patches = plt.hist(spleen_values, 60, density=1)
+pdf_spleen = norm.pdf(bins, mu_spleen, std_spleen)
+plt.plot(bins, pdf_spleen)
+plt.xlabel('Hounsfield unit')
+plt.ylabel('Frequency')
+plt.title('Spleen values in CT scan')
+plt.show()
+```
+
+Here `mu_spleen` and `std_spleen` are the average and standard deviation of the spleen values.
 
 
 
@@ -97,4 +115,6 @@ spleen_values = img[spleen_mask]
 
 ## References
 
-- 
+- [Normal distribution](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.norm.html)
+- [DICE dissimilarity](https://docs.scipy.org/doc/scipy/reference/generated/scipy.spatial.distance.dice.html)
+
