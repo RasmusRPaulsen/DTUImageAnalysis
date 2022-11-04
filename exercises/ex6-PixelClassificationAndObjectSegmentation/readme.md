@@ -170,6 +170,19 @@ As in the last exercise, we can still se the background-fat threshold to be -200
 
 **Exercise 10**: *Use the same technique as in exercise 7, 8 and 9 to visualize your classification results. Did it change compared to the minimum distance classifier?*
 
+An alternative way of finding the class ranges is to test which class has a the highest probability for a given value. The `norm.pdf` function can be used for that. For example:
+
+```python
+if norm.pdf(test_value, mu_soft, std_soft) > norm.pdf(test_value, mu_bone, std_bone):
+	print(f"For value {test_value} the class is soft tissue")
+else:
+	print(f"For value {test_value} the class is bone")
+```
+
+here the `test_value` is a pixel value that you want to assign a class. One way to use this is to create a *look-up-table* where for each possible HU unit (for example 100, 101, 102 etc), the most probably class is noted. Doing this will give you the pixel value, where the two neighbouring classes meet.
+
+**Exercise 11**: *Use `norm.pdf` to find the optimal class ranges between fat, soft tissue and bone.*
+
 
 
 
