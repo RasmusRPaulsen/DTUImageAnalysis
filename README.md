@@ -16,7 +16,7 @@ This repository contains exercises and data for the DTU course [02502 Image Anal
 - [4b - Image Morphology](exercises/ex4b-ImageMorphology)
 - [5 - BLOB Analysis / Connected component analysis and object classification](exercises/ex5-BLOBAnalysis/)
 - [6 - Pixel classification and object segmentation](exercises/ex6-PixelClassificationAndObjectSegmentation)
-- [6 - Advanced Pixel Classification](exercises/ex6b-AdvancedPixelClassification)
+- [6b - Advanced Pixel Classification](exercises/ex6b-AdvancedPixelClassification)
 - [7 - Geometric transformations and landmark based registration](exercises/Ex7-GeometricTransformationsAndRegistration)
 
 ### Author
