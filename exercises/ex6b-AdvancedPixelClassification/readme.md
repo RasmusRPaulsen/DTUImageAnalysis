@@ -135,7 +135,7 @@ Y = np.c_[np.ones((len(Xall), 1)), Xall] @ W.T
 ## Exercise 8
 Perform multi-modal classification: Calculate the posterior probability i.e. $P(X|C_1)$ of a data point belonging to class 1
 
-*Note: Using Bayes [Eq 1]: Since $y(x)$ is the log of the posterior probability [Eq2] we take $\exp(y(x))$ to get $P(X|C_1)=P(X|\mu,\sigma)P(C_1)$ and divide with the marginal probability $P(X)$ as normalisation factor.*
+*Note: Using Bayes [Eq 1]: Since *$y(x)$* is the log of the posterior probability [Eq2] we take *$\exp(y(x))$* to get *$P(X|C_1)=P(X|\mu,\sigma)P(C_1)$* and divide with the marginal probability *$P(X)$* as normalisation factor.*
 
 ```python
 PosteriorProb = np.exp(Y) / np.repmat(np.sum(np.exp(Y),2), 1, 2)
