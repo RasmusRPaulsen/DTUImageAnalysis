@@ -1,4 +1,4 @@
-# Exercise 8 - Advanced segmentation Fisherman's Linear discriminant analysis for segmentation
+# Exercise 6b - Advanced segmentation Fisherman's Linear discriminant analysis for segmentation
 
 
 ## Introduction
@@ -116,7 +116,7 @@ Make a scatter plot of the training points of the two input features for class 1
 **Q5**: How does the class separation appear in the 2D scatter plot compared with 1D histogram. Is it better?
 
 ## Exercise 6
-Train the linear discriminant classifier using the Fisher discriminant function and estimate the weight-vector coefficient W (i.e. $w_0$ and $w$) for classification given X and T by using the `W=LDA()` function. The LDA function outputs W=[[w01, w1], [w02, w2]] for class 1 and 2 respectively.
+Train the linear discriminant classifier using the Fisher discriminant function and estimate the weight-vector coefficient W (i.e. $w_0$ and $w$) for classification given X and T by using the `W=LDA()` function. The LDA function outputs W=[[w01, w1]; [w02, w2]] for class 1 and 2 respectively.
 
 *Tip: Read the Bishop note on Chapter 4.*
 
