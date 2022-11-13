@@ -41,7 +41,7 @@ The data and material needed for this exercise can be found here:
 
 - [Exercise data](data)
 
-ex6_ImgData2Load.mat contains all image and ROI data which are loaded into
+ex8_ImgData2Load.mat contains all image and ROI data which are loaded into
 the variables:
 
 - **ImgT1** One axial slice of brain using T1W MRI acquisition
@@ -49,7 +49,7 @@ the variables:
 - **ROI_WM** Binary training data for class 1: Expert identification of voxels belonging to tissue type: White Matter
 - **ROI_GM** Binary training data for class 2: Expert identification of voxels belonging to tissue type: Grey Matter
 
-LDA.py A python function that realise the Fisher's linear discriminant analyse as described in Note for lecture 6.
+LDA.py A python function that realise the Fisher's linear discriminant analyse as described in Note for the lecture.
 
 # Image Segmentation
 
@@ -64,7 +64,7 @@ And the data:
 
 ```python
 in_dir = 'data/'
-in_file = 'ex6_ImagData2Load.mat'
+in_file = 'ex8_ImagData2Load.mat'
 data = sio.loadmat(in_dir + in_file)
 ImgT1 = data['ImgT1']
 ImgT2 = data['ImgT2']
