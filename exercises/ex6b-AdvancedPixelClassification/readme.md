@@ -41,7 +41,7 @@ The data and material needed for this exercise can be found here:
 
 - [Exercise data](data)
 
-ex8_ImgData2Load.mat contains all image and ROI data which are loaded into
+ex6_ImgData2Load.mat contains all image and ROI data which are loaded into
 the variables:
 
 - **ImgT1** One axial slice of brain using T1W MRI acquisition
@@ -64,7 +64,7 @@ And the data:
 
 ```python
 in_dir = 'data/'
-in_file = 'ex8_ImagData2Load.mat'
+in_file = 'ex6_ImagData2Load.mat'
 data = sio.loadmat(in_dir + in_file)
 ImgT1 = data['ImgT1']
 ImgT2 = data['ImgT2']
