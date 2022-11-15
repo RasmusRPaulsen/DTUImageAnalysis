@@ -111,6 +111,8 @@ Make a training data vector (X) and target class vector (T) as input for the `LD
 
 **T**: Target class identifier for X where '0' are Class 1 and a '1' is Class 2.
 
+*Tip: Read the documentation of the provided LDA function to understand the expected input dimensions.*
+
 ## Exercise 5 
 Make a scatter plot of the training points of the two input features for class 1 and class 2 as green and black circles, respectively. Add relevant title and labels to axis
 
@@ -119,9 +121,7 @@ Make a scatter plot of the training points of the two input features for class 1
 ## Exercise 6
 Train the linear discriminant classifier using the Fisher discriminant function and estimate the weight-vector coefficient W (i.e. $w_0$ and $w$) for classification given X and T by using the `W=LDA()` function. The LDA function outputs W=[[w01, w1]; [w02, w2]] for class 1 and 2 respectively.
 
-*Tip 1: Read the Bishop note on Chapter 4.*
-
-*Tip 2: Read the documentation of the provided LDA function to understand the expected input dimensions.*
+*Tip: Read the Bishop note on Chapter 4.*
 
 ```python
 W = LDA(X,T)
