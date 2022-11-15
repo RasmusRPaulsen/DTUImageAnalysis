@@ -74,7 +74,7 @@ ROI_WM = data['ROI_WM']
 
 ## Exercise 1 
 Display both the T1 and T2 images, their 1 and 2D histograms and scatter plots.
-Tips: Use the `plt.imshow()`, `plt.hist()`, `plt.hist2D()` and `plt.scatter()` functions
+Tips: Use the `plt.imshow()`, `plt.hist()`, `plt.hist2d()` and `plt.scatter()` functions
 Add relevant title and label for each axis. One can use `plt.subplots()` to show more subfigures in the same figure. Remove intensities from background voxels for 1D and 2D histograms.
 
 ![imshow image coordinates](figs/Picture1.png)
