@@ -119,7 +119,9 @@ Make a scatter plot of the training points of the two input features for class 1
 ## Exercise 6
 Train the linear discriminant classifier using the Fisher discriminant function and estimate the weight-vector coefficient W (i.e. $w_0$ and $w$) for classification given X and T by using the `W=LDA()` function. The LDA function outputs W=[[w01, w1]; [w02, w2]] for class 1 and 2 respectively.
 
-*Tip: Read the Bishop note on Chapter 4.*
+*Tip 1: Read the Bishop note on Chapter 4.*
+
+*Tip 2: Read the documentation of the provided LDA function to understand the expected input dimensions.*
 
 ```python
 W = LDA(X,T)
@@ -136,7 +138,7 @@ Y = np.c_[np.ones((len(Xall), 1)), Xall] @ W.T
 ## Exercise 8
 Perform multi-modal classification: Calculate the posterior probability i.e. $P(X|C_1)$ of a data point belonging to class 1
 
-*Note: Using Bayes [Eq 1]: Since *$y(x)$* is the log of the posterior probability [Eq2] we take *$\exp(y(x))$* to get *$P(X|C_1)=P(X|\mu,\sigma)P(C_1)$* and divide with the marginal probability *$P(X)$* as normalisation factor.*
+*Note: Using Bayes [Eq 1]: Since* $y(x)$ *is the log of the posterior probability [Eq2] we take* $\exp(y(x))$ *to get* $P(X|C_1)=P(X|\mu,\sigma)P(C_1)$ *and divide with the marginal probability* $P(X)$ *as normalisation factor.*
 
 ```python
 PosteriorProb = np.clip(np.exp(Y) / np.sum(np.exp(Y),1)[:, np.newaxis]), 0, 1)
