@@ -99,7 +99,7 @@ Place trainings examples i.e. ROI_WM and ROI_GM into variables C1 and C2 represe
 
 ## Exercise 3
 For each binary training ROI find the corresponding training examples in ImgT1 and ImgT2. Later these will be extracted for LDA training. 
-*Tips*: You may use the `np.argwhere()` function appropiately to return the index to voxels in the image full filling e.g. intensity values >0 hence belong to a given class. Name the index variables qC1 and qC2, respectively
+*Tips*: You may (if you are a MATLAB-like programming lover) use the `np.argwhere()` function appropiately to return the index to voxels in the image full filling e.g. intensity values >0 hence belong to a given class. Name the index variables qC1 and qC2, respectively.
 
 **Q4**: What is the difference between the 1D histogram of the training examples and the 1D histogram of the whole image? Is the difference expected?
 
