@@ -1,4 +1,4 @@
-# Exercise 6b - Advanced segmentation Fisherman's Linear discriminant analysis for segmentation
+# Exercise 6b - Advanced segmentation. Fisherman's Linear discriminant analysis for segmentation
 
 
 ## Introduction
@@ -24,10 +24,10 @@ You can find an **important** description of the theory behind LDA in - [Exercis
 3.	To identify the expected intensity thresholds in each of the 1D histograms that best segment the same feature in the two image modalities.
 4.	To visually the 2D histogram of two image modalities that map the same object but with different intensity information.
 5.	To interpret the 2D histogram information by identifying clusters of 2D intensity distributions and relate these to features in the images.
-6.	To draw an expected linear hyper plan in the 2D histogram that best segment and feature in the two image modalities
+6.	To draw an expected linear hyper plane in the 2D histogram that best segment and feature in the two image modalities
 7.	To extract training data sets and their corresponding class labels from expert drawn regions-of-interest data, and map their corresponding 2D histogram for visual inspection
 8.	To relate the Bayesian theory to a linear discriminate analysis classifier for estimating class probabilities of segmented features.
-9.	To judge if the estimated linear or a non-linear hyper plan is optimal placed for robust segmentation of two classes.
+9.	To judge if the estimated linear or a non-linear hyper plane is optimal placed for robust segmentation of two classes.
 
 ## Installing Python packages
 
@@ -152,7 +152,7 @@ Show scatter plot of segmentation results as in 5.
 
 **Q6** Can you identify where the hyperplane is placed i.e. y(x)=0?
 
-**Q7** Is the linear hyper plane positioned as you expected or would a non-linear hyper plan perform better?
+**Q7** Is the linear hyper plane positioned as you expected or would a non-linear hyper plane perform better?
 
 **Q8** Would segmentation be as good as using a single image modality using thresholding?
 
