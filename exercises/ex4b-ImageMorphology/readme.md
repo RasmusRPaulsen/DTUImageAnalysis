@@ -10,9 +10,9 @@ After completing this exercise, the student should be able to do the following:
 2. Perform the morphological operations: *erosion*, *dilation*, *opening* and *closing* on binary images.
 3. Compute the outlines seen in a binary image.
 4. Use morphological operations to remove holes in objects.
-5. Use morphological operations to seperate binary objects.
-6. Select appropriate footprints based on image properties and object apperance.
-7. Combine morphological operations to clean and seperate objects.
+5. Use morphological operations to separate binary objects.
+6. Select appropriate footprints based on image properties and object appearance.
+7. Combine morphological operations to clean and separate objects.
 
 
 # Installing Python packages
@@ -80,7 +80,7 @@ footprint = disk(2)
 print(footprint)
 ```
 
-The morphological operation **erosion** can remove small objects, seperate objects and make objects smaller. Try it on the binary lego image:
+The morphological operation **erosion** can remove small objects, separate objects and make objects smaller. Try it on the binary lego image:
 
 ```python
 eroded = erosion(bin_img, footprint)
@@ -180,7 +180,7 @@ Try the above on the **lego_3.png** image. What do you observe?
 
 ## Morphology on multiple connected objects
 
-Morphology is a strong tool that can be used to clean images and seperate connected objects. In image **lego_9.png** some lego bricks are touching. We would like to see if we can seperate them.
+Morphology is a strong tool that can be used to clean images and separate connected objects. In image **lego_9.png** some lego bricks are touching. We would like to see if we can separate them.
 
 ### Exercise 11
 
@@ -198,7 +198,7 @@ Let us start by trying to remove the noise holes inside the lego bricks. Do that
 
 ### Exercise 13
 
-Now we will try to seperate the objects. Try using a *erosion* on the image that you repaired in exercise 12. You should probably use a rather large footprint. How large does it need to be in order to split the objects?
+Now we will try to separate the objects. Try using a *erosion* on the image that you repaired in exercise 12. You should probably use a rather large footprint. How large does it need to be in order to split the objects?
 
 ### Exercise 14
 
