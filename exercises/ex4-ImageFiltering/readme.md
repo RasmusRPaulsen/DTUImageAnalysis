@@ -16,7 +16,7 @@ After completing this exercise, the student should be able to do the following:
 6. Describe the concept on an image edge.
 7. Describe the concept of image gradients.
 8. Use the Prewitt filter to extract horizontal and vertical edges and their combined magnitude (`skimage.filters.prewitt_h`, `skimage.filters.prewitt_v`, `skimage.filters.prewitt`).
-9. Estimate a threshold in an edge image to create a binary image reflecting the signficant edges in an image.
+9. Estimate a threshold in an edge image to create a binary image reflecting the significant edges in an image.
 10. Implement, test, adapt and evaluate a function that can automatically detect important edges in an image.
 11. Implement and test a program that apply filters to a video stream.
 12. Test the impact of a video processing frame rate when applying different filters to the video stream.
