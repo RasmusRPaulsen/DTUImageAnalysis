@@ -15,7 +15,7 @@ Exercise - You simply go step-by-step and fill in the command lines and answer/d
 
 As a classifier, we will use a class of linear discriminate functions that aims to place a hyperplane in the multi-dimensional feature space that acts as a decision boundary to segment two features into classes. Since we only look at image intensities of two image modalities our multi-dimensional feature space is a 2D intensity histogram. The linear discriminant classifier is based on the Bayesian theory where the posterior probability is the probability of voxel x belonging to class $C_i$. The voxel x belongs to the class with the highest posterior probability. 
 
-You can find an **important** description of the theory behind LDA in - [Exercise theory](theory/Exercise6b_2022.pdf)
+You can find an **important** description of the theory behind LDA in - [Exercise theory](theory/Exercise6b_2022_updateDec22.pdf)
 
 ## Learning Objectives
 
@@ -100,7 +100,7 @@ Place trainings examples i.e. ROI_WM and ROI_GM into variables C1 and C2 represe
 ## Exercise 3
 For each binary training ROI find the corresponding training examples in ImgT1 and ImgT2. Later these will be extracted for LDA training.
 
-*Tips*: If you are a MATLAB-like programming lover, you may use the `np.argwhere()` function appropiately to return the index to voxels in the image full filling e.g. intensity values >0 hence belong to a given class. Name the index variables qC1 and qC2, respectively.
+*Tips*: If you are a MATLAB-like programming lover, you may use the `np.argwhere()` function appropriately to return the index to voxels in the image full filling e.g. intensity values >0 hence belong to a given class. Name the index variables qC1 and qC2, respectively.
 
 **Q4**: What is the difference between the 1D histogram of the training examples and the 1D histogram of the whole image? Is the difference expected?
 
@@ -162,6 +162,6 @@ Show scatter plot of segmentation results as in 5.
 
 **Q10** Are the training examples representative for the segmentation results? Are you surprised that so few training examples perform so well? Do you need to be an anatomical expert to draw these?
 
-**Q11** Compare the segmentation results with the original image. Is the segmentation results satisfactory? Why not?
+**Q11** Compare the segmentation results with the original image. Are the segmentation results satisfactory? Why not?
 
 **Q12** Is one class completely wrong segmented? What is the problem?
