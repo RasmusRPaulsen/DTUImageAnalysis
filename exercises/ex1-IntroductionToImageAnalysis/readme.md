@@ -140,7 +140,7 @@ im_org = io.imread(in_dir + im_name)
 print(im_org.shape)
 ```
 
-**Exercise 3:** *Check the pixel type (unsigned int, boolean, double or something else):
+**Exercise 3:** *Check the pixel type (unsigned int, boolean, double or something else):*
 
 ```python
 print(im_org.dtype)
