@@ -146,7 +146,8 @@ print(im_org.shape)
 print(im_org.dtype)
 ```
 
-**Exercise 4:** *Display the image:*
+**Exercise 4:** *Display the image and try to use the simple viewer tools like **zoom** tool to inspect the finger bones. You can see the pixel values at a given pixel position (in x, y coordinates) in the upper right corner. Where do you see the highest and lowest pixel values?*
+
 
 ```python
 io.imshow(im_org)
@@ -154,7 +155,6 @@ plt.title('Metacarpal image')
 io.show()
 ```
 
-*Try to use the simple viewer tools like **zoom** tool to inspect the finger bones. You can see the pixel values at a given pixel position (in x, y coordinates) in the upper right corner. Where do you see the highest and lowest pixel values?*
 
 ## Color maps
 
