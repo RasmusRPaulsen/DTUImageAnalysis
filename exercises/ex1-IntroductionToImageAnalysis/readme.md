@@ -146,7 +146,7 @@ print(im_org.shape)
 print(im_org.dtype)
 ```
 
-**Exercise 4:** *Display the image and try to use the simple viewer tools like **zoom** tool to inspect the finger bones. You can see the pixel values at a given pixel position (in x, y coordinates) in the upper right corner. Where do you see the highest and lowest pixel values?*
+**Exercise 4:** *Display the image and try to use the simple viewer tools like the **zoom** tool to inspect the finger bones. You can see the pixel values at a given pixel position (in x, y coordinates) in the upper right corner. Where do you see the highest and lowest pixel values?*
 
 
 ```python
@@ -154,7 +154,6 @@ io.imshow(im_org)
 plt.title('Metacarpal image')
 io.show()
 ```
-
 
 ## Color maps
 
@@ -179,7 +178,7 @@ A list of color maps can be found here: [Matplotlib color maps](https://matplotl
 
 ## Grey scale scaling
 
-Sometimes, there is a lack of contrast in an image. It possible to scale the way the image is visualized, by forcing a pixel value range into the *[all black, all white gray]* range.
+Sometimes, there is a lack of contrast in an image or the brightness levels are not optimals. It possible to scale the way the image is visualized, by forcing a pixel value range to use the full gray scale range (from white to black).
 
 By calling `imshow` like this:
 
@@ -189,7 +188,7 @@ plt.title('Metacarpal image (with gray level scaling)')
 io.show()
 ```
 
-Pixels with values of 20 and below will be visualized black and pixels with values of 170 and above as white.
+Pixels with values of 20 and below will be visualized black and pixels with values of 170 and above as white and values in between as shades of gray.
 
 **Exercise 7:** *Try to find a way to automatically scale the visualization, so the pixel with the lowest value in the image is shown as black and the pixel with the highest value in the image is shown as white.*
 
