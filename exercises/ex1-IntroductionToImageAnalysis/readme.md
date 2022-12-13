@@ -27,10 +27,10 @@ After completing this exercise, the student should be able to do the following:
 19. Resize and image, where the width and height of the image are scaled with the different factors.
 20. Transform an RGB image into a grey-level image using `rgb2gray`.
 21. Transform a gray-level image into an RGB image `gray2rgb`.
-22. Transform a pixel representation from floating points to unsigned bytes.
+22. Transform a pixel representation from floating points to unsigned bytes using `img_as_ubyte`.
 23. Visualize individual color channels in an RGB image.
 24. Change and manipulate individual color channels in an RGB image.
-25. Sample and visualize grey scale profiles from gray scale images.
+25. Sample and visualize grey scale profiles from gray scale images using `profile_line`.
 26. Create 3D visualizations of an image, so it is seen as a height map.
 27. Read individual DICOM files and get information about the image from the DICOM header.
 28. Access the raw pixel data of individual DICOM files.
@@ -39,9 +39,9 @@ After completing this exercise, the student should be able to do the following:
 
 ## Anaconda and virtual environments
 
-We strongly recommend to use the [Anaconda](https://www.anaconda.com/products/distribution) framework for your Python installation and other tools. It can be installed from here [Anaconda](https://www.anaconda.com/products/distribution).
+We strongly recommend to use the [Anaconda](https://www.anaconda.com/products/distribution) framework for your Python installation and other tools. It can be installed from here: [Anaconda](https://www.anaconda.com/products/distribution).
 
-When you have installed Anaconda, you can start by creating a **virtual environment**. A virtual environment is a practical way to keep a specific Python interpreter, installed libraries and scrips isolated. So if you have several projects that each requires different libraries, they can be kept separate.
+When you have installed Anaconda, you can start by creating a **virtual environment**. A virtual environment is a practical way of keeping a specific Python interpreter, installed libraries and scrips isolated. So if you have several projects that each requires different libraries, they can be kept separate.
 
 ### Creating and activating a conda environment
 Start an **Anaconda prompt** and do:
@@ -72,7 +72,7 @@ It is important that your Notebook, Spyder, Pycharm or other development tool is
 
 ## Installing Python packages
 
-In this course, we will use several Python packages. We will install them as needed. To install the package [scikit-image (skimage)] (https://scikit-image.org/), start an **Anaconda prompt** and do:
+In this course, we will use several Python packages. We will install them as needed. To install the package [scikit-image (skimage)](https://scikit-image.org/), start an **Anaconda prompt** and do:
 
 ```Shell
 activate course02502
