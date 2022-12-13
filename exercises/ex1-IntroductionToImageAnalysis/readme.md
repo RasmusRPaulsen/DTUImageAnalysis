@@ -328,7 +328,7 @@ image_rescaled = rescale(im_org, 0.25, anti_aliasing=True,
 
 Here we selected a scale factor of 0.25. We also specify, that we have more than one channel (since it is RGB) and that the channels are kept in the third dimension of the NumPy array. The rescale function has this side effect, that it changes the type of the pixel values.
 
-**Exercise 18:** *What is the type of the pixels after rescaling? Try to show the image and inspect the pixel values. Are they still in the range of [0, 255] ?
+**Exercise 18:** *What is the type of the pixels after rescaling? Try to show the image and inspect the pixel values. Are they still in the range of [0, 255]?*
 
 The function `rescale` scales the height and the width of the image with the same factor. The `resize` functions can scale the height and width of the image with different scales. For example:
 
@@ -354,7 +354,7 @@ We are forcing the pixel type back into **unsigned bytes** using the `img_as_uby
 
 **Exercise 20:** *Take an image that is very dark and another very light image. Compute and visualise the histograms for the two images. Explain the difference between the two.*
 
-**Exercise 21:** *Take an image with a bright object on a dark background.Compute and visualise the histograms for the image. Can you recognise the object and the background in the histogram?*
+**Exercise 21:** *Take an image with a bright object on a dark background. Compute and visualise the histograms for the image. Can you recognise the object and the background in the histogram?*
 
 
 ## Color channels
@@ -390,16 +390,16 @@ im_org[500:1000, 800:1500, :] = 0
 
 **Exercise 26:** *Try to create a blue rectangle around the DTU Compute sign and save the resulting image.*
 
-**Exercise 27:** *Try to automatically create an image based on **{metacarpals.png** where the bones are colored blue. You should use `color.gray2rgb` and pixel masks.*
+**Exercise 27:** *Try to automatically create an image based on **metacarpals.png** where the bones are colored blue. You should use `color.gray2rgb` and pixel masks.*
 
 
 ## Advanced Image Visualisation
 
 Before implementing a fancy image analysis algorithm, it is very important to get an intuitive understanding of how the image *looks as seen from the computer*. The next set of tools can help to gain a better understanding.
 
-In this example we will work with an x-ray image of the human hand. Bones are hollow and we want to understand how a hollow structure looks on an image. 
+In this example, we will work with an x-ray image of the human hand. Bones are hollow and we want to understand how a hollow structure looks on an image. 
 
-Start by reading the image **metarcarpals.png**. To investigate the properties of the hollow bone a grey-level profile can be sampled across the bone. The tool `profile_line` can be used to sample a profile across the bone:
+Start by reading the image **metarcarpals.png**. To investigate the properties of the hollow bone, a grey-level profile can be sampled across the bone. The tool `profile_line` can be used to sample a profile across the bone:
 
 ```python
 p = profile_line(im_org, (342, 77), (320, 160))
@@ -466,5 +466,3 @@ io.show()
 As can be seen, the pixel values are stored as 16 bit integers and therefore it is necessary to specify which value range that should be mapped to the gray scale spectrum (using vmin and vmax). Try to experiment with the vmin and vmax values to get the best possible contrast in the image.
 
 
-
-## References
