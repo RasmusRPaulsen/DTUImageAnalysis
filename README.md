@@ -6,8 +6,9 @@ An introductory course to image analysis at the [Technical University of Denmark
 
 This repository contains exercises and data for the DTU course [02502 Image Analysis](http://courses.compute.dtu.dk/02502/)
 
-## Exercises (Fall 2022)
+## Exercises
 
+- [1 - Introduction to image analysis in Python](exercises/ex1-IntroductionToImageAnalysis)
 - [1b - An introduction to principal component analysis (PCA)](exercises/ex1b-PCA)
 - [2 - Cameras and Lenses](exercises/ex2-CamerasAndLenses)
 - [2b - Change Detection in Videos](exercises/ex2b-ChangeDetectionInVideos)
