@@ -61,7 +61,7 @@ It is possible to use a mobile phone as a remote camera by following the instruc
 
 Note that we sometimes refers to an image as a *frame*.
 
-**Exercise 1:** * Run the program from the [exercise material](https://github.com/RasmusRPaulsen/DTUImageAnalysis/blob/main/exercises/ex2b-ChangeDetectionInVideos/data/) and see if shows the expected results? Try to move your hands in front of the camera and try to move the camera and see the effects on the difference image.*
+**Exercise 1:** *Run the program from the [exercise material](https://github.com/RasmusRPaulsen/DTUImageAnalysis/blob/main/exercises/ex2b-ChangeDetectionInVideos/data/) and see if shows the expected results? Try to move your hands in front of the camera and try to move the camera and see the effects on the difference image.*
 
 **Exercise 2:** *Identify the important steps above in the program. What function is used to convert a color image to a gray-scale image?*
 
@@ -89,7 +89,7 @@ You can start by trying with $\alpha = 0.95$, $T = 0.1$, and $A = 0.05$.
 
 **Exercise 3:** *Implement and test the above program.*
 
-**Exercise 4:** *Try to change $\alpha$, $T$ and $A$. What effects do it have?*
+**Exercise 4:** *Try to change* $\alpha$, $T$ and $A$. *What effects do it have?*
 
 The images are displayed using the OpenCV function `imshow`. The display window has several ways of zooming in the displayed image. One function is to zoom x30 that shows the pixel values as numbers. 
 
