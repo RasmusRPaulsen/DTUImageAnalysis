@@ -1,8 +1,3 @@
-# Data and material for exercise 2b - Change detection in videos
-
-## Exercise script for change detection by image differencing
-
-```python
 import time
 import cv2
 import numpy as np
@@ -90,4 +85,3 @@ def capture_from_camera_and_show_images():
 
 if __name__ == '__main__':
     capture_from_camera_and_show_images()
-```
