@@ -110,7 +110,7 @@ You can use the *Numpy* function `power` to compute the actual mapping function.
 2. Do the gamma mapping on the pixel values
 3. Returns the resulting image as an unsigned byte image.
 
-**Exercise 8:** *Test your `gamma_map` function on the vertebra image or another image of your choice. Try different values of $\gamma$, for example 0.5 and 2.0. Show the resuling image together with the input image. Can you see the differences in the images?*
+**Exercise 8:** *Test your `gamma_map` function on the vertebra image or another image of your choice. Try different values of* $\gamma$, *for example 0.5 and 2.0. Show the resuling image together with the input image. Can you see the differences in the images?*
 
 # Image segmentation by thresholding
 
