@@ -48,7 +48,7 @@ Start an **Anaconda prompt** and do:
 
 ```Shell
 conda create --name course02502 python=3.9
-activate course02502
+conda activate course02502
 ```
 
 here a new virtual environment called `course02502` is created and activated.
@@ -75,7 +75,7 @@ It is important that your Notebook, Spyder, Pycharm or other development tool is
 In this course, we will use several Python packages. We will install them as needed. To install the package [scikit-image (skimage)](https://scikit-image.org/), start an **Anaconda prompt** and do:
 
 ```Shell
-activate course02502
+conda activate course02502
 conda install -c anaconda scikit-image
 ```
 
