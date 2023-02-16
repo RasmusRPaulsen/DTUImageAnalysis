@@ -121,3 +121,9 @@ cap = cv2.VideoCapture(url)
 You should now see the video from your mobile phone on your computer screen. Remember you phone should be unlocked when streaming video.
 
 
+# Notes on OpenCV and MacOS
+
+Viktor Holmenlund Larsen had problems using MacOS (Big Sur 11.2.3) and fixed it by changing `cv.VideoCapture(0)` to `cv.VideoCapture(1)`. Also by updating `Gstreamer` and its dependencies and deinstalling and resinstalling OpenCV after.
+
+
+
