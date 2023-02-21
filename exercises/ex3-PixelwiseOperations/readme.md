@@ -7,8 +7,8 @@ In this exercise you will learn to perform pixelwise operations using Python.
 
 After completing this exercise, the student should be able to do the following:
 
-1. Convert from unsigned byte to float images using the scikit-image function `img_as_ubyte`
-2. Convert from float to unsigned byte images using the scikit-image function `img_as_float`
+1. Convert from unsigned byte to float images using the scikit-image function `img_as_float`
+2. Convert from float to unsigned byte images using the scikit-image function `img_as_ubyte`
 3. Implement and test a function that can do linear histogram stretching of a grey level image.
 4. Implement and test a function that can perform gamma mapping of a grey level image.
 5. Implement and test a function that can threshold a grey scale image.
