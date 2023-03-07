@@ -5,6 +5,9 @@ import plotly.express as px
 import plotly.graph_objects as go
 from skimage import data, filters, measure, morphology, io, color
 
+# spyder fix
+import plotly.io as pio 
+pio.renderers.default = 'browser'
 
 def interactive_blobs():
     in_dir = "data/"
