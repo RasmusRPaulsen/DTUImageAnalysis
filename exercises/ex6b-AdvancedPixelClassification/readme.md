@@ -15,7 +15,7 @@ Exercise - You simply go step-by-step and fill in the command lines and answer/d
 
 As a classifier, we will use a class of linear discriminate functions that aims to place a hyperplane in the multi-dimensional feature space that acts as a decision boundary to segment two features into classes. Since we only look at image intensities of two image modalities our multi-dimensional feature space is a 2D intensity histogram. The linear discriminant classifier is based on the Bayesian theory where the posterior probability is the probability of voxel x belonging to class $C_i$. The voxel x belongs to the class with the highest posterior probability. 
 
-You can find an **important** description of the theory behind LDA in - [Exercise theory](theory/Exercise6b_2023_Theory.pdf.pdf)
+You can find an **important** description of the theory behind LDA in - [Exercise theory](theory/Exercise6b_2023_Theory.pdf)
 
 ## Learning Objectives
 
