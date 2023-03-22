@@ -70,6 +70,20 @@ The data matrix can be constructed by:
 - Read the image files one by one and use `flatten()` to make each image into a 1-D vector (flat_img). 
 - Put the image vector (flat_img) into the data matrix by for example `data_matrix[idx, :] = flat_img` , where idx is the index of the current image.
 
+**Exercise 2:** *Compute the data matrix.* 
+
+## Compute and visualize a mean cat
+
+In the data matrix, one row is one cat. You can therefore compute an average cat, **The Mean Cat** by computing one row, where each element is the average of the column. 
+
+**Exercise 2:** *Compute the average cat.* 
+
+You can use the supplied function `create_u_byte_image_from_vector` to create an image from a 1-D image vector.
+
+**Exercise 3:** *Visualize the Mean Cat* 
+
+
+
 
 ## References
 - [Cat data set](https://www.kaggle.com/datasets/crawford/cat-dataset)

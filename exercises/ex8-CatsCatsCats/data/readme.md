@@ -113,3 +113,17 @@ def preprocess_all_cats():
         if proc_img is not None:
             io.imsave(out_name, proc_img)
 ```
+
+
+```python
+def create_u_byte_image_from_vector(im_vec, height, width, channels):
+    min_val = im_vec.min()
+    max_val = im_vec.max()
+
+    # Transform to [0, 1]
+    im_vec = np.subtract(im_vec, min_val)
+    im_vec = np.divide(im_vec, max_val - min_val)
+    im_vec = im_vec.reshape(height, width, channels)
+    im_out = img_as_ubyte(im_vec)
+    return im_out
+```
