@@ -82,7 +82,23 @@ You can use the supplied function `create_u_byte_image_from_vector` to create an
 
 **Exercise 3:** *Visualize the Mean Cat* 
 
+## Find a missing cat or a cat that looks like it
 
+Oh! no! You were in such a hurry to get to DTU that you forgot to close your window. Now your cat is gone!!! What to do? 
+
+**Exercise 4:** *Decide that you quickly buy a new cat that looks very much like the missing cat - so nobody notices* 
+
+To find a cat that looks like the missing cat, you start by comparing the missing cat pixels to the pixels of the cats in the training set. The comparison between missing cat data and the training data can be done using the sum-of-squared differences (SSD).
+
+**Exercise 5:** *Use the `preprocess_one_cat` function to preprocess the photo of the poor missing cat*
+
+**Exercise 6:** *Flatten the pixel values of the missing cat so it becomes a vector of values.*
+
+**Exercise 7:** *Subtract you missing cat data from all the rows in the data_matrix and for each row compute the sum of squared differences. This can for example be done by `sub_distances = np.linalg.norm(sub_data, axis=1)`, where sub_data are the subtracted pixel data.*
+
+**Exercise 8:** *Find the training cat that looks most like your missing cat by finding the cat, where the SSD is smallest. You can for example use `np.argmin`.
+
+**Exercise 9:** *Extract the found cat from the data_matrix and use `create_u_byte_image_from_vector` to create an image that can be visualized. Did you find a good replacement cat?*
 
 
 ## References
