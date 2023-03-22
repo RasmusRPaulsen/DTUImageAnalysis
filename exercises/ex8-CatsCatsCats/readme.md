@@ -11,7 +11,7 @@ To be able to do these wonderful things we will harness the power of image based
 
 After completing this exercise, the student should be able to do the following:
 
-1. compute PCA on images
+1. Use the python function `glob` to find all files with a given pattern in a folder.
 
 ## Importing required Python packages
 
@@ -56,6 +56,19 @@ The preprocessing steps are:
 **Exercise 1:** *Preprocess all image in the training set. To do the preprocessing, you can use the code snippets supplied* [here](https://github.com/RasmusRPaulsen/DTUImageAnalysis/tree/main/exercises/ex8-CatsCatsCats/data)
 
 The result of the preprocessing is a directory containing smaller photos of the same shape containing cat faces.
+
+## Gathering data into a data matrix
+
+To start, we want to collect all the image data into a data matrix. The matrix should have dimensions `[n_samples, n_features]` where **n_samples** is the number of photos in our training set and **n_features** is the number of values per image. Since we are working with RGB images, the number of features are given by `n_features = height * width * 3`. 
+
+The data matrix can be constructed by:
+
+- Find the number of image files in the **preprocessed** folder using `glob`
+- Read the first photo and use that to find the height and width of the photos
+- Set **n_samples** and **n_features**
+- Make an empty matrix `data_matrix = np.zeros((n_samples, n_features))`
+- Read the image files one by one and use `flatten()` to make each image into a 1-D vector (flat_img). 
+- Put the image vector (flat_img) into the data matrix by for example `data_matrix[idx, :] = flat_img` , where idx is the index of the current image.
 
 
 ## References
