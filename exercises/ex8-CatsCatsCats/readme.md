@@ -34,8 +34,8 @@ import os
 
 ## Exercise data and material
 
-The data and material needed for this exercise can be found here: [exercise data and material]
-(https://github.com/RasmusRPaulsen/DTUImageAnalysis/tree/main/exercises/ex8-CatsCatsCats/data)
+The data and material needed for this exercise can be found here: 
+[exercise data and material](https://github.com/RasmusRPaulsen/DTUImageAnalysis/tree/main/exercises/ex8-CatsCatsCats/data)
 
 The main part of the data is a large database of photos of cats, where there are also a set of landmarks per photo.
 
