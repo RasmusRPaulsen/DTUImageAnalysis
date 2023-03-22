@@ -53,8 +53,7 @@ The preprocessing steps are:
   - Crop the registered photo
   - Save the result in a fold called **preprocessed**
 
-**Exercise 1:** *Preprocess all image in the training set. To do the preprocessing, you can use the code snippets supplied [here]
-(https://github.com/RasmusRPaulsen/DTUImageAnalysis/tree/main/exercises/ex8-CatsCatsCats/data)*
+**Exercise 1:** *Preprocess all image in the training set. To do the preprocessing, you can use the code snippets supplied* [here](https://github.com/RasmusRPaulsen/DTUImageAnalysis/tree/main/exercises/ex8-CatsCatsCats/data)
 
 The result of the preprocessing is a directory containing smaller photos of the same shape containing cat faces.
 
