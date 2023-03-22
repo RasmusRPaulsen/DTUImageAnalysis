@@ -60,7 +60,7 @@ def align_and_crop_one_cat_to_destination_cat(img_src, lm_src, img_dst, lm_dst):
 ```
 
 
-```
+```python
 def preprocess_one_cat():
     src = "data/cats/MissingCat"
     dst = "data/cats/ModelCat"
@@ -90,7 +90,7 @@ def preprocess_one_cat():
     plt.show()
 ```
 
-```
+```python
 def preprocess_all_cats():
     dst = "data/cats/ModelCat"
     dst_lm = read_landmark_file(f"{dst}.jpg.cat")
