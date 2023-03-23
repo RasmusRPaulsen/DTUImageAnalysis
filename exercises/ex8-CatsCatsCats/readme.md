@@ -82,7 +82,7 @@ You can use the supplied function `create_u_byte_image_from_vector` to create an
 
 **Exercise 3:** *Visualize the Mean Cat* 
 
-## Find a missing cat or a cat that looks like it
+## Find a missing cat or a cat that looks like it (using image comparison)
 
 Oh! no! You were in such a hurry to get to DTU that you forgot to close your window. Now your cat is gone!!! What to do? 
 
@@ -111,6 +111,68 @@ You can also use your own photo of a cat (perhaps even your own cat). To do that
 - Now you can do the above routine to match your own cat.
 
 **Optional Exercise:** *Use a photo of your own cat to find its twins*
+
+
+## Principal component analysis on the cats 
+
+We now move to more classical machine learning on cats. Namely Principal component analysis  (PCA) analysis of the cats image.
+
+To compute the PCA, we use the [sci-kit learn PCA](https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html). Not that this version of PCA automatically *centers* data. It means that it will subtract the average cat from all cats for you.
+
+**Exercise 11:** *Start by computing the first 50 principal components:*
+```
+print("Computing PCA")
+cats_pca = PCA(n_components=50)
+cats_pca.fit(data_matrix)
+```
+
+This might take some time. If your compute can not handle so many images, you can manually move or delete som photos out of the **preprocessed** folder before computing the data matrix.
+
+The amount of the total variation that each component explains can be found in `cats_pca.explained_variance_ratio_`.
+
+**Exercise 12:** *Plot the amount of the total variation explained by each component as function of the component number.*
+
+**Exercise 13:** *How much of the total variation is explained by the first component?*
+
+We can now project all out cat images into the PCA space (that is 50 dimensional):
+
+**Exercise 14:** *Project the cat images into PCA space*:
+```
+components = cats_pca.transform(data_matrix)
+```
+
+Now each cat has a position in PCA space. For each cat this position is 50-dimensional vector. Each value in this vector describes *how much of that component* is present in that cat photo.
+
+We can plot the first two dimensions of the PCA space, to see where the cats are placed. The first PCA coordinate for all the cats can be found using `pc_1 = components[:, 0]` .
+
+**Exercise 15:** *Plot the PCA space by plotting all the cats first and second PCA coordinates in a (x, y) plot*
+
+## Cats in space
+
+We would like to explore what the PCA learnt about our cats in the data set. 
+
+### Extreme cats
+
+We start by finding out which cats that have the most *extreme coordinates* in PCA space. 
+
+**Exercise 16:** *Use `np.argmin` and `np.argmax` to find the ids of the cats that have extreme values in the first and second PCA coordinates. Extract the cats data from the data matrix and use `create_u_byte_image_from_vector` to visualize these cats.*
+
+**Exercise 17:** *How do these extreme cat photo look like? Are some actually of such bad quality that they should be removed from the training set*
+
+### The first synthezesid cat
+
+We can use the PCA to make a so-called **generative model** that can create synthetic samples from the learnt data. It is done by adding a linear combination of principal components to the average cat image:
+
+$$
+I_\text{synth} = I_\text{average} + w_1 * P_1 + w_2 * P_2 + \ldots + w_k * \P_k \enspace ,
+$$
+
+where we $P_1$ is the first principal component, $P_2$ the second and so on. Here we use $k$ principal components.
+
+
+
+
+
 
 
 ## References
