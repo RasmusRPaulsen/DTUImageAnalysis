@@ -4,7 +4,7 @@ In this exercise we need:
 
 - Photo and landmarks of our *model cat*
 - Photo and landmarks of our poor *missing cat*
-- A photo database of cats
+- A [photo database of cats](https://courses.compute.dtu.dk/02502/data/training_cats.zip)
 
 The data comes from (https://www.kaggle.com/datasets/crawford/cat-dataset) and we will use a subset of the images.
 
