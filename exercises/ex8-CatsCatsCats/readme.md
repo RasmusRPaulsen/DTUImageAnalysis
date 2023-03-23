@@ -6,6 +6,7 @@ Also, you can help your friends with missing cats to find the perfect new *twin 
  
 To be able to do these wonderful things we will harness the power of image based *principal component analysis*. The methods we will use, can be called *classical machine learning*.
 
+![Missing Cat](figures/MissingCatProcessed.jpg)
 
 ## Learning Objectives
 
