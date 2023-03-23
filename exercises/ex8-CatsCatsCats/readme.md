@@ -197,7 +197,7 @@ here **m** is the principal component that we are investigating.
 
 **Exercise 20:** *Synthesize and visualize cats that demonstrate the first three major modes of variation. Try show the average cat in the middle of a plot, with the negative sample to the left and the positive to the right. Can you recognise some visual patterns in these modes of variation?*
 
-### The Cat Synthesizer
+### The Cat Synthesizer (EigenCats)
 
 We are now ready to make true cat synthesizer, where cat images are synthesized based on random locations in PCA space. You can start by setting your `synth_cat = average_cat`. Then you can add all the components you want by for example:
 
@@ -208,12 +208,51 @@ for m in range(n_components_to_use):
 	synth_cat = synth_cat + w * np.sqrt(cats_pca.explained_variance_[m]) * cats_pca.components_[m, :]
 ```
 
-**Exercise 21:** *Generate as many cats as your heart desires.*.
+**Exercise 21:** *Generate as many cat photos as your heart desires.*.
 
+## Cat identification in PCA space
 
+Now back to your missing cat. We could find similar cats by computing the difference between the missing cat and all the photos in the databased. Imagine that you only needed to store the 50 weights per cats in your database to do the same type of identification?
 
+**Exercise 22:** *Start by finding the PCA space coordinates of your missing cat:*
 
+```python
+im_miss = io.imread("data/cats/MissingCatProcessed.jpg")
+im_miss_flat = im_miss.flatten()
+im_miss_flat = im_miss_flat.reshape(1, -1)
+pca_coords = cats_pca.transform(im_miss_flat)
+pca_coords = pca_coords.flatten()
+```
 
+The `flatten` calls are needed to bring the arrays into the right shapes.
+
+**Exercise 23:** *Plot all the cats in PCA space using the first two dimensions. Plot your missing cat in the same plot, with another color and marker. Is it placed somewhere sensible and does it have close neighbours?*
+
+We can generate the synthetic cat that is the closest to your missing cat, by using the missing cats position in PCA space:
+
+```python
+n_components_to_use = ?
+synth_cat = average_cat
+for idx in range(n_components_to_use):
+	synth_cat = synth_cat + pca_coords[idx] * cats_pca.components_[idx, :]
+```
+
+**Exercise 24:** *Generate synthetic versions of your cat, where you change the n_components_to_use from 1 to for example 50.*
+
+We can compute (squared) Euclidean distances in PCA space between your cat and all the other cats by:
+
+```python
+comp_sub = components - pca_coords
+pca_distances = np.linalg.norm(comp_sub, axis=1)
+``` 
+
+**Exercise 25:** *Find the id of the cat that has the smallest and largest distance in PCA space to your missing cat. Visualize these cats. Are they as you expected? Do you think your friends and family will notice a difference?*
+
+You can also find the n closest cats by using the `np.argpartition` function. 
+
+**Exercise 26:** *Find the ids of and visualize the 5 closest cats in PCA space. Do they look like your cat?*
+
+What we have been doing here is what has been used for face identification and face recognition (*Matthew Turk and Alex Pentland: Eigenfaces for Recognition, 1991*)
 
 
 
