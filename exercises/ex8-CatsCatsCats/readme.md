@@ -120,7 +120,7 @@ We now move to more classical machine learning on cats. Namely Principal compone
 To compute the PCA, we use the [sci-kit learn PCA](https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html). Not that this version of PCA automatically *centers* data. It means that it will subtract the average cat from all cats for you.
 
 **Exercise 11:** *Start by computing the first 50 principal components:*
-```
+```python
 print("Computing PCA")
 cats_pca = PCA(n_components=50)
 cats_pca.fit(data_matrix)
@@ -137,7 +137,7 @@ The amount of the total variation that each component explains can be found in `
 We can now project all out cat images into the PCA space (that is 50 dimensional):
 
 **Exercise 14:** *Project the cat images into PCA space*:
-```
+```python
 components = cats_pca.transform(data_matrix)
 ```
 
@@ -159,15 +159,44 @@ We start by finding out which cats that have the most *extreme coordinates* in P
 
 **Exercise 17:** *How do these extreme cat photo look like? Are some actually of such bad quality that they should be removed from the training set*
 
-### The first synthezesid cat
+### The first synthesized cat
 
 We can use the PCA to make a so-called **generative model** that can create synthetic samples from the learnt data. It is done by adding a linear combination of principal components to the average cat image:
 
 $$
-I_\text{synth} = I_\text{average} + w_1 * P_1 + w_2 * P_2 + \ldots + w_k * \P_k \enspace ,
+I_\text{synth} = I_\text{average} + w_1 * P_1 + w_2 * P_2 + \ldots + w_k * P_k \enspace ,
 $$
 
 where we $P_1$ is the first principal component, $P_2$ the second and so on. Here we use $k$ principal components.
+
+The principal components are stored in `cats_pca.components_`. So the first principal component is `cats_pca.components_[0, :]` .
+
+**Exercise 18:** *Create your first fake cat using the average image and the first principal component. You should choose experiment with different weight values (w)* :
+```python
+synth_cat = average_cat + w * cats_pca.components_[0, :]
+```
+
+**Exercise 18:** *Use `create_u_byte_image_from_vector` visualize your fake cat.*
+
+You can use the PCA plot we did before to select some suitable values for w.
+
+**Exercise 19:** *Synthesize some cats, where you use both the first and second principal components and select their individual weights based on the PCA plot.*
+
+### The major cat variation in the data set
+
+A very useful method to get an overview of the **major modes of variation** in a dataset is to synthesize the samples that are lying on the outer edges of the PCA space.
+
+If we for example move a distance out of the first principal axis we can synthesize the cat image there. In this case we will try to move to $\pm \sqrt(\text{explained variance})$, where *explained variance* is the variance explained by that principal component. In code, this will look like:
+
+```python
+synth_cat_plus = average_cat + 3 * np.sqrt(cats_pca.explained_variance_[m]) * cats_pca.components_[m, :]
+synth_cat_minus = average_cat - 3 * np.sqrt(cats_pca.explained_variance_[m]) * cats_pca.components_[m, :]
+```  
+
+here **m** is the principal component that we are investigating.
+
+**Exercise 20:** *Synthesize and visualize cats that demonstrate the first three major modes of variation. Try show the average cat in the middle of a plot, with the negative sample to the left and the positive to the right. Can you recognise some visual patterns in these modes of variation?*
+
 
 
 
