@@ -100,6 +100,18 @@ To find a cat that looks like the missing cat, you start by comparing the missin
 
 **Exercise 9:** *Extract the found cat from the data_matrix and use `create_u_byte_image_from_vector` to create an image that can be visualized. Did you find a good replacement cat?*
 
+**Exercise 10:** *You can use `np.argmax` to find the cat that looks the least like the missing cat.*
+
+You can also use your own photo of a cat (perhaps even your own cat). To do that you should:
+
+- Place a jpg version of your cat photo in the folder where you had your missing cat photo. Call it for example **mycat.jpg**
+- Create a landmark file called something like **mycat.jpg.cat**. It is a text file.
+- In the landmark file you should create three landmarks: `3 189 98 235 101 213 142` . Here the first `3` just say there are three landmarks. The following 6 numbers are the (x, y) positions of the right eye, the left eye and the nose. You should manually add these numbers.
+- Use the `preprocess_one_cat` function to preprocess the photo
+- Now you can do the above routine to match your own cat.
+
+**Optional Exercise:** *Use a photo of your own cat to find its twins*
+
 
 ## References
 - [Cat data set](https://www.kaggle.com/datasets/crawford/cat-dataset)

@@ -18,7 +18,7 @@ def read_landmark_file(file_name):
     f = open(file_name, 'r')
     lm_s = f.readline().strip().split(' ')
     n_lms = int(lm_s[0])
-    if n_lms < 4:
+    if n_lms < 3:
         print(f"Not enough landmarks found")
         return None
 
