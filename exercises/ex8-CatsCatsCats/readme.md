@@ -197,6 +197,20 @@ here **m** is the principal component that we are investigating.
 
 **Exercise 20:** *Synthesize and visualize cats that demonstrate the first three major modes of variation. Try show the average cat in the middle of a plot, with the negative sample to the left and the positive to the right. Can you recognise some visual patterns in these modes of variation?*
 
+### The Cat Synthesizer
+
+We are now ready to make true cat synthesizer, where cat images are synthesized based on random locations in PCA space. You can start by setting your `synth_cat = average_cat`. Then you can add all the components you want by for example:
+
+```python
+synth_cat = average_cat
+for m in range(n_components_to_use):
+	w = select a random number in [-3, 3]
+	synth_cat = synth_cat + w * np.sqrt(cats_pca.explained_variance_[m]) * cats_pca.components_[m, :]
+```
+
+**Exercise 21:** *Generate as many cats as your heart desires.*.
+
+
 
 
 
