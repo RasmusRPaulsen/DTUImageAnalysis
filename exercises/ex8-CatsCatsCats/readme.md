@@ -24,7 +24,16 @@ After completing this exercise, the student should be able to do the following:
 10. Visualize an average image
 11. Preprocess one image so it can be used in machine learning.
 12. Use sum-of-squared pixel differences (SSD) to compare one image with all images in a training set.
-13. Identify the images in the training set with the smallest and largest SSD compared to a given image.
+13. Identify and visualize the images in the training set with the smallest and largest SSD compared to a given image.
+14. Do a principal component analysis (PCA) of the data matrix using the [sci-kit learn PCA](https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html)
+15. Select the number of components that should be computed in the PCA.
+16. Extract and visualize the amount of the total variation that each principal component explains. 
+17. Project the data matrix into PCA space.
+18. Plot the first two dimensions of the PCA space. The PCA space is the positions of each sample when projected onto the principal components.
+19. Identify and visualize the images that have extreme positions in PCA. For example the images that have the largest and smallest coordinates in PCA space.
+20. Compute and visualize a synthetic image by adding linear combinations of principal components to the average image.
+21. Select suitable weights based on the PCA space for synthesizing images.
+22. Compute and visualize the major modes of variation in the training set, by sampling along the principal components.
 
 
 ## Importing required Python packages
@@ -126,7 +135,7 @@ You can also use your own photo of a cat (perhaps even your own cat). To do that
 
 - Place a jpg version of your cat photo in the folder where you had your missing cat photo. Call it for example **mycat.jpg**
 - Create a landmark file called something like **mycat.jpg.cat**. It is a text file.
-- In the landmark file you should create three landmarks: `3 189 98 235 101 213 142` . Here the first `3` just say there are three landmarks. The following 6 numbers are the (x, y) positions of the right eye, the left eye and the nose. You should manually add these numbers.
+- In the landmark file you should create three landmarks: `3 189 98 235 101 213 142` . Here the first `3` just say there are three landmarks. The following 6 numbers are the (x, y) positions of the right eye, the left eye and the nose. You should manually update these numbers.
 - Use the `preprocess_one_cat` function to preprocess the photo
 - Now you can do the above routine to match your own cat.
 
@@ -175,7 +184,7 @@ We would like to explore what the PCA learnt about our cats in the data set.
 
 We start by finding out which cats that have the most *extreme coordinates* in PCA space. 
 
-**Exercise 17:** *Use `np.argmin` and `np.argmax` to find the ids of the cats that have extreme values in the first and second PCA coordinates. Extract the cats data from the data matrix and use `create_u_byte_image_from_vector` to visualize these cats.*
+**Exercise 17:** *Use `np.argmin` and `np.argmax` to find the ids of the cats that have extreme values in the first and second PCA coordinates. Extract the cats data from the data matrix and use `create_u_byte_image_from_vector` to visualize these cats. Also plot the PCA space where you plot the extreme cats with another marker and color.*
 
 **Exercise 18:** *How do these extreme cat photo look like? Are some actually of such bad quality that they should be removed from the training set*
 
@@ -219,9 +228,10 @@ here **m** is the principal component that we are investigating.
 
 ### The Cat Synthesizer (EigenCats)
 
-We are now ready to make true cat synthesizer, where cat images are synthesized based on random locations in PCA space. You can start by setting your `synth_cat = average_cat`. Then you can add all the components you want by for example:
+We are now ready to make true cat synthesizer, where cat images are synthesized based on random locations in PCA space. You can start by setting your `synth_cat = average_cat`. Then you can add all the components you want by for example (this number should be less or equal to the number of components we asked the PCA to compute):
 
 ```python
+n_components_to_use = 10
 synth_cat = average_cat
 for m in range(n_components_to_use):
 	w = select a random number in [-3, 3]
@@ -280,3 +290,4 @@ In summary, we can now synthesize all the cat photos you will only need and we c
 
 ## References
 - [Cat data set](https://www.kaggle.com/datasets/crawford/cat-dataset)
+- [sci-kit learn PCA](https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html)
