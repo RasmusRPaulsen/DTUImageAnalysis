@@ -17,8 +17,14 @@ After completing this exercise, the student should be able to do the following:
 3. Create an empty data matrix that can hold a given set of images and a given number of measurements per image.
 4. Compute the number of features per image using the height, width and the number of channels in the image.
 5. Use the function `flatten` to convert an image into a 1-D vector.
-6. Read a set of images and put their pixel values into a data matrix.
-7. Compute an average image using the data matrix and the function [`reshape`](https://numpy.org/doc/stable/reference/generated/numpy.reshape.html).
+6. Create an image from a 1-D vector by using the [`reshape`](https://numpy.org/doc/stable/reference/generated/numpy.reshape.html) function.
+7. Create an unsigned byte image from a float image using pixel value scaling and pixel type conversion.
+8. Read a set of images and put their pixel values into a data matrix.
+9. Compute an average image using the data matrix.
+10. Visualize an average image
+11. Preprocess one image so it can be used in machine learning.
+12. Use sum-of-squared pixel differences (SSD) to compare one image with all images in a training set.
+13. Identify the images in the training set with the smallest and largest SSD compared to a given image.
 
 
 ## Importing required Python packages
@@ -102,7 +108,13 @@ To find a cat that looks like the missing cat, you start by comparing the missin
 
 **Exercise 7:** *Flatten the pixel values of the missing cat so it becomes a vector of values.*
 
-**Exercise 8:** *Subtract you missing cat data from all the rows in the data_matrix and for each row compute the sum of squared differences. This can for example be done by `sub_distances = np.linalg.norm(sub_data, axis=1)`, where sub_data are the subtracted pixel data.*
+**Exercise 8:** *Subtract you missing cat data from all the rows in the data_matrix and for each row compute the sum of squared differences. This can for example be done by:*
+
+```python
+sub_data = data_matrix - im_miss_flat
+sub_distances = np.linalg.norm(sub_data, axis=1)
+```
+
 
 **Exercise 9:** *Find the training cat that looks most like your missing cat by finding the cat, where the SSD is smallest. You can for example use `np.argmin`.*
 
