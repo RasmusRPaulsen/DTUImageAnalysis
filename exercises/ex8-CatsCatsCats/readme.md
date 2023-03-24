@@ -195,7 +195,9 @@ We start by finding out which cats that have the most *extreme coordinates* in P
 
 **Exercise 17:** *Use `np.argmin` and `np.argmax` to find the ids of the cats that have extreme values in the first and second PCA coordinates. Extract the cats data from the data matrix and use `create_u_byte_image_from_vector` to visualize these cats. Also plot the PCA space where you plot the extreme cats with another marker and color.*
 
-**Exercise 18:** *How do these extreme cat photo look like? Are some actually of such bad quality that they should be removed from the training set*
+**Exercise 18:** *How do these extreme cat photo look like? Are some actually of such bad quality that they should be removed from the training set? If you remove images from the training set, then you should run the PCA again. Do this until you are satisfied with the quality of the training data.*
+
+
 
 ### The first synthesized cat
 
