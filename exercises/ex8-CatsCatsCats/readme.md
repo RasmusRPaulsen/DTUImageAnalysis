@@ -39,7 +39,7 @@ After completing this exercise, the student should be able to do the following:
 25. Generate a synthetich version of an image by using the image position in PCA space.
 26. Compute the Euclidean distance in PCA space between a given image and all other images.
 27. Identify and visualize the images in the training set with the smallest and largest Euclidean distance in PCA space to a given image.
-28. Use the [`argpartition`](https://numpy.org/doc/stable/reference/generated/numpy.argpartition.html) to find the N closest images in PCA space to a given image.
+28. Use [`argpartition`](https://numpy.org/doc/stable/reference/generated/numpy.argpartition.html) to find the N closest images in PCA space to a given image.
 
 ## Importing required Python packages
 
@@ -81,7 +81,7 @@ The preprocessing steps are:
   - Crop the registered photo
   - Save the result in a fold called **preprocessed**
 
-**Exercise 1:** *Preprocess all image in the training set. To do the preprocessing, you can use the code snippets supplied* [here](https://github.com/RasmusRPaulsen/DTUImageAnalysis/tree/main/exercises/ex8-CatsCatsCats/data)
+**Exercise 1:** *Preprocess all image in the training set. To do the preprocessing, you can use the code snippets supplied* [here](https://github.com/RasmusRPaulsen/DTUImageAnalysis/tree/main/exercises/ex8-CatsCatsCats/data). There is also a **Model Cat** supplied.
 
 The result of the preprocessing is a directory containing smaller photos containing cat faces. All the preprocessed photos also have the same size. 
 
