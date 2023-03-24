@@ -60,11 +60,37 @@ def align_and_crop_one_cat_to_destination_cat(img_src, lm_src, img_dst, lm_dst):
 ```
 
 
+
+```python
+def preprocess_all_cats(in_dir, out_dir):
+    """
+    Create aligned and cropped version of image
+    :param in_dir: Where are the original photos and landmark files
+    :param out_dir: Where should the preprocessed files be placed
+    """
+    dst = "data/ModelCat"
+    dst_lm = read_landmark_file(f"{dst}.jpg.cat")
+    dst_img = io.imread(f"{dst}.jpg")
+
+    all_images = glob.glob(in_dir + "*.jpg")
+    for img_idx in all_images:
+        name_no_ext = os.path.splitext(img_idx)[0]
+        base_name = os.path.basename(name_no_ext)
+        out_name = f"{out_dir}/{base_name}_preprocessed.jpg"
+
+        src_lm = read_landmark_file(f"{name_no_ext}.jpg.cat")
+        src_img = io.imread(f"{name_no_ext}.jpg")
+
+        proc_img = align_and_crop_one_cat_to_destination_cat(src_img, src_lm, dst_img, dst_lm)
+        if proc_img is not None:
+            io.imsave(out_name, proc_img)
+```
+
 ```python
 def preprocess_one_cat():
-    src = "data/cats/MissingCat"
-    dst = "data/cats/ModelCat"
-    out = "data/cats/MissingCatProcessed.jpg"
+    src = "data/MissingCat"
+    dst = "data/ModelCat"
+    out = "data/MissingCatProcessed.jpg"
 
     src_lm = read_landmark_file(f"{src}.jpg.cat")
     dst_lm = read_landmark_file(f"{dst}.jpg.cat")
@@ -88,30 +114,6 @@ def preprocess_one_cat():
         a.axis('off')
     plt.tight_layout()
     plt.show()
-```
-
-```python
-def preprocess_all_cats():
-    dst = "data/cats/ModelCat"
-    dst_lm = read_landmark_file(f"{dst}.jpg.cat")
-    dst_img = io.imread(f"{dst}.jpg")
-
-    # Change to fit where you have placed training data
-    in_dir = "C:/data/Cats/cats/CAT_00/"
-    out_dir = "C:/data/Cats/aligned/"
-    
-    all_images = glob.glob(in_dir + "*.jpg")
-    for img_idx in all_images:
-        name_no_ext = os.path.splitext(img_idx)[0]
-        base_name = os.path.basename(name_no_ext)
-        out_name = f"{out_dir}/{base_name}_aligned.jpg"
-
-        src_lm = read_landmark_file(f"{name_no_ext}.jpg.cat")
-        src_img = io.imread(f"{name_no_ext}.jpg")
-
-        proc_img = align_and_crop_one_cat_to_destination_cat(src_img, src_lm, dst_img, dst_lm)
-        if proc_img is not None:
-            io.imsave(out_name, proc_img)
 ```
 
 
