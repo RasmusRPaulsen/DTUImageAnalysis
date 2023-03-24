@@ -34,7 +34,12 @@ After completing this exercise, the student should be able to do the following:
 20. Compute and visualize a synthetic image by adding linear combinations of principal components to the average image.
 21. Select suitable weights based on the PCA space for synthesizing images.
 22. Compute and visualize the major modes of variation in the training set, by sampling along the principal components.
-
+23. Generate random synthetic images that lies within the PCA space of the training set.
+24. Project a given image into PCA space
+25. Generate a synthetich version of an image by using the image position in PCA space.
+26. Compute the Euclidean distance in PCA space between a given image and all other images.
+27. Identify and visualize the images in the training set with the smallest and largest Euclidean distance in PCA space to a given image.
+28. Use the [`argpartition`](https://numpy.org/doc/stable/reference/generated/numpy.argpartition.html) to find the N closest images in PCA space to a given image.
 
 ## Importing required Python packages
 
@@ -233,9 +238,9 @@ We are now ready to make true cat synthesizer, where cat images are synthesized 
 ```python
 n_components_to_use = 10
 synth_cat = average_cat
-for m in range(n_components_to_use):
-	w = select a random number in [-3, 3]
-	synth_cat = synth_cat + w * np.sqrt(cats_pca.explained_variance_[m]) * cats_pca.components_[m, :]
+for idx in range(n_components_to_use):
+	w = random.uniform(-1, 1) * 3 * np.sqrt(cats_pca.explained_variance_[idx])
+	synth_cat = synth_cat + w * cats_pca.components_[idx, :]
 ```
 
 **Exercise 23:** *Generate as many cat photos as your heart desires.*.
