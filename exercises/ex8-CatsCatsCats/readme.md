@@ -67,7 +67,11 @@ The data and material needed for this exercise can be found here:
 
 The main part of the data is a large database of photos of cats, where there are also a set of landmarks per photo. You should download the data [here](https://courses.compute.dtu.dk/02502/data/training_cats.zip). 
 
+**IMPORTANT:** You can start by working with the smaller data set with 100 cats found here: [smaller photo database of 100 cats](https://courses.compute.dtu.dk/02502/data/training_cats_100.zip). Later you can use the full data set and see if your computer has enough RAM to handle it.
+
+
 Start by unpacking all the training photos in folder you choose. For example `training_data`. 
+
 
 ## Preprocessing data for machine learning
 
