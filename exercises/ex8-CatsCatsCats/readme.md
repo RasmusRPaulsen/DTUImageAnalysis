@@ -1,4 +1,4 @@
-# Exercise 8 - Cats, Cats, Cats (WORK IN PROGRESS)
+# Exercise 8 - Cats, Cats, Cats 
 
 Are you sad that you have watched all cat movies and seen all cat photos on the internet? Then be sad no more - in this exercise we will make a *Cat Synthesizer* where you can create all the cat photos you will ever need!
 
