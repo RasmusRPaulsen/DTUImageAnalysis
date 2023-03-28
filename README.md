@@ -19,6 +19,7 @@ This repository contains exercises and data for the DTU course [02502 Image Anal
 - [6 - Pixel classification and object segmentation](exercises/ex6-PixelClassificationAndObjectSegmentation)
 - [6b - Advanced Pixel Classification](exercises/ex6b-AdvancedPixelClassification)
 - [7 - Geometric transformations and landmark based registration](exercises/Ex7-GeometricTransformationsAndRegistration)
+- [8 - Cats, cats, and EigenCats](exercises/ex8-CatsCatsCats)
 
 ### Author
 

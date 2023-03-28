@@ -1,8 +1,8 @@
-# Exercise 8 - Cats, Cats, Cats 
+# Exercise 8 - Cats, Cats, and EigenCats 
 
 Are you sad that you have watched all cat movies and seen all cat photos on the internet? Then be sad no more - in this exercise we will make a *Cat Synthesizer* where you can create all the cat photos you will ever need!
 
-Also, you can help your friends with missing cats to find the perfect new *twin cat*.
+Secondly, a very unfortunate event happened so you are now in a situation, where you need to find a *perfect new twin cat*.
  
 To be able to do these wonderful things we will harness the power of image based *principal component analysis*. The methods we will use, can be called *classical machine learning*.
 
@@ -116,9 +116,11 @@ You can use the supplied function `create_u_byte_image_from_vector` to create an
 
 ## Find a missing cat or a cat that looks like it (using image comparison)
 
-Oh! no! You were in such a hurry to get to DTU that you forgot to close your window. Now your cat is gone!!! What to do? 
+You have promised to take care of your neighbours cat while they are on vacation. But...Oh! no! You were in such a hurry to get to DTU that you forgot to close a window. Now the cat is gone!!! What to do? 
 
-**Exercise 5:** *Decide that you quickly buy a new cat that looks very much like the missing cat - so nobody notices* 
+**Exercise 5:** *Decide that you quickly buy a new cat that looks very much like the missing cat - so nobody notices*
+
+Luckily, the training set is actually photos of cats that are in a *get a new cat cheap* nearby store. 
 
 To find a cat that looks like the missing cat, you start by comparing the missing cat pixels to the pixels of the cats in the training set. The comparison between the missing cat data and the training data can be done using the sum-of-squared differences (SSD).
 
@@ -133,10 +135,9 @@ sub_data = data_matrix - im_miss_flat
 sub_distances = np.linalg.norm(sub_data, axis=1)
 ```
 
+**Exercise 9:** *Find the cat that looks most like your missing cat by finding the cat, where the SSD is smallest. You can for example use `np.argmin`.*
 
-**Exercise 9:** *Find the training cat that looks most like your missing cat by finding the cat, where the SSD is smallest. You can for example use `np.argmin`.*
-
-**Exercise 10:** *Extract the found cat from the data_matrix and use `create_u_byte_image_from_vector` to create an image that can be visualized. Did you find a good replacement cat?*
+**Exercise 10:** *Extract the found cat from the data_matrix and use `create_u_byte_image_from_vector` to create an image that can be visualized. Did you find a good replacement cat? Do you think your neighbour will notice? Even with their glasses on?*
 
 **Exercise 11:** *You can use `np.argmax` to find the cat that looks the least like the missing cat.*
 
@@ -280,14 +281,14 @@ for idx in range(n_components_to_use):
 
 **Exercise 26:** *Generate synthetic versions of your cat, where you change the n_components_to_use from 1 to for example 50.*
 
-We can compute (squared) Euclidean distances in PCA space between your cat and all the other cats by:
+We can compute Euclidean distances in PCA space between your cat and all the other cats by:
 
 ```python
 comp_sub = components - pca_coords
 pca_distances = np.linalg.norm(comp_sub, axis=1)
 ``` 
 
-**Exercise 27:** *Find the id of the cat that has the smallest and largest distance in PCA space to your missing cat. Visualize these cats. Are they as you expected? Do you think your friends and family will notice a difference?*
+**Exercise 27:** *Find the id of the cat that has the smallest and largest distance in PCA space to your missing cat. Visualize these cats. Are they as you expected? Do you think your neighours will notice a difference?*
 
 You can also find the n closest cats by using the `np.argpartition` function. 
 
