@@ -221,6 +221,7 @@ overlay_slices(vol_sitk, ImgT1_A, title = 'ImgT1 (red) vs. ImgT1_A (green)')
 **Exercise 5**: Find the geometrical transformation of the moving image to the fixed image. The moving image is ImgT1_A.nii and the fixed image is ImgT1.nii. The new rotated image is named ImgT1_B.nii and the optimal affine transformation matrix text file is named A1.txt. You can try to modify the metric and optimizer step length.
 
 **The following code is a template for the registration. You can relate it to the figure 1 in the theory note. You can modify it to your needs.**
+_If the computing time is excesive, increase the shrink factor._
 
 ```python
 # Set the registration - Fig. 1 from the Theory Note
@@ -266,8 +267,6 @@ sitk.WriteImage(ImgT1_B, dir_in + 'ImgT1_B.nii')
 ```
 
 **Exercise 6**: Show the ortho-view of the ImgT1_B.nii. Display the optimal affine matrix found. Does it agree with the expected and what is expected? Why?
-
-_If the computing time is excesive, increase the shrink factor._
 
 You can get the estimated transformation using the following code:
 ```python
