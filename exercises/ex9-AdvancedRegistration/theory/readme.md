@@ -2,8 +2,6 @@
 
 In this exercise, we will use the SimpleITK library to perform 3D image registration. You will familiarize yourself with the registration process, their challenges and the different elements you can tune to improve the registration results.
 
-## Introduction
-
 ## Theory
 
 You can find an **important** description of the theory in - [Exercise theory](theory/Exercise9_AdvancedImageRegistration_2023.pdf)
