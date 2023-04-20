@@ -240,7 +240,7 @@ R.SetMetricAsMeanSquares()
 
 # Set the sampling strategy [Sampling step]
 R.SetMetricSamplingStrategy(R.RANDOM)
-R.SetMetricSamplingPercentage(0.50)
+R.SetMetricSamplingPercentage(0.20)
 
 # Set the optimizer [Optimization step]
 R.SetOptimizerAsPowell(stepLength=0.1, numberOfIterations=25)
