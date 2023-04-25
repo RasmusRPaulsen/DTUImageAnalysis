@@ -1,6 +1,6 @@
 # Exercise 9 - Advanced 3D registration
 
-In this exercise, we will use the SimpleITK library to perform 3D image registration. You will familiarize yourself with the registration process, their challenges and the different elements you can tune to improve the registration results.
+In this exercise, we will use the SimpleITK library to perform 3D image registration. You will familiarize yourself with the registration process, its challenges and the different elements you can tune to improve the registration results.
 
 ## Theory
 
@@ -184,7 +184,7 @@ imshow_orthogonal_view(vol_sitk, title='T1.nii')
 
 ## Apply an affine transformation
 
-**Exercise 2**: Write a function ```rotation_matrix(pitch, roll, yaw)``` which returns the rotation matrix for a given a roll, pitch, yaw. Make a 4x4 affine matrix with a roll of 25 degrees.
+**Exercise 2**: Write a function ```rotation_matrix(pitch, roll, yaw)``` which returns the rotation matrix for a given a roll, pitch, yaw. Make a 4x4 affine matrix with a pitch of 25 degrees.
 
 **Exercise 3**: Apply the rotation to the ImgT1.nii around the central point of the volume and save the rotated images as ImgT1_A.nii. Note that the central point is given in physical units (mm) in the World Coordinate System.
 
