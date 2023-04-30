@@ -399,7 +399,7 @@ affine_composite = composite2affine(tform_composite, centre_world)
 
 # Option B: Combine the transforms manually through multiplication of the homogeneous matrices
 A = np.eye(4)
-for i in range(tform_composite.GetNumberOfTransforms()):
+for i in range(tform_composite.GetNumberOfTransforms()-1,-1,-1):
     tform = tform_composite.GetNthTransform(i)
     A_curr = homogeneous_matrix_from_transform(tform)
     A = np.dot(A_curr, A)
