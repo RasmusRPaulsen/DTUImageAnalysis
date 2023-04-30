@@ -127,6 +127,54 @@ def overlay_slices(sitkImage0, sitkImage1, origin = None, title=None):
 ```
 
 ```python
+def composite2affine(composite_transform, result_center=None):
+    """
+    Combine all of the composite transformation's contents to form an equivalent affine transformation.
+    Args:
+        composite_transform (SimpleITK.CompositeTransform): Input composite transform which contains only
+                                                            global transformations, possibly nested.
+        result_center (tuple,list): The desired center parameter for the resulting affine transformation.
+                                    If None, then set to [0,...]. This can be any arbitrary value, as it is
+                                    possible to change the transform center without changing the transformation
+                                    effect.
+    Returns:
+        SimpleITK.AffineTransform: Affine transformation that has the same effect as the input composite_transform.
+    
+    Source:
+        https://github.com/InsightSoftwareConsortium/SimpleITK-Notebooks/blob/master/Python/22_Transforms.ipynb
+    """
+    # Flatten the copy of the composite transform, so no nested composites.
+    flattened_composite_transform = sitk.CompositeTransform(composite_transform)
+    flattened_composite_transform.FlattenTransform()
+    tx_dim = flattened_composite_transform.GetDimension()
+    A = np.eye(tx_dim)
+    c = np.zeros(tx_dim) if result_center is None else result_center
+    t = np.zeros(tx_dim)
+    for i in range(flattened_composite_transform.GetNumberOfTransforms() - 1, -1, -1):
+        curr_tx = flattened_composite_transform.GetNthTransform(i).Downcast()
+        # The TranslationTransform interface is different from other
+        # global transformations.
+        if curr_tx.GetTransformEnum() == sitk.sitkTranslation:
+            A_curr = np.eye(tx_dim)
+            t_curr = np.asarray(curr_tx.GetOffset())
+            c_curr = np.zeros(tx_dim)
+        else:
+            A_curr = np.asarray(curr_tx.GetMatrix()).reshape(tx_dim, tx_dim)
+            c_curr = np.asarray(curr_tx.GetCenter())
+            # Some global transformations do not have a translation
+            # (e.g. ScaleTransform, VersorTransform)
+            get_translation = getattr(curr_tx, "GetTranslation", None)
+            if get_translation is not None:
+                t_curr = np.asarray(get_translation())
+            else:
+                t_curr = np.zeros(tx_dim)
+        A = np.dot(A_curr, A)
+        t = np.dot(A_curr, t + c - c_curr) + t_curr + c_curr - c
+
+    return sitk.AffineTransform(A.flatten(), t, c)
+```
+
+```python
 # Callback invoked when the StartEvent happens, sets up our new data.
 def start_plot():
     global metric_values, multires_iterations
@@ -188,6 +236,18 @@ imshow_orthogonal_view(vol_sitk, title='T1.nii')
 
 **Exercise 3**: Apply the rotation to the ImgT1.nii around the central point of the volume and save the rotated images as ImgT1_A.nii. Note that the central point is given in physical units (mm) in the World Coordinate System.
 
+<div style="border:1px dotted red;padding:2%;">
+ An important consideration it is that ITK transforms store the resampling transform/backward mapping transform (fixed to moving image). And then, internally, it applies the inverse of the transform to the moving image.
+ 
+ This means that we have to pass the inverse matrix of the one we have defined. This is because the transformation is applied to the moving image and not to the fixed image. It is important to consider when we want to apply the transformation to the fixed image.
+ 
+ Note that the inverse or the rotation matrix is the same as the transpose of the rotation matrix, then, when we set the rotation matrix:
+```transform.SetMatrix(rot_matrix.T.flatten())```
+
+For a more general transformation matrix (no only rotations involved), you should compute the inverse matrix:
+```transform.SetMatrix(np.linealg.inv(rot_matrix).flatten())```
+</div>
+
 ```python
 # Define the roll rotation in radians
 angle = 25  # degrees
@@ -201,7 +261,7 @@ centre_world = vol_sitk.TransformContinuousIndexToPhysicalPoint(centre_image) # 
 rot_matrix = rotation_matrix(pitch_radians, 0, 0)[:3, :3] # SimpleITK inputs the rotation and the translation separately
 
 transform.SetCenter(centre_world) # Set the rotation centre
-transform.SetMatrix(rot_matrix.flatten())
+transform.SetMatrix(rot_matrix.T.flatten())
 
 # Apply the transformation to the image
 ImgT1_A = sitk.Resample(vol_sitk, transform)
@@ -221,7 +281,6 @@ overlay_slices(vol_sitk, ImgT1_A, title = 'ImgT1 (red) vs. ImgT1_A (green)')
 **Exercise 5**: Find the geometrical transformation of the moving image to the fixed image. The moving image is ImgT1_A.nii and the fixed image is ImgT1.nii. The new rotated image is named ImgT1_B.nii and the optimal affine transformation matrix text file is named A1.txt. You can try to modify the metric and optimizer step length.
 
 **The following code is a template for the registration. You can relate it to the figure 1 in the theory note. You can modify it to your needs.**
-_If the computing time is excesive, increase the shrink factor._
 
 ```python
 # Set the registration - Fig. 1 from the Theory Note
@@ -240,7 +299,7 @@ R.SetMetricAsMeanSquares()
 
 # Set the sampling strategy [Sampling step]
 R.SetMetricSamplingStrategy(R.RANDOM)
-R.SetMetricSamplingPercentage(0.20)
+R.SetMetricSamplingPercentage(0.50)
 
 # Set the optimizer [Optimization step]
 R.SetOptimizerAsPowell(stepLength=0.1, numberOfIterations=25)
@@ -267,6 +326,8 @@ sitk.WriteImage(ImgT1_B, dir_in + 'ImgT1_B.nii')
 ```
 
 **Exercise 6**: Show the ortho-view of the ImgT1_B.nii. Display the optimal affine matrix found. Does it agree with the expected and what is expected? Why?
+
+_If the computing time is excesive, increase the shrink factor._
 
 You can get the estimated transformation using the following code:
 ```python
@@ -325,6 +386,7 @@ tform_180 = ...
 tform_240 = ...
 tform_0 = ...
 
+# Option A: Combine the transforms using the sitk.CompositeTransform(3) function
 # Concatenate - The last added transform is applied first
 tform_composite = sitk.CompositeTransform(3)
 
@@ -332,6 +394,20 @@ tform_composite.AddTransform(tform_240.GetNthTransform(0))
 tform_composite.AddTransform(tform_180.GetNthTransform(0))
 tform_composite.AddTransform(tform_60.GetNthTransform(0))
 tform_composite.AddTransform(tform_0.GetNthTransform(0))
+# Transform the composite transform to an affine transform
+affine_composite = composite2affine(tform_composite, centre_world)
+
+# Option B: Combine the transforms manually through multiplication of the homogeneous matrices
+A = np.eye(4)
+for i in range(tform_composite.GetNumberOfTransforms()):
+    tform = tform_composite.GetNthTransform(i)
+    A_curr = homogeneous_matrix_from_transform(tform)
+    A = np.dot(A_curr, A)
+
+tform = sitk.Euler3DTransform()
+tform.SetMatrix(A[:3,:3].flatten())
+tform.SetTranslation(A[:3,3])
+tform.SetCenter(centre_world)
 ```
 
 ## Robustness in the registration and number of iterations
