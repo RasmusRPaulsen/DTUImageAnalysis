@@ -6,7 +6,7 @@ In this exercise, we will use the SimpleITK library to perform 3D image registra
 
 After completing this exercise, the student should be able to do the following:
 
-1. Use SimpleITK [here](https://simpleitk.readthedocs.io/en/master/) for 3D registration.
+1. Use [SimpleITK](https://simpleitk.readthedocs.io/en/master/) for 3D registration.
 
 ## Theory
 
