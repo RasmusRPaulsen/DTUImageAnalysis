@@ -409,7 +409,7 @@ plt.xlabel('Distance along line')
 plt.show()
 ```
 
-**Exercise 27:** *What do you see - can you recognise the inner and outer borders of the bone-shell in the profile?*
+**Exercise 28:** *What do you see - can you recognise the inner and outer borders of the bone-shell in the profile?*
 
 An image can also be viewed as a landscape, where the height is equal to the grey level:
 
@@ -443,7 +443,7 @@ ds = dicom.dcmread(in_dir + im_name)
 print(ds)
 ```
 
-**Exercise 28:** *What is the size (number of rows and columns) of the DICOM slice?*
+**Exercise 29:** *What is the size (number of rows and columns) of the DICOM slice?*
 
 This image has been **anonymized** so patient information has been removed. Else the patients name and diagnosis are sometimes also available. This makes medical images very complicated to share due to the need of protecting patient privacy.
 
@@ -453,7 +453,7 @@ We can get access to the pixel values of the DICOM slice by:
 im = ds.pixel_array
 ```
 
-**Exercise 29:** *Try to find the shape of this image and the pixel type? Does the shape match the size of the image found by inspecting the image header information?*
+**Exercise 30:** *Try to find the shape of this image and the pixel type? Does the shape match the size of the image found by inspecting the image header information?*
 
 
 We can visualize the slice using:
