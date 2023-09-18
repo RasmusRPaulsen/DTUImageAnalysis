@@ -156,7 +156,7 @@ You can also use your own photo of a cat (perhaps even your own cat). To do that
 
 We now move to more classical machine learning on cats. Namely Principal component analysis  (PCA) analysis of the cats image.
 
-To compute the PCA, we use the [sci-kit learn PCA](https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html). Not that this version of PCA automatically *centers* data. It means that it will subtract the average cat from all cats for you.
+To compute the PCA, we use the [sci-kit learn PCA](https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html). Note that this version of PCA automatically *centers* data. It means that it will subtract the average cat from all cats for you.
 
 **Exercise 12:** *Start by computing the first 50 principal components:*
 ```python
