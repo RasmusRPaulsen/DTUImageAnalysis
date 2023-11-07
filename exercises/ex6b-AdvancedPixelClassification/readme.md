@@ -68,8 +68,8 @@ in_file = 'ex6_ImagData2Load.mat'
 data = sio.loadmat(in_dir + in_file)
 ImgT1 = data['ImgT1']
 ImgT2 = data['ImgT2']
-ROI_GM = data['ROI_GM']
-ROI_WM = data['ROI_WM']
+ROI_GM = data['ROI_GM'].astype(bool)
+ROI_WM = data['ROI_WM'].astype(bool)
 ```
 
 ## Exercise 1 
