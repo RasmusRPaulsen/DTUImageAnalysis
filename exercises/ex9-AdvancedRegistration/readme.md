@@ -288,6 +288,8 @@ overlay_slices(vol_sitk, ImgT1_A, title = 'ImgT1 (red) vs. ImgT1_A (green)')
 
 **The following code is a template for the registration. You can relate it to the figure 1 in the theory note. You can modify it to your needs.**
 
+_If the computing time is excesive, increase the shrink factor._
+
 ```python
 # Set the registration - Fig. 1 from the Theory Note
 R = sitk.ImageRegistrationMethod()
@@ -331,9 +333,7 @@ ImgT1_B = sitk.Resample(moving_image, tform_reg)
 sitk.WriteImage(ImgT1_B, dir_in + 'ImgT1_B.nii')
 ```
 
-**Exercise 6**: Show the ortho-view of the ImgT1_B.nii. Display the optimal affine matrix found. Does it agree with the expected and what is expected? Why?
-
-_If the computing time is excesive, increase the shrink factor._
+**Exercise 6**: Show the ortho-view of the ImgT1_B.nii. Display the optimal affine matrix found. Does it agree with the expected and what is expected? Why? You can use the following snippets of code:
 
 You can get the estimated transformation using the following code:
 ```python
