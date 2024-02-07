@@ -174,7 +174,7 @@ values_pca = pca.explained_variance_
 exp_var_ratio = pca.explained_variance_ratio_
 vectors_pca = pca.components_
 
-data_transform = pca.transform(data)
+data_transform = pca.transform(x)
 ```
 
 Compare the results from the results you found using the step-by-step procedure. Some of the results are transposed - which ones?
