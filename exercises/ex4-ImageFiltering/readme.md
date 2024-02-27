@@ -85,7 +85,7 @@ res_img = correlate(input_img, weights, mode="constant", cval=10)
 
 ### Exercise 2
 
-Compare the output images when using `reflection` and `constant` for the border. Where and why do you see the differences.
+Compare the output images when using `reflect` and `constant` for the border. Where and why do you see the differences.
 
 ## Mean filtering
 
