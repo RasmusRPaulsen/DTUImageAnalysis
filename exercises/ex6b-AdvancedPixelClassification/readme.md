@@ -22,7 +22,7 @@ You can find an **important** description of the theory behind LDA in - [Exercis
 1.	Implement, train and evaluate multi-dimensional segmentation using a Linear Discriminate classifier i.e. Fisherman’ Linear discriminant analysis
 2.	To visualise the 1D intensity histograms of two different image modalities that contain different intensity information of the same image features.
 3.	To identify the expected intensity thresholds in each of the 1D histograms that best segment the same feature in the two image modalities.
-4.	To visually the 2D histogram of two image modalities that map the same object but with different intensity information.
+4.	To visualize the 2D histogram of two image modalities that map the same object but with different intensity information.
 5.	To interpret the 2D histogram information by identifying clusters of 2D intensity distributions and relate these to features in the images.
 6.	To draw an expected linear hyper plane in the 2D histogram that best segment and feature in the two image modalities
 7.	To extract training data sets and their corresponding class labels from expert drawn regions-of-interest data, and map their corresponding 2D histogram for visual inspection
