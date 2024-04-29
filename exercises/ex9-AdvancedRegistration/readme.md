@@ -29,6 +29,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import SimpleITK as sitk
 from IPython.display import clear_output
+from skimage.util import img_as_ubyte
 ```
 
 and defining some useful functions:

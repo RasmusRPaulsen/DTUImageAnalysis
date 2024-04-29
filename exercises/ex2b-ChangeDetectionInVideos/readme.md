@@ -29,7 +29,7 @@ We will use the virtual environment from the previous exercise (`course02502`). 
 
 ```
 activate course02502
-conda install -c conda-forge opencv
+pip install opencv-python
 ```
 
 You might also need to install **Numpy**:

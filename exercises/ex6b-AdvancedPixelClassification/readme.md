@@ -136,16 +136,16 @@ Y = np.c_[np.ones((len(Xall), 1)), Xall] @ W.T
 ```
 
 ## Exercise 8
-Perform multi-modal classification: Calculate the posterior probability i.e. $P(X|C_1)$ of a data point belonging to class 1
+Perform multi-modal classification: Calculate the posterior probability i.e. $P(C_1|X)$ of a data point belonging to class 1
 
-*Note: Using Bayes [Eq 1]: Since* $y(x)$ *is the log of the posterior probability [Eq2] we take* $\exp(y(x))$ *to get* $P(X|C_1)=P(X|\mu,\sigma)P(C_1)$ *and divide with the marginal probability* $P(X)$ *as normalisation factor.*
+*Note: Using Bayes [Eq 1]: Since* $y(x)$ *is the log of the posterior probability [Eq2] we take* $\exp(y(x))$ *to get* $P(C_1|X)=P(X|\mu,\sigma)P(C_1)$ *and divide with the marginal probability* $P(X)$ *as normalisation factor.*
 
 ```python
 PosteriorProb = np.clip(np.exp(Y) / np.sum(np.exp(Y),1)[:, np.newaxis]), 0, 1)
 ```
 
 ## Exercise 9
-Apply segmentation: Find all voxles in the T1w and T2w image with $P(X|C_1)>0.5$ as belonging to Class 1. You may use the `np.where()` function. Similarly, find all voxels belonging to class 2.
+Apply segmentation: Find all voxles in the T1w and T2w image with $P(C_1|X)>0.5$ as belonging to Class 1. You may use the `np.where()` function. Similarly, find all voxels belonging to class 2.
 
 ## Exercise 10
 Show scatter plot of segmentation results as in 5.
