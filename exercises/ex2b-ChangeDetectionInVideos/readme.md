@@ -91,7 +91,7 @@ You can start by trying with $\alpha = 0.95$, $T = 0.1$, and $A = 0.05$.
 
 **Exercise 4:** *Try to change* $\alpha$, $T$ and $A$. *What effects do it have?*
 
-The images are displayed using the OpenCV function `imshow`. The display window has several ways of zooming in the displayed image. One function is to zoom x30 that shows the pixel values as numbers. 
+The images are displayed using the OpenCV function `imshow`. The display window has several ways of zooming in the displayed image. 
 
 **Exercise 5:** *Try to play around with the zoom window.*
 
