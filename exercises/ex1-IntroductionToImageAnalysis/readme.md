@@ -47,7 +47,7 @@ When you have installed Anaconda, you can start by creating a **virtual environm
 Start an **Anaconda prompt** and do:
 
 ```Shell
-conda create --name course02502 python=3.9
+conda create --name course02502 python=3.11
 conda activate course02502
 ```
 
@@ -72,18 +72,18 @@ It is important that your Notebook, Spyder, Pycharm or other development tool is
 
 ## Installing Python packages
 
-In this course, we will use several Python packages. We will install them as needed. To install the package [scikit-image (skimage)](https://scikit-image.org/), start an **Anaconda prompt** and do:
+In this course, we will use several Python packages. We will install them as needed. To install the packages
+- [scikit-image (skimage)](https://scikit-image.org/)
+- [matplotlib](https://matplotlib.org/stable/)
+- [pydicom](https://github.com/pydicom/pydicom)
+- ipykernel (only necessary if using notebooks)
+
+start an **Anaconda prompt** and do:
 
 ```Shell
 conda activate course02502
-conda install -c anaconda scikit-image
+pip install scikit-image matplotlib pydicom ipykernel
 ```
-
-Further info can be found here: [anaconda sci-kit image](https://anaconda.org/anaconda/scikit-image).
-
-You should also install 
-- [matplotlib](https://anaconda.org/conda-forge/matplotlib)
-- [pydicom](https://anaconda.org/conda-forge/pydicom)
 
 
 ## Exercise data and material
@@ -150,6 +150,30 @@ print(im_org.dtype)
 
 
 ```python
+io.imshow(im_org)
+plt.title('Metacarpal image')
+io.show()
+```
+
+If you are using notebooks you have to change the matplotlib backend to interact with the pixels in the image. If you want a pop up window for the image install PyQt:
+```Shell
+pip install PyQt6
+```
+and then show the image with the new backend
+```python
+%matplotlib qt
+io.imshow(im_org)
+plt.title('Metacarpal image')
+io.show()
+```
+
+If you want the image to stay inside the notebook install ipympl
+```Shell
+pip install ipympl
+```
+and then show the image with the new backend (you may have to close the window and open agian before the backend works)
+```python
+%matplotlib widget
 io.imshow(im_org)
 plt.title('Metacarpal image')
 io.show()
